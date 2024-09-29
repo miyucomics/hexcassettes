@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "hexcassettes",
+	"version": "${version}",
+	"name": "Hexcassettes",
+	"description": "An addon for all your daemon and delaying needs!",
+	"authors": [
+		"miyucomics"
+	],
+	"contact": {
+		"homepage": "https://github.com/miyucomics/hexcassettes",
+		"sources": "https://github.com/miyucomics/hexcassettes"
+	},
+	"license": "MIT",
+	"icon": "assets/hexcassettes/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"miyucomics.hexcassettes.HexcassettesMain"
+		]
+	},
+	"depends": {
+		"minecraft": ">=1.19.2",
+		"fabricloader": ">=0.14.21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": ">=1.9.0+kotlin.1.8.0",
+		"hexcasting": ">=0.10.3"
+	}
+}
