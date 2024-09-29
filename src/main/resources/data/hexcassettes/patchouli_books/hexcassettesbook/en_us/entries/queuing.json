@@ -1,0 +1,13 @@
+{
+	"name": "hexcassettes.page.properties.title",
+	"icon": "minecraft:clock",
+	"category": "hexcasting:patterns",
+	"sortnum": 30,
+	"advancement": "hexcasting:root",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "hexcassettes.page.queuing.0"
+		}
+	]
+}
