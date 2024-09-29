@@ -27,7 +27,7 @@ Source = "https://github.com/miyucomics/hexcassettes/"
 [tool.hatch.version]
 scheme = "gradle"
 source = "gradle-properties"
-py-path = "doc/src/hexdoc_hexcasettes/__version__.py"
+py-path = "doc/src/hexdoc_hexcassettes/__version__.py"
 key = "mod_version"
 
 [tool.hatch.metadata.hooks.gradle-properties]
@@ -44,12 +44,12 @@ dev = [
 
 [tool.hatch.build]
 only-include = [
-    "doc/src/hexdoc_hexcasettes",
+    "doc/src/hexdoc_hexcassettes",
     "gradle.properties",
 ]
 artifacts = [
-    "/doc/src/hexdoc_hexcasettes/_export/generated",
-    "/doc/src/hexdoc_hexcasettes/__gradle_version__.py",
+    "/doc/src/hexdoc_hexcassettes/_export/generated",
+    "/doc/src/hexdoc_hexcassettes/__gradle_version__.py",
 ]
 
 [tool.hatch.build.targets.wheel]

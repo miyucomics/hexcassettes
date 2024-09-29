@@ -8,7 +8,7 @@ public class HexcassettesMain implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		HexcassettesPatterns.init();
 	}
 
 	public static Identifier id(String string) {
