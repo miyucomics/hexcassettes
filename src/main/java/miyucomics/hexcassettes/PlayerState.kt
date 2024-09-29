@@ -16,9 +16,9 @@ class PlayerState {
 
 	fun tick(player: PlayerEntity) {
 		hexes.forEach { hex ->
+			hex.duration -= 1
 			if (hex.duration == 0)
 				castFromInventory(player.world as ServerWorld, player as ServerPlayerEntity, hex.hex)
-			hex.duration -= 1
 		}
 		hexes.removeIf { hex -> hex.duration <= 0 }
 	}

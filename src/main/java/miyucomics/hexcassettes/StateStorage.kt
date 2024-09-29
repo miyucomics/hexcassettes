@@ -32,8 +32,9 @@ class StateStorage : PersistentState() {
 		@JvmStatic
 		fun getPlayerState(player: PlayerEntity): PlayerState {
 			val state = getServerState(player.server!!)
-			state.states[player.uuid] = PlayerState()
-			return getServerState(player.server!!).states[player.uuid]!!
+			if (!state.states.containsKey(player.uuid))
+				state.states[player.uuid] = PlayerState()
+			return state.states[player.uuid]!!
 		}
 	}
 }
