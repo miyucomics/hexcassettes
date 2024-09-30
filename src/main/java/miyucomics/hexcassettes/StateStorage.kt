@@ -34,6 +34,7 @@ class StateStorage : PersistentState() {
 			val state = getServerState(player.server!!)
 			if (!state.states.containsKey(player.uuid))
 				state.states[player.uuid] = PlayerState()
+			state.markDirty()
 			return state.states[player.uuid]!!
 		}
 	}

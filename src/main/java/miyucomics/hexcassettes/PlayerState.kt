@@ -8,19 +8,15 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
 class PlayerState {
-	private val hexes: MutableList<QueuedHex> = mutableListOf()
-
-	fun queueHex(hex: List<Iota>, duration: Int) {
-		hexes.add(QueuedHex(hex, duration))
-	}
+	val hexes: MutableList<QueuedHex> = mutableListOf()
 
 	fun tick(player: PlayerEntity) {
 		hexes.forEach { hex ->
-			hex.duration -= 1
-			if (hex.duration == 0)
+			hex.delay -= 1
+			if (hex.delay == 0)
 				castFromInventory(player.world as ServerWorld, player as ServerPlayerEntity, hex.hex)
 		}
-		hexes.removeIf { hex -> hex.duration <= 0 }
+		hexes.removeIf { hex -> hex.delay <= 0 }
 	}
 
 	fun serialize(): NbtCompound {
@@ -34,4 +30,4 @@ class PlayerState {
 	}
 }
 
-data class QueuedHex(val hex: List<Iota>, var duration: Int)
+data class QueuedHex(val hex: List<Iota>, var delay: Int)

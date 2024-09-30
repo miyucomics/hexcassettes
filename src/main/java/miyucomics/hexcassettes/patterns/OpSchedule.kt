@@ -3,6 +3,7 @@ package miyucomics.hexcassettes.patterns
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
+import miyucomics.hexcassettes.QueuedHex
 import miyucomics.hexcassettes.StateStorage
 
 class OpSchedule : SpellAction {
@@ -16,7 +17,7 @@ class OpSchedule : SpellAction {
 	private data class Spell(val hex: List<Iota>, val delay: Int) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val state = StateStorage.getPlayerState(ctx.caster)
-			state.queueHex(hex, delay)
+			state.hexes.add(QueuedHex(hex, delay))
 		}
 	}
 }
