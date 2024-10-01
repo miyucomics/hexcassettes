@@ -25,8 +25,7 @@ class StateStorage : PersistentState() {
 
 		@JvmStatic
 		fun getServerState(server: MinecraftServer): StateStorage {
-			val persistentStateManager = server.getWorld(World.OVERWORLD)!!.persistentStateManager
-			return persistentStateManager.getOrCreate(::createFromNbt, ::StateStorage, HexcassettesMain.MOD_ID)
+			return server.getWorld(World.OVERWORLD)!!.persistentStateManager.getOrCreate(::createFromNbt, ::StateStorage, HexcassettesMain.MOD_ID)
 		}
 
 		@JvmStatic
