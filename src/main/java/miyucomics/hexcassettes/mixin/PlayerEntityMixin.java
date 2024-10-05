@@ -1,6 +1,6 @@
 package miyucomics.hexcassettes.mixin;
 
-import miyucomics.hexcassettes.StateStorage;
+import miyucomics.hexcassettes.data.StateStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

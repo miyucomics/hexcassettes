@@ -1,12 +1,12 @@
-package miyucomics.hexcassettes
+package miyucomics.hexcassettes.data
 
+import miyucomics.hexcassettes.HexcassettesMain
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer
 import net.minecraft.world.PersistentState
 import net.minecraft.world.World
 import java.util.UUID
-import java.util.function.Consumer
 
 class StateStorage : PersistentState() {
 	private val states: HashMap<UUID, PlayerState> = HashMap()
@@ -19,13 +19,18 @@ class StateStorage : PersistentState() {
 	companion object {
 		private fun createFromNbt(nbt: NbtCompound): StateStorage {
 			val state = StateStorage()
-			nbt.keys.forEach(Consumer { key: String -> state.states[UUID.fromString(key)] = PlayerState.deserialize(nbt.getCompound(key)) })
+			nbt.keys.forEach { key -> state.states[UUID.fromString(key)] =
+				PlayerState.deserialize(nbt.getCompound(key))
+			}
 			return state
 		}
 
 		@JvmStatic
 		fun getServerState(server: MinecraftServer): StateStorage {
-			return server.getWorld(World.OVERWORLD)!!.persistentStateManager.getOrCreate(::createFromNbt, ::StateStorage, HexcassettesMain.MOD_ID)
+			return server.getWorld(World.OVERWORLD)!!.persistentStateManager.getOrCreate(
+				Companion::createFromNbt, ::StateStorage,
+				HexcassettesMain.MOD_ID
+			)
 		}
 
 		@JvmStatic

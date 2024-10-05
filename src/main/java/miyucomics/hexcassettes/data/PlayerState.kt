@@ -1,9 +1,7 @@
-package miyucomics.hexcassettes
+package miyucomics.hexcassettes.data
 
-import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexcassettes.CastingUtils.castFromInventory
 import net.minecraft.entity.player.PlayerEntity
@@ -12,7 +10,7 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 
 class PlayerState {
-	val hexes: List<QueuedHex> = mutableListOf()
+	val hexes: MutableList<QueuedHex> = mutableListOf()
 
 	fun tick(player: PlayerEntity) {
 		hexes.forEach { hex ->
