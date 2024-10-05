@@ -7,7 +7,7 @@ import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import miyucomics.hexcassettes.CastingUtils;
-import miyucomics.hexcassettes.SilentMarker;
+import miyucomics.hexcassettes.data.SilentMarker;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -37,6 +37,7 @@ public class CastingHarnessMixin {
 		return !((SilentMarker) (Object) hexical$harness.getCtx()).isDelayCast();
 	}
 
+	@SuppressWarnings("DataFlowIssue")
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
 		CastingContext ctx = hexical$harness.getCtx();

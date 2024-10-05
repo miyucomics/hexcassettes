@@ -1,4 +1,4 @@
-package miyucomics.hexcassettes
+package miyucomics.hexcassettes.data
 
 interface SilentMarker {
 	fun delayCast()
