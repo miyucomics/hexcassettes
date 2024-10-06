@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"miyucomics.hexcassettes.HexcassettesMain"
+		],
+		"client": [
+			"miyucomics.hexcassettes.HexcassettesClient"
 		]
 	},
 	"mixins": [

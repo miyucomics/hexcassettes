@@ -4,27 +4,21 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexcassettes.advancements.QuineCriterion
-import miyucomics.hexcassettes.data.QueuedHex
+import miyucomics.hexcassettes.HexcassettesMain
+import miyucomics.hexcassettes.data.HexcassettesAPI
 import miyucomics.hexcassettes.data.SilentMarker
-import miyucomics.hexcassettes.data.StateStorage
 import miyucomics.hexcassettes.inits.HexcassettesAdvancements
 
-class OpSchedule : SpellAction {
-	override val argc = 2
-	override fun execute(args: List<Iota>, ctx: CastingContext): Triple<RenderedSpell, Int, List<ParticleSpray>> {
+class OpSchedule : ConstMediaAction {
+	override val argc = 3
+	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		args.getList(0, argc)
 		val delay = args.getPositiveInt(1, argc)
-		return Triple(Spell(args[0] as ListIota, delay), 0, listOf())
-	}
-
-	private data class Spell(val hex: ListIota, val delay: Int) : RenderedSpell {
-		override fun cast(ctx: CastingContext) {
-			val state = StateStorage.getPlayerState(ctx.caster)
-			if ((ctx as SilentMarker).isDelayCast())
-				HexcassettesAdvancements.QUINE.trigger(ctx.caster)
-			state.queuedHexes.add(QueuedHex(HexIotaTypes.serialize(hex), delay))
-		}
+		val label = args[2].display().string
+		if ((ctx as SilentMarker).isDelayCast())
+			HexcassettesAdvancements.QUINE.trigger(ctx.caster)
+		val shortened = if (label.length > HexcassettesMain.MAX_LABEL_LENGTH) { label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH) } else { label }
+		HexcassettesAPI.scheduleHex(ctx.caster, args[0] as ListIota, delay, shortened)
+		return emptyList()
 	}
 }

@@ -15,6 +15,5 @@ object HexcassettesPatterns {
 		register("killall", "weeeee", HexDir.WEST, OpKillAll())
 	}
 
-	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir),
-		HexcassettesMain.id(name), action)
+	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir), HexcassettesMain.id(name), action)
 }
