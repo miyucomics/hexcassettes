@@ -12,11 +12,11 @@ class PlayerState {
 	val queuedHexes: MutableList<QueuedHex> = mutableListOf()
 
 	fun tick(player: ServerPlayerEntity) {
-		queuedHexes.forEach { hex ->
-			println(hex.delay)
-			hex.delay -= 1
-			if (hex.delay == 0)
-				cast(player.getWorld(), player, hex.hex)
+		val count = queuedHexes.size - 1
+		for (i in 0..count) {
+			queuedHexes[i].delay -= 1
+			if (queuedHexes[i].delay == 0)
+				cast(player.getWorld(), player, queuedHexes[i].hex)
 		}
 		queuedHexes.removeIf { hex -> hex.delay <= 0 }
 	}

@@ -1,5 +1,7 @@
 package miyucomics.hexcassettes;
 
+import miyucomics.hexcassettes.inits.HexcassettesAdvancements;
+import miyucomics.hexcassettes.inits.HexcassettesPatterns;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
@@ -8,6 +10,7 @@ public class HexcassettesMain implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		HexcassettesAdvancements.init();
 		HexcassettesPatterns.init();
 	}
 

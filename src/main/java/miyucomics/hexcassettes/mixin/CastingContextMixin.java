@@ -9,15 +9,15 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(value = CastingContext.class)
 public class CastingContextMixin implements SilentMarker {
 	@Unique
-	private boolean hexical$delayCast = false;
+	private boolean hexcassettes$delayCast = false;
 
 	@Override
 	public void delayCast() {
-		hexical$delayCast = true;
+		hexcassettes$delayCast = true;
 	}
 
 	@Override
 	public boolean isDelayCast() {
-		return hexical$delayCast;
+		return hexcassettes$delayCast;
 	}
 }
