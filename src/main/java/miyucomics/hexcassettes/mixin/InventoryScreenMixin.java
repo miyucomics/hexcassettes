@@ -33,9 +33,4 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
 			addDrawableChild(widget);
 		}
 	}
-
-	@Inject(method = "handledScreenTick", at = @At("TAIL"))
-	private void tickCassettes(CallbackInfo ci) {
-
-	}
 }

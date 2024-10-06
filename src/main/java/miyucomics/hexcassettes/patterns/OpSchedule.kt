@@ -18,7 +18,7 @@ class OpSchedule : SpellAction {
 	private data class Spell(val hex: ListIota, val delay: Int) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val state = StateStorage.getPlayerState(ctx.caster)
-			state.hexes.add(QueuedHex(hex, delay))
+			state.queuedHexes.add(QueuedHex(hex, delay))
 		}
 	}
 }

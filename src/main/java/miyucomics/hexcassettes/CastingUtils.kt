@@ -39,7 +39,7 @@ object CastingUtils {
 	}
 
 	@JvmStatic
-	fun castFromInventory(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>): CastingHarness {
+	fun cast(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>): CastingHarness {
 		val harness = IXplatAbstractions.INSTANCE.getHarness(user, Hand.MAIN_HAND)
 		(harness.ctx as SilentMarker).delayCast()
 		harness.stack = mutableListOf()
