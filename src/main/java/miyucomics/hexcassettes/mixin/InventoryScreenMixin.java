@@ -27,8 +27,8 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
 	@Inject(method = "init", at = @At("TAIL"))
 	private void initCassettes(CallbackInfo ci) {
 		cassettes = new ArrayList<>();
-		for (int i = 0; i < 5; i++) {
-			var widget = new CassetteWidget(x + 156 + 19, y + i * 18, 14, 14, i);
+		for (int i = 0; i < 6; i++) {
+			var widget = new CassetteWidget(x + 176, y + 4 + i * 18, 16, 16, i);
 			cassettes.add(widget);
 			addDrawableChild(widget);
 		}
