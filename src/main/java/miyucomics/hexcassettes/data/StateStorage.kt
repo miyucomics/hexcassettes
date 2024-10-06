@@ -12,16 +12,14 @@ class StateStorage : PersistentState() {
 	private val states: HashMap<UUID, PlayerState> = HashMap()
 
 	override fun writeNbt(nbt: NbtCompound): NbtCompound {
-		states.forEach { (key: UUID, element: PlayerState) -> nbt.put(key.toString(), element.serialize()) }
+		states.forEach { (uuid: UUID, player: PlayerState) -> nbt.put(uuid.toString(), player.serialize()) }
 		return nbt
 	}
 
 	companion object {
 		private fun createFromNbt(nbt: NbtCompound): StateStorage {
 			val state = StateStorage()
-			nbt.keys.forEach { key -> state.states[UUID.fromString(key)] =
-				PlayerState.deserialize(nbt.getCompound(key))
-			}
+			nbt.keys.forEach { uuid -> state.states[UUID.fromString(uuid)] = PlayerState.deserialize(nbt.getCompound(uuid)) }
 			return state
 		}
 

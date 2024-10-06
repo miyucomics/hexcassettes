@@ -2,6 +2,7 @@ package miyucomics.hexcassettes.mixin;
 
 import miyucomics.hexcassettes.data.StateStorage;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,6 +15,6 @@ public class PlayerEntityMixin {
 		PlayerEntity player = (PlayerEntity) (Object) this;
 		if (player.world.isClient)
 			return;
-		StateStorage.getPlayerState(player).tick(player);
+		StateStorage.getPlayerState(player).tick((ServerPlayerEntity) player);
 	}
 }
