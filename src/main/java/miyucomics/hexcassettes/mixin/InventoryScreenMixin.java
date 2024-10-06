@@ -17,12 +17,12 @@ import java.util.List;
 
 @Mixin(InventoryScreen.class)
 public abstract class InventoryScreenMixin extends AbstractInventoryScreen<PlayerScreenHandler> {
+	@Unique
+	public List<CassetteWidget> cassettes;
+
 	public InventoryScreenMixin(PlayerScreenHandler screenHandler, PlayerInventory playerInventory, Text text) {
 		super(screenHandler, playerInventory, text);
 	}
-
-	@Unique
-	public List<CassetteWidget> cassettes;
 
 	@Inject(method = "init", at = @At("TAIL"))
 	private void initCassettes(CallbackInfo ci) {

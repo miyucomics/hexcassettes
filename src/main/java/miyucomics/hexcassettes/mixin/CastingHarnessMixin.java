@@ -23,29 +23,29 @@ import java.util.List;
 @Mixin(value = CastingHarness.class, priority = 900)
 public class CastingHarnessMixin {
 	@Unique
-	private final CastingHarness hexical$harness = (CastingHarness) (Object) this;
+	private final CastingHarness hexcassettes$harness = (CastingHarness) (Object) this;
 
 	@WrapOperation(method = "updateWithPattern", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private boolean silenceCasting(List<OperatorSideEffect> instance, Object effect, Operation<Boolean> original) {
-		if (((SilentMarker) (Object) hexical$harness.getCtx()).isDelayCast())
+		if (((SilentMarker) (Object) hexcassettes$harness.getCtx()).isDelayCast())
 			return true;
 		return original.call(instance, effect);
 	}
 
 	@WrapWithCondition(method = "executeIotas", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
 	private boolean silenceCasting(ServerWorld world, PlayerEntity player, double x, double y, double z, SoundEvent event, SoundCategory type, float volume, float pitch) {
-		return !((SilentMarker) (Object) hexical$harness.getCtx()).isDelayCast();
+		return !((SilentMarker) (Object) hexcassettes$harness.getCtx()).isDelayCast();
 	}
 
 	@SuppressWarnings("DataFlowIssue")
 	@Inject(method = "withdrawMedia", at = @At("HEAD"), cancellable = true, remap = false)
 	private void takeMediaFromArchLamp(int mediaCost, boolean allowOvercast, CallbackInfoReturnable<Integer> cir) {
-		CastingContext ctx = hexical$harness.getCtx();
+		CastingContext ctx = hexcassettes$harness.getCtx();
 		if (ctx.getCaster().isCreative()) {
 			cir.setReturnValue(0);
 			return;
 		}
-		if (((SilentMarker) (Object) hexical$harness.getCtx()).isDelayCast())
+		if (((SilentMarker) (Object) hexcassettes$harness.getCtx()).isDelayCast())
 			cir.setReturnValue(CastingUtils.takeMediaFromInventory((CastingHarness) (Object) this, mediaCost));
 	}
 }

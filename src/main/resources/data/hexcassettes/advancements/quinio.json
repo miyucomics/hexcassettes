@@ -1,0 +1,24 @@
+{
+	"parent": "hexcasting:root",
+	"criteria": {
+		"quinio": {
+			"trigger": "hexcassettes:quinio"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexcassettes.quinio.title"
+		},
+		"description": {
+			"translate": "advancements.hexcassettes.quinio.description"
+		},
+		"frame": "challenge",
+		"hidden": true,
+		"icon": {
+			"item": "minecraft:clock"
+		},
+		"show_toast": true
+	},
+	"requirements": [["quinio"]]
+}
