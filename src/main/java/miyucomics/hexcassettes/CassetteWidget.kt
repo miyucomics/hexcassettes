@@ -6,7 +6,7 @@ import net.minecraft.client.sound.SoundManager
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 
-class CassetteWidget(x: Int, y: Int, width: Int, height: Int) : TexturedButtonWidget(x, y, width, height, 0, 0, 0, Identifier("textures/mob_effect/blindness.png"), 16, 16, { }) {
+class CassetteWidget(x: Int, y: Int, width: Int, height: Int) : TexturedButtonWidget(x, y, width, height, 0, 0, 0, HexcassettesMain.id("textures/cassette.png"), 16, 16, { }) {
 	private var index: Int = 0
 
 	constructor(x: Int, y: Int, width: Int, height: Int, index: Int) : this(x, y, width, height) {
