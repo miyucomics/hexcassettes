@@ -1,0 +1,6 @@
+{
+	"cassette_eject": {
+		"subtitle": "subtitles.hexcassettes.cassette_eject",
+		"sounds": ["hexcassettes:cassette_eject"]
+	}
+}

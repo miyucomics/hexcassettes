@@ -3,6 +3,7 @@ package miyucomics.hexcassettes.client
 import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
+import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.client.MinecraftClient
@@ -35,7 +36,7 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 16, 16, Text.empty(), 
 
 	override fun playDownSound(soundManager: SoundManager) {
 		if (isActive())
-			soundManager.play(PositionedSoundInstance.master(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0f))
+			soundManager.play(PositionedSoundInstance.master(HexcassettesSounds.CASSETTE_EJECT, 1.0f))
 	}
 
 	override fun onPress() {
