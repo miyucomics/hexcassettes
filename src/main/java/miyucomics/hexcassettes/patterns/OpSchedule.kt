@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexcassettes.data.QueuedHex
 import miyucomics.hexcassettes.data.StateStorage
 
@@ -18,7 +19,7 @@ class OpSchedule : SpellAction {
 	private data class Spell(val hex: ListIota, val delay: Int) : RenderedSpell {
 		override fun cast(ctx: CastingContext) {
 			val state = StateStorage.getPlayerState(ctx.caster)
-			state.queuedHexes.add(QueuedHex(hex, delay))
+			state.queuedHexes.add(QueuedHex(HexIotaTypes.serialize(hex), delay))
 		}
 	}
 }

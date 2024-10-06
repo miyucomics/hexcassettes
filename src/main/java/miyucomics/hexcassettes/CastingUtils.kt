@@ -5,11 +5,14 @@ import at.petrak.hexcasting.api.misc.HexDamageSources
 import at.petrak.hexcasting.api.mod.HexConfig
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.Mishap
 import at.petrak.hexcasting.api.utils.compareMediaItem
 import at.petrak.hexcasting.api.utils.extractMedia
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexcassettes.data.SilentMarker
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
@@ -39,11 +42,11 @@ object CastingUtils {
 	}
 
 	@JvmStatic
-	fun cast(world: ServerWorld, user: ServerPlayerEntity, hex: List<Iota>): CastingHarness {
+	fun cast(world: ServerWorld, user: ServerPlayerEntity, hex: NbtCompound): CastingHarness {
 		val harness = IXplatAbstractions.INSTANCE.getHarness(user, Hand.MAIN_HAND)
 		(harness.ctx as SilentMarker).delayCast()
 		harness.stack = mutableListOf()
-		harness.executeIotas(hex, world)
+		harness.executeIotas((HexIotaTypes.deserialize(hex, world) as ListIota).list.toList(), world)
 		return harness
 	}
 }
