@@ -1,6 +1,6 @@
 package miyucomics.hexcassettes.mixin;
 
-import miyucomics.hexcassettes.data.StateStorage;
+import miyucomics.hexcassettes.data.HexcassettesAPI;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,6 +15,6 @@ public class PlayerEntityMixin {
 		PlayerEntity player = (PlayerEntity) (Object) this;
 		if (player.world.isClient)
 			return;
-		StateStorage.getPlayerState(player).tick((ServerPlayerEntity) player);
+		HexcassettesAPI.getPlayerState(player).tick((ServerPlayerEntity) player);
 	}
 }
