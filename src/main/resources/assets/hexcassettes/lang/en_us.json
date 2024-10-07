@@ -2,5 +2,7 @@
 	"advancements.hexcassettes.quinio.title": "Quinio",
 	"advancements.hexcassettes.quinio.description": "Make a hex cast a hex",
 
-	"subtitles.hexcassettes.cassette_eject": "Cassette ejects"
+	"subtitles.hexcassettes.cassette_eject": "Cassette ejects",
+
+	"hexcasting.mishap.hexical:too_many_cassettes": "Can not have more than six delays active at once."
 }

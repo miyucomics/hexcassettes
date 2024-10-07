@@ -1,5 +1,6 @@
 package miyucomics.hexcassettes.mixin;
 
+import miyucomics.hexcassettes.HexcassettesMain;
 import miyucomics.hexcassettes.client.CassetteWidget;
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
@@ -27,7 +28,7 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
 	@Inject(method = "init", at = @At("TAIL"))
 	private void initCassettes(CallbackInfo ci) {
 		cassettes = new ArrayList<>();
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < HexcassettesMain.MAX_CASSETTES; i++) {
 			var widget = new CassetteWidget(x + 176, y + 4 + i * 18, i);
 			cassettes.add(widget);
 			addDrawableChild(widget);
