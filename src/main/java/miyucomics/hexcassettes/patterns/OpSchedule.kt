@@ -18,6 +18,8 @@ class OpSchedule : ConstMediaAction {
 		if ((ctx as SilentMarker).isDelayCast())
 			HexcassettesAdvancements.QUINE.trigger(ctx.caster)
 		val shortened = if (label.length > HexcassettesMain.MAX_LABEL_LENGTH) { label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH) } else { label }
+		if (HexcassettesAPI.getPlayerState(ctx.caster).queuedHexes.size >= HexcassettesMain.MAX_CASSETTES)
+			throw TooManyCassettesMishap()
 		HexcassettesAPI.scheduleHex(ctx.caster, args[0] as ListIota, delay, shortened)
 		return emptyList()
 	}

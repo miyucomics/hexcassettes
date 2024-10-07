@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class HexcassettesMain implements ModInitializer {
 	public static final String MOD_ID = "hexcassettes";
+	public static final int MAX_CASSETTES = 6;
 	public static final int MAX_LABEL_LENGTH = 20;
 
 	@Override
