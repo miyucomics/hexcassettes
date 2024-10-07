@@ -34,8 +34,7 @@ class HexcassettesAPI : PersistentState() {
 			return state
 		}
 
-		@JvmStatic
-		fun getServerState(server: MinecraftServer): HexcassettesAPI {
+		private fun getServerState(server: MinecraftServer): HexcassettesAPI {
 			val persistentStateManager = server.getWorld(World.OVERWORLD)!!.persistentStateManager
 			val state = persistentStateManager.getOrCreate(Companion::createFromNbt, ::HexcassettesAPI, HexcassettesMain.MOD_ID)
 			state.markDirty()
@@ -48,7 +47,6 @@ class HexcassettesAPI : PersistentState() {
 			return state.players.computeIfAbsent(player.uuid) { PlayerState() }
 		}
 
-		@JvmStatic
 		fun removeAllQueued(player: ServerPlayerEntity) {
 			val state = getPlayerState(player)
 			state.queuedHexes.clear()
@@ -58,13 +56,6 @@ class HexcassettesAPI : PersistentState() {
 			ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
 		}
 
-		@JvmStatic
-		fun removeHex(player: ServerPlayerEntity, uuid: UUID) {
-			val state = getPlayerState(player).queuedHexes
-			state.removeIf { hex -> hex.uuid == uuid }
-		}
-
-		@JvmStatic
 		fun scheduleHex(player: ServerPlayerEntity, hex: ListIota, delay: Int, label: String) {
 			val state = getPlayerState(player)
 			val queuedHex = QueuedHex(HexIotaTypes.serialize(hex), delay, label)
@@ -74,6 +65,18 @@ class HexcassettesAPI : PersistentState() {
 			buf.writeUuid(queuedHex.uuid)
 			buf.writeString(label)
 			ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_ADD, buf)
+		}
+
+		fun removeWithLabel(player: ServerPlayerEntity, label: String) {
+			val hexes = getPlayerState(player).queuedHexes
+			hexes.forEach { hex ->
+				if (hex.label == label) {
+					val buf = PacketByteBufs.create()
+					buf.writeUuid(hex.uuid)
+					ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_REMOVE, buf)
+				}
+			}
+			hexes.removeIf { hex -> hex.label == label }
 		}
 	}
 }
