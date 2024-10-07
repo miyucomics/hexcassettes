@@ -116,6 +116,7 @@ data class QueuedHex(val hex: NbtCompound, var delay: Int, val label: String, va
 		val compound = NbtCompound()
 		compound.putCompound("hex", hex)
 		compound.putInt("delay", delay)
+		compound.putString("label", label)
 		return compound
 	}
 
