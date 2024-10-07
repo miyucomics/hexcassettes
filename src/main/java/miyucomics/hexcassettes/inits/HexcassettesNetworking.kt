@@ -5,6 +5,7 @@ import miyucomics.hexcassettes.client.ClientStorage
 import miyucomics.hexcassettes.data.HexcassettesAPI
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Identifier
@@ -17,7 +18,9 @@ object HexcassettesNetworking {
 	@JvmStatic
 	fun init() {
 		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ ->
-			HexcassettesAPI.removeHex(player, packet.readUuid())
+			val uuid = packet.readUuid()
+			val state = HexcassettesAPI.getPlayerState(player).queuedHexes
+			state.removeIf { hex -> hex.uuid == uuid }
 		}
 
 		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ ->
@@ -30,6 +33,8 @@ object HexcassettesNetworking {
 			}
 			ServerPlayNetworking.send(player, SYNC_CASSETTES, buf)
 		}
+
+		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, _ -> HexcassettesAPI.removeAllQueued(player) }
 	}
 
 	@JvmStatic
