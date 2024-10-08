@@ -15,10 +15,13 @@ import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Hand
+import net.minecraft.util.Identifier
 import kotlin.math.ceil
 import kotlin.math.max
 
-object CastingUtils {
+object HexcassettesUtils {
+	fun id(string: String) = Identifier(HexcassettesMain.MOD_ID, string)
+
 	@JvmStatic
 	fun takeMediaFromInventory(harness: CastingHarness, cost: Int): Int {
 		var remainingCost = cost

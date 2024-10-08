@@ -1,7 +1,7 @@
 package miyucomics.hexcassettes.advancements
 
 import com.google.gson.JsonObject
-import miyucomics.hexcassettes.HexcassettesMain
+import miyucomics.hexcassettes.HexcassettesUtils
 import net.minecraft.advancement.criterion.AbstractCriterion
 import net.minecraft.advancement.criterion.AbstractCriterionConditions
 import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer
@@ -16,6 +16,6 @@ class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
 
 	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
 	companion object {
-		val ID: Identifier = HexcassettesMain.id("quinio")
+		val ID: Identifier = HexcassettesUtils.id("quinio")
 	}
 }

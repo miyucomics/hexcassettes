@@ -12,14 +12,19 @@ import miyucomics.hexcassettes.inits.HexcassettesAdvancements
 class OpSchedule : ConstMediaAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
+		val isQuining = (ctx as SilentMarker).isDelayCast()
+		if (isQuining)
+			HexcassettesAdvancements.QUINE.trigger(ctx.caster)
+
+		// if running quinishly, this hex will die and the new one appears in its place
+		val limit = if (isQuining) HexcassettesMain.MAX_CASSETTES  + 1 else HexcassettesMain.MAX_CASSETTES
+		if (HexcassettesAPI.getPlayerState(ctx.caster).queuedHexes.size >= limit)
+			throw TooManyCassettesMishap()
+
 		args.getList(0, argc)
 		val delay = args.getPositiveInt(1, argc)
 		val label = args[2].display().string
-		if ((ctx as SilentMarker).isDelayCast())
-			HexcassettesAdvancements.QUINE.trigger(ctx.caster)
 		val shortened = if (label.length > HexcassettesMain.MAX_LABEL_LENGTH) { label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH) } else { label }
-		if (HexcassettesAPI.getPlayerState(ctx.caster).queuedHexes.size >= HexcassettesMain.MAX_CASSETTES)
-			throw TooManyCassettesMishap()
 		HexcassettesAPI.scheduleHex(ctx.caster, args[0] as ListIota, delay, shortened)
 		return emptyList()
 	}

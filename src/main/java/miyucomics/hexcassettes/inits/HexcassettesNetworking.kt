@@ -1,6 +1,6 @@
 package miyucomics.hexcassettes.inits
 
-import miyucomics.hexcassettes.HexcassettesMain
+import miyucomics.hexcassettes.HexcassettesUtils
 import miyucomics.hexcassettes.client.ClientStorage
 import miyucomics.hexcassettes.data.HexcassettesAPI
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
@@ -11,9 +11,9 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.util.Identifier
 
 object HexcassettesNetworking {
-	val CASSETTE_ADD: Identifier = HexcassettesMain.id("cassette_changes")
-	val CASSETTE_REMOVE: Identifier = HexcassettesMain.id("cassette_remove")
-	val SYNC_CASSETTES: Identifier = HexcassettesMain.id("sync_cassettes")
+	val CASSETTE_ADD: Identifier = HexcassettesUtils.id("cassette_changes")
+	val CASSETTE_REMOVE: Identifier = HexcassettesUtils.id("cassette_remove")
+	val SYNC_CASSETTES: Identifier = HexcassettesUtils.id("sync_cassettes")
 
 	@JvmStatic
 	fun init() {

@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.spell.casting.sideeffects.OperatorSideEffect;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import miyucomics.hexcassettes.CastingUtils;
+import miyucomics.hexcassettes.HexcassettesUtils;
 import miyucomics.hexcassettes.data.SilentMarker;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -46,6 +46,6 @@ public class CastingHarnessMixin {
 			return;
 		}
 		if (((SilentMarker) (Object) hexcassettes$harness.getCtx()).isDelayCast())
-			cir.setReturnValue(CastingUtils.takeMediaFromInventory((CastingHarness) (Object) this, mediaCost));
+			cir.setReturnValue(HexcassettesUtils.takeMediaFromInventory((CastingHarness) (Object) this, mediaCost));
 	}
 }
