@@ -1,7 +1,7 @@
 package miyucomics.hexcassettes.client
 
 import com.mojang.blaze3d.systems.RenderSystem
-import miyucomics.hexcassettes.HexcassettesMain
+import miyucomics.hexcassettes.HexcassettesUtils
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
@@ -53,6 +53,6 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 16, 16, Text.empty(), 
 	}
 
 	companion object {
-		val texture: Identifier = HexcassettesMain.id("textures/cassette.png")
+		val texture: Identifier = HexcassettesUtils.id("textures/cassette.png")
 	}
 }

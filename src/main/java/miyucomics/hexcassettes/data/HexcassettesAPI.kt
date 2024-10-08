@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import miyucomics.hexcassettes.CastingUtils.cast
+import miyucomics.hexcassettes.HexcassettesUtils.cast
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
