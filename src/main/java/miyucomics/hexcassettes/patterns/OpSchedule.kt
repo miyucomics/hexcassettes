@@ -7,18 +7,19 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.data.HexcassettesAPI
 import miyucomics.hexcassettes.data.SilentMarker
-import miyucomics.hexcassettes.inits.HexcassettesAdvancements
 
 class OpSchedule : ConstMediaAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val isQuining = (ctx as SilentMarker).isDelayCast()
 		if (isQuining)
-			HexcassettesAdvancements.QUINE.trigger(ctx.caster)
+			HexcassettesMain.QUINE.trigger(ctx.caster)
 
-		// if running quinishly, this hex will die and the new one appears in its place
-		val limit = if (isQuining) HexcassettesMain.MAX_CASSETTES  + 1 else HexcassettesMain.MAX_CASSETTES
-		if (HexcassettesAPI.getPlayerState(ctx.caster).queuedHexes.size >= limit)
+		val playerState = HexcassettesAPI.getPlayerState(ctx.caster)
+
+		// if running quinishly, the new one appears in this one's place so we can allow one extra
+		val limit = if (isQuining) playerState.ownedCassettes  + 1 else playerState.ownedCassettes
+		if (playerState.queuedHexes.size >= limit)
 			throw TooManyCassettesMishap()
 
 		args.getList(0, argc)

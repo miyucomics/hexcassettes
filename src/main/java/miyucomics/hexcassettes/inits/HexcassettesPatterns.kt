@@ -16,7 +16,6 @@ object HexcassettesPatterns {
 		register("queue", "qqwqwqwqqwqawa", HexDir.WEST, OpSchedule())
 		register("kill", "eeweweweewedwd", HexDir.EAST, OpKill())
 		register("killall", "eeweweweeweewdwe", HexDir.EAST, OpKillAll())
-		
 		register("free_slots", "qqwqwqwqqwqqadaq", HexDir.WEST, OpFreeSlots())
 	}
 
