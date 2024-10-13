@@ -52,6 +52,7 @@ class HexcassettesAPI : PersistentState() {
 			state.queuedHexes.clear()
 
 			val buf = PacketByteBufs.create()
+			buf.writeInt(state.ownedCassettes)
 			buf.writeInt(0)
 			ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
 		}
@@ -78,10 +79,23 @@ class HexcassettesAPI : PersistentState() {
 			}
 			hexes.removeIf { hex -> hex.label == label }
 		}
+
+		fun syncToClient(player: ServerPlayerEntity) {
+			val playerState = getPlayerState(player)
+			val buf = PacketByteBufs.create()
+			buf.writeInt(playerState.ownedCassettes)
+			buf.writeInt(playerState.queuedHexes.size)
+			for (queuedHex in playerState.queuedHexes) {
+				buf.writeUuid(queuedHex.uuid)
+				buf.writeString(queuedHex.label)
+			}
+			ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
+		}
 	}
 }
 
 class PlayerState {
+	var ownedCassettes = 0
 	val queuedHexes: MutableList<QueuedHex> = mutableListOf()
 
 	fun tick(player: ServerPlayerEntity) {
@@ -96,6 +110,7 @@ class PlayerState {
 
 	fun serialize(): NbtCompound {
 		val compound = NbtCompound()
+		compound.putInt("owned", ownedCassettes)
 		val serializedHexes = NbtList()
 		queuedHexes.forEach { queuedHex -> serializedHexes.add(queuedHex.serialize()) }
 		compound.putList("hexes", serializedHexes)
@@ -105,6 +120,7 @@ class PlayerState {
 	companion object {
 		fun deserialize(compound: NbtCompound): PlayerState {
 			val state = PlayerState()
+			state.ownedCassettes = compound.getInt("owned")
 			val serializedHexes = compound.getList("hexes", NbtElement.COMPOUND_TYPE.toInt())
 			serializedHexes.forEach { hex -> state.queuedHexes.add(QueuedHex.deserialize(hex as NbtCompound)) }
 			return state

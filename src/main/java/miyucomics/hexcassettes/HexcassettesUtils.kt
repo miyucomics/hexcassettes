@@ -20,6 +20,7 @@ import kotlin.math.ceil
 import kotlin.math.max
 
 object HexcassettesUtils {
+	@JvmStatic
 	fun id(string: String) = Identifier(HexcassettesMain.MOD_ID, string)
 
 	@JvmStatic

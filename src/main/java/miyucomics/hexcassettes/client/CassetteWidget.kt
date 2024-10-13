@@ -43,8 +43,7 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 16, 16, Text.empty(), 
 			val buf = PacketByteBufs.create()
 			buf.writeUuid(ClientStorage.indexToUUID[index])
 			ClientPlayNetworking.send(HexcassettesNetworking.CASSETTE_REMOVE, buf)
-			val removed = ClientStorage.indexToUUID.removeAt(index)
-			ClientStorage.UUIDToLabel.remove(removed)
+			ClientStorage.indexToUUID.removeAt(index)
 		}
 	}
 

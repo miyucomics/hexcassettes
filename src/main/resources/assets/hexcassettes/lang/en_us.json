@@ -4,5 +4,7 @@
 
 	"subtitles.hexcassettes.cassette_eject": "Cassette ejects",
 
-	"hexcasting.mishap.hexical:too_many_cassettes": "Can not have more than six delays active at once."
+	"item.hexcassettes.cassette": "Cassette",
+
+	"hexcasting.mishap.hexcassettes:too_many_cassettes": "Attempted to schedule more hexes than cassettes."
 }

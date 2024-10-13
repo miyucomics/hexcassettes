@@ -23,17 +23,7 @@ object HexcassettesNetworking {
 			state.removeIf { hex -> hex.uuid == uuid }
 		}
 
-		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ ->
-			val queuedHexes = HexcassettesAPI.getPlayerState(player).queuedHexes
-			val buf = PacketByteBufs.create()
-			buf.writeInt(queuedHexes.size)
-			for (queuedHex in queuedHexes) {
-				buf.writeUuid(queuedHex.uuid)
-				buf.writeString(queuedHex.label)
-			}
-			ServerPlayNetworking.send(player, SYNC_CASSETTES, buf)
-		}
-
+		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ -> HexcassettesAPI.syncToClient(player) }
 		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, _ -> HexcassettesAPI.removeAllQueued(player) }
 	}
 
@@ -54,9 +44,10 @@ object HexcassettesNetworking {
 		}
 
 		ClientPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, _, packet, _ ->
-			val count = packet.readInt()
+			ClientStorage.ownedCassettes = packet.readInt()
 			ClientStorage.indexToUUID.clear()
 			ClientStorage.UUIDToLabel.clear()
+			val count = packet.readInt()
 			for (i in 0 until count) {
 				val uuid = packet.readUuid()
 				ClientStorage.indexToUUID.add(uuid)
