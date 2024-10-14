@@ -9,7 +9,7 @@ import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Rarity
 import net.minecraft.world.World
 
-class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.EPIC).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
+class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
 	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
 		if (world.isClient)
 			return super.finishUsing(stack, world, user)
