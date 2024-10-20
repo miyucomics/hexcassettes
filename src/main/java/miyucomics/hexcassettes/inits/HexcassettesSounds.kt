@@ -7,7 +7,6 @@ import net.minecraft.util.registry.Registry
 object HexcassettesSounds {
 	lateinit var CASSETTE_EJECT: SoundEvent
 
-	@JvmStatic
 	fun init() {
 		CASSETTE_EJECT = register("cassette_eject")
 	}

@@ -16,10 +16,16 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"miyucomics.hexcassettes.HexcassettesMain"
+			{
+				"adapter": "kotlin",
+				"value": "miyucomics.hexcassettes.HexcassettesMain"
+			}
 		],
 		"client": [
-			"miyucomics.hexcassettes.HexcassettesClient"
+			{
+				"adapter": "kotlin",
+				"value": "miyucomics.hexcassettes.HexcassettesClient"
+			}
 		]
 	},
 	"mixins": [
