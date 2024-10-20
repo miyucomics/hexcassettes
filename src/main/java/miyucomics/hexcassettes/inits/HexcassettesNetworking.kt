@@ -15,7 +15,6 @@ object HexcassettesNetworking {
 	val CASSETTE_REMOVE: Identifier = HexcassettesUtils.id("cassette_remove")
 	val SYNC_CASSETTES: Identifier = HexcassettesUtils.id("sync_cassettes")
 
-	@JvmStatic
 	fun init() {
 		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ ->
 			val uuid = packet.readUuid()
@@ -27,7 +26,6 @@ object HexcassettesNetworking {
 		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, _ -> HexcassettesAPI.removeAllQueued(player) }
 	}
 
-	@JvmStatic
 	fun clientInit() {
 		ClientPlayConnectionEvents.JOIN.register { _, _, _ -> ClientPlayNetworking.send(SYNC_CASSETTES, PacketByteBufs.empty()) }
 

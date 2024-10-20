@@ -23,7 +23,6 @@ class OpSchedule : ConstMediaAction {
 		if (playerState.queuedHexes.size >= limit)
 			throw TooManyCassettesMishap()
 
-
 		args.getList(0, argc)
 		val trueName = MishapOthersName.getTrueNameFromDatum(args[0], ctx.caster)
 		if (trueName != null)

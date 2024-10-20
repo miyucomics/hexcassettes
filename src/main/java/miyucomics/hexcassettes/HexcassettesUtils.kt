@@ -20,7 +20,6 @@ import kotlin.math.ceil
 import kotlin.math.max
 
 object HexcassettesUtils {
-	@JvmStatic
 	fun id(string: String) = Identifier(HexcassettesMain.MOD_ID, string)
 
 	@JvmStatic
@@ -44,7 +43,6 @@ object HexcassettesUtils {
 		return remainingCost
 	}
 
-	@JvmStatic
 	fun cast(world: ServerWorld, user: ServerPlayerEntity, hex: NbtCompound): CastingHarness {
 		val harness = IXplatAbstractions.INSTANCE.getHarness(user, Hand.MAIN_HAND)
 		(harness.ctx as SilentMarker).delayCast()
