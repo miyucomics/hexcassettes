@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.HexcassettesAPI
 
-class OpKill : ConstMediaAction {
+class OpDequeue : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val label = args[0].display().string

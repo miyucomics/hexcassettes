@@ -5,16 +5,16 @@ import at.petrak.hexcasting.api.spell.Action
 import at.petrak.hexcasting.api.spell.math.HexDir
 import at.petrak.hexcasting.api.spell.math.HexPattern
 import miyucomics.hexcassettes.HexcassettesUtils
+import miyucomics.hexcassettes.patterns.OpDequeue
+import miyucomics.hexcassettes.patterns.OpEnqueue
 import miyucomics.hexcassettes.patterns.OpFreeSlots
-import miyucomics.hexcassettes.patterns.OpKill
 import miyucomics.hexcassettes.patterns.OpKillAll
-import miyucomics.hexcassettes.patterns.OpSchedule
 
 object HexcassettesPatterns {
 	@JvmStatic
 	fun init() {
-		register("queue", "qqwqwqwqqwqawa", HexDir.WEST, OpSchedule())
-		register("kill", "eeweweweewedwd", HexDir.EAST, OpKill())
+		register("enqueue", "qqwqwqwqqwqawa", HexDir.WEST, OpEnqueue())
+		register("dequeue", "eeweweweewedwd", HexDir.EAST, OpDequeue())
 		register("killall", "eeweweweeweewdwe", HexDir.EAST, OpKillAll())
 		register("free_slots", "qqwqwqwqqwqqadaq", HexDir.WEST, OpFreeSlots())
 	}
