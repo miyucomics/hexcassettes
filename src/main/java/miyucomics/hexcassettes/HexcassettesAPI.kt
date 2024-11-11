@@ -13,7 +13,7 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.world.PersistentState
 import net.minecraft.world.World
-import java.util.UUID
+import java.util.*
 
 class HexcassettesAPI : PersistentState() {
 	private val players: HashMap<UUID, PlayerState> = HashMap()

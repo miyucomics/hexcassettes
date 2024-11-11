@@ -1,10 +1,10 @@
 package miyucomics.hexcassettes.patterns
 
-import at.petrak.hexcasting.api.spell.*
+import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.HexcassettesAPI
+import miyucomics.hexcassettes.HexcassettesMain
 
 class OpDequeue : ConstMediaAction {
 	override val argc = 1

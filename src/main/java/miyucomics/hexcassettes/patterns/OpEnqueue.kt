@@ -1,14 +1,16 @@
 package miyucomics.hexcassettes.patterns
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer
-import at.petrak.hexcasting.api.spell.*
+import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.getList
+import at.petrak.hexcasting.api.spell.getPositiveInt
 import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.Mishap
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
-import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.HexcassettesAPI
+import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.data.SilentMarker
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor

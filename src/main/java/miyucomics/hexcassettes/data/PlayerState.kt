@@ -18,7 +18,7 @@ class PlayerState {
 	fun tick(player: ServerPlayerEntity) {
 		queuedHexes.forEach { (label, hex) ->
 			hex.delay -= 1
-			if (hex.delay == 0) {
+			if (hex.delay <= 0) {
 				val buf = PacketByteBufs.create()
 				buf.writeString(label)
 				ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_REMOVE, buf)
