@@ -13,7 +13,7 @@ import miyucomics.hexcassettes.data.SilentMarker
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 
-class OpSchedule : ConstMediaAction {
+class OpEnqueue : ConstMediaAction {
 	override val argc = 3
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val isQuining = (ctx as SilentMarker).isDelayCast()

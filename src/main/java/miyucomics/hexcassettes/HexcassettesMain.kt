@@ -34,7 +34,7 @@ class HexcassettesMain : ModInitializer {
 	companion object {
 		const val MOD_ID: String = "hexcassettes"
 		const val MAX_CASSETTES: Int = 6
-		const val MAX_LABEL_LENGTH: Int = 20
+		const val MAX_LABEL_LENGTH: Int = 32
 
 		lateinit var QUINE: QuineCriterion
 	}
