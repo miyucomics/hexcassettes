@@ -3,7 +3,7 @@ package miyucomics.hexcassettes.patterns
 import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
-import miyucomics.hexcassettes.data.HexcassettesAPI
+import miyucomics.hexcassettes.HexcassettesAPI
 
 class OpFreeSlots : ConstMediaAction {
 	override val argc = 0

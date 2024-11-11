@@ -1,6 +1,6 @@
 package miyucomics.hexcassettes.mixin;
 
-import miyucomics.hexcassettes.data.HexcassettesAPI;
+import miyucomics.hexcassettes.HexcassettesAPI;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;

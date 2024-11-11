@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.spell.*
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.iota.Iota
 import miyucomics.hexcassettes.HexcassettesMain
-import miyucomics.hexcassettes.data.HexcassettesAPI
+import miyucomics.hexcassettes.HexcassettesAPI
 
 class OpKill : ConstMediaAction {
 	override val argc = 1

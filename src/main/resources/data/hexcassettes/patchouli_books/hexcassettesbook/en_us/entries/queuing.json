@@ -1,6 +1,6 @@
 {
-	"name": "hexcassettes.page.properties.title",
-	"icon": "minecraft:clock",
+	"name": "hexcassettes.page.queuing.title",
+	"icon": "hexcassettes:cassette",
 	"category": "hexcasting:patterns",
 	"sortnum": 30,
 	"advancement": "hexcasting:root",
@@ -8,6 +8,14 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexcassettes.page.queuing.0"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexcassettes.page.queuing.1"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexcassettes.page.queuing.2"
 		}
 	]
 }

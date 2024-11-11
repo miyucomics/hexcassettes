@@ -8,10 +8,10 @@
 		"CastingHarnessMixin",
 		"PlayerEntityMixin"
 	],
+	"client": [
+		"ChatScreenMixin"
+	],
 	"injectors": {
 		"defaultRequire": 1
-	},
-	"client": [
-		"InventoryScreenMixin"
-	]
+	}
 }
