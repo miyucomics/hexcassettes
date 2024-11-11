@@ -6,5 +6,10 @@
 
 	"item.hexcassettes.cassette": "Cassette",
 
-	"hexcasting.mishap.hexcassettes:too_many_cassettes": "Attempted to schedule more hexes than cassettes."
+	"hexcasting.mishap.hexcassettes:too_many_cassettes": "Attempted to schedule more hexes than owned cassettes.",
+
+	"hexcassettes.page.queuing.title": "Queuing",
+	"hexcassettes.page.queuing.0": "As part of their nature, Hexes evaluate, in their entirety, instantly. To delay hexes, Nature has devised a quite the whimsical solution: a cassette tape that must be crafted and then \"consumed\". I can have up to six cassettes, and each hex I request to delay takes up one cassette. These cassettes can be viewed in my inventory and I can simply click them to abort the hex.",
+	"hexcassettes.page.queuing.1": "If a hex casts a near-identical copy of itself, a phenomenon emerges that ancient Hexcasters call a daemon, which allow for passive Hexcasting. Study into this branch of Hexcasting seems limited and I shall be careful if I want to delve in: this type of casting uses exclusively the media from my inventory and if left unchecked, rapid automated casting can easily drain all my media and with nothing else to consume, my life.",
+	"hexcassettes.page.queuing.2": "Once a hex has been queued, when I chat, I can see a set of cassettes on the left side of my screen. By pressing a cassette, I can eject it which cancels the cast. When scheduled, cassettes are assigned a piece of text that appears here."
 }
