@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/d7e22475ab1dcdd7243b9ab3693d3944e489470a"
+      href="https://github.com/miyucomics/hexcassettes/tree/74e337f56ebbfef9fa5afb979793bee0ffc296f2"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,7 +149,7 @@
           <li><a href="#queuing" class="toc-elem "><img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/d7e22475ab1dcdd7243b9ab3693d3944e489470a/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/74e337f56ebbfef9fa5afb979793bee0ffc296f2/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Queuing</a></li>
@@ -180,7 +180,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/d7e22475ab1dcdd7243b9ab3693d3944e489470a/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/74e337f56ebbfef9fa5afb979793bee0ffc296f2/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Queuing<a
@@ -260,7 +260,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/d7e22475ab1dcdd7243b9ab3693d3944e489470a/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/74e337f56ebbfef9fa5afb979793bee0ffc296f2/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -268,7 +268,7 @@
     </div>
 </div>    </div>
   </details>
-      <p>After crafting, I can <i>consume</i> it to add it to my mind&#39;s slots. I can only have six at a time.</p>
+      <p>After crafting it via a music disc, I can <i>consume</i> it to add it to my collection. I can only have six at a time and any more eaten will simply be wasted.</p>
 <br />
   <div id="queuing@hexcassettes:enqueue" class="">
 <h4 class="pattern-title">Enqueue (list, number, any →)<a
@@ -318,19 +318,243 @@
         class="spell-viz"
         width="216"
         height="216"
-        data-string="qqwqwqwqqwqawa"
-        data-start="west"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww"
+        data-start="east"
         data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: qqwqwqwqqwqawa</canvas>
+      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
   </details>
       <p>Enqueues a hex to cast after that many twentieths of a second. It takes an iota to use as the label for the cassette.</p>
   </div>
 <br />
     <p>The label iota is used to distinguish cassettes from each other and only the first 32 characters are kept. Enqueuing two <span style="color: #b38ef3">Hexes</span> with the same label overwrites the older one. If I attempt to enqueue more hexes than I have cassettes, I incur the Parallel Processing mishap which kills all my currently active cassettes.</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
 <br />
-    <p>Once a <span style="color: #b38ef3">Hex</span> has been enqueued, I can open my chat screen to see all the cassettes I have eaten. Enqueued hexes are represented as inserted cassettes with their label rendered to the side, and by pressing an cassette, I can cancel the corresponding hex.</p>
+    <p>Once a <span style="color: #b38ef3">Hex</span> has been enqueued, I can open my chat screen to see all the cassettes I have eaten. Queued hexes are represented as inserted cassettes with their label rendered to the side, and by pressing an cassette, I can cancel the corresponding hex.</p><p>Dying also forcibly kills all of my cassettes so I can rest easy that I will not trap myself in an endless death cycle.</p>
 <br />
     <p>If a <span style="color: #b38ef3">Hex</span> casts a near-identical copy of itself, a phenomenon emerges that ancient <span style="color: #b38ef3">Hexcasters</span> call a daemon, which allow for passive <span style="color: #b38ef3">Hexcasting</span>. Study into this branch of <span style="color: #b38ef3">Hexcasting</span> seems limited and I shall be careful if I want to delve in: this type of casting uses exclusively the media from my inventory and if left unchecked, rapid automated casting can easily drain all my media and with nothing else to consume, my life.</p>
+<br />
+  <div id="queuing@hexcassettes:dequeue" class="">
+<h4 class="pattern-title">Dequeue (any →)<a
+    href="#queuing@hexcassettes:dequeue"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeeewwqqwqwqqweawwqwqwwqwwqwqww"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeeewwqqwqwqqweawwqwqwwqwwqwqww</canvas>
+  </details>
+      <p>I can also automate killing cassettes with this pattern. It takes an iota and dequeues the cassette with that label if it exists.</p>
+  </div>
+<br />
+  <div id="queuing@hexcassettes:killall" class="">
+<h4 class="pattern-title">Disqueue<a
+    href="#queuing@hexcassettes:killall"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeeewwqqwqwqqw"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeeewwqqwqwqqw</canvas>
+  </details>
+      <p>Terminates all cassettes, similar to the effects of the Parallel Processing mishap.</p>
+  </div>
+<br />
+  <div id="queuing@hexcassettes:specs" class="">
+<h4 class="pattern-title">Operator&#39;s Reflection (→ number)<a
+    href="#queuing@hexcassettes:specs"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqq"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqq</canvas>
+  </details>
+      <p>Pushes the total number of cassettes I am able to manipulate.</p>
+  </div>
+<br />
+  <div id="queuing@hexcassettes:free" class="">
+<h4 class="pattern-title">Operator&#39;s Reflection II (→ number)<a
+    href="#queuing@hexcassettes:free"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweew"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweew</canvas>
+  </details>
+      <p>Pushes the number of non-busy cassette slots that I currently have.</p>
+  </div>
 <br />
 </div>
 </section>
