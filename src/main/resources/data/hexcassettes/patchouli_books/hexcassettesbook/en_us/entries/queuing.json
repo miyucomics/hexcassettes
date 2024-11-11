@@ -10,8 +10,9 @@
 			"text": "hexcassettes.page.queuing.0"
 		},
 		{
-			"type": "patchouli:text",
-			"text": "hexcassettes.page.queuing.1"
+			"type": "patchouli:crafting",
+			"recipe": "hexcassettes:cassette",
+			"text": "hexcassettes.page.queuing.craft"
 		},
         {
 			"type": "hexcasting:pattern",
@@ -21,6 +22,10 @@
 			"output": "",
 			"text": "hexcassettes.page.enqueue.summary"
         },
+		{
+			"type": "patchouli:text",
+			"text": "hexcassettes.page.queuing.1"
+		},
 		{
 			"type": "patchouli:text",
 			"text": "hexcassettes.page.queuing.2"

@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
 object HexcassettesNetworking {
@@ -17,9 +18,9 @@ object HexcassettesNetworking {
 
 	fun init() {
 		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ ->
-			val uuid = packet.readUuid()
+			val label = packet.readString()
 			val state = HexcassettesAPI.getPlayerState(player).queuedHexes
-			state.removeIf { hex -> hex.uuid == uuid }
+			state.remove(label)
 		}
 
 		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ -> HexcassettesAPI.syncToClient(player) }
@@ -28,28 +29,18 @@ object HexcassettesNetworking {
 
 	fun clientInit() {
 		ClientPlayConnectionEvents.JOIN.register { _, _, _ -> ClientPlayNetworking.send(SYNC_CASSETTES, PacketByteBufs.empty()) }
-
 		ClientPlayNetworking.registerGlobalReceiver(CASSETTE_ADD) { _, _, packet, _ ->
-			val uuid = packet.readUuid()
-			ClientStorage.indexToUUID.add(uuid)
-			ClientStorage.UUIDToLabel[uuid] = packet.readString()
+			val string = packet.readString()
+			ClientStorage.labels[string] = Text.literal(string)
 		}
-
-		ClientPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, _, packet, _ ->
-			val uuid = packet.readUuid()
-			ClientStorage.UUIDToLabel.remove(uuid)
-			ClientStorage.indexToUUID.remove(uuid)
-		}
-
+		ClientPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, _, packet, _ -> ClientStorage.labels.remove(packet.readString()) }
 		ClientPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, _, packet, _ ->
 			ClientStorage.ownedCassettes = packet.readInt()
-			ClientStorage.indexToUUID.clear()
-			ClientStorage.UUIDToLabel.clear()
+			ClientStorage.labels.clear()
 			val count = packet.readInt()
 			for (i in 0 until count) {
-				val uuid = packet.readUuid()
-				ClientStorage.indexToUUID.add(uuid)
-				ClientStorage.UUIDToLabel[uuid] = packet.readString()
+				val string = packet.readString()
+				ClientStorage.labels[string] = Text.literal(string)
 			}
 		}
 	}

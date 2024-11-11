@@ -27,7 +27,7 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 16, 16, Text.empty(), 
 		RenderSystem.enableDepthTest()
 		if (isActive()) {
 			drawTexture(matrices, this.x, this.y, 0f, 16f, this.width, this.height, 16, 32)
-			drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, Text.literal(ClientStorage.UUIDToLabel[ClientStorage.indexToUUID[index]]), this.x + 15, this.y + 4, 0xffffff)
+			drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)], this.x + 15, this.y + 4, 0xffffff)
 		} else {
 			drawTexture(matrices, this.x, this.y, 0f, 0f, this.width, this.height, 16, 32)
 		}
@@ -41,14 +41,14 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 16, 16, Text.empty(), 
 	override fun onPress() {
 		if (isActive()) {
 			val buf = PacketByteBufs.create()
-			buf.writeUuid(ClientStorage.indexToUUID[index])
+			buf.writeString(ClientStorage.labels.keys.elementAt(index))
 			ClientPlayNetworking.send(HexcassettesNetworking.CASSETTE_REMOVE, buf)
-			ClientStorage.indexToUUID.removeAt(index)
+			ClientStorage.labels.remove(ClientStorage.labels.keys.elementAt(index))
 		}
 	}
 
 	private fun isActive(): Boolean {
-		return index < ClientStorage.indexToUUID.size
+		return index < ClientStorage.labels.size
 	}
 
 	companion object {

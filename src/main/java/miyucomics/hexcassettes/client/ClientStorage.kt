@@ -1,10 +1,10 @@
 package miyucomics.hexcassettes.client
 
-import java.util.*
+import net.minecraft.text.Text
 
 object ClientStorage {
 	@JvmField
-	var ownedCassettes = 0
-	val indexToUUID = mutableListOf<UUID>()
-	val UUIDToLabel = mutableMapOf<UUID, String>()
+	var ownedCassettes: Int = 0
+	@JvmField
+	val labels: LinkedHashMap<String, Text> = LinkedHashMap()
 }

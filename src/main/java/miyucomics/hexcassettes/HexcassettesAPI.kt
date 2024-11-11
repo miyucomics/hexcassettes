@@ -56,26 +56,19 @@ class HexcassettesAPI : PersistentState() {
 		}
 
 		fun scheduleHex(player: ServerPlayerEntity, hex: ListIota, delay: Int, label: String) {
-			val state = getPlayerState(player)
-			val queuedHex = QueuedHex(HexIotaTypes.serialize(hex), delay, label)
-			state.queuedHexes.add(queuedHex)
+			getPlayerState(player).queuedHexes[label] = QueuedHex(HexIotaTypes.serialize(hex), delay)
 
 			val buf = PacketByteBufs.create()
-			buf.writeUuid(queuedHex.uuid)
 			buf.writeString(label)
 			ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_ADD, buf)
 		}
 
 		fun removeWithLabel(player: ServerPlayerEntity, label: String) {
-			val hexes = getPlayerState(player).queuedHexes
-			hexes.forEach { hex ->
-				if (hex.label == label) {
-					val buf = PacketByteBufs.create()
-					buf.writeUuid(hex.uuid)
-					ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_REMOVE, buf)
-				}
-			}
-			hexes.removeIf { hex -> hex.label == label }
+			getPlayerState(player).queuedHexes.remove(label)
+
+			val buf = PacketByteBufs.create()
+			buf.writeString(label)
+			ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_REMOVE, buf)
 		}
 
 		fun syncToClient(player: ServerPlayerEntity) {
@@ -83,10 +76,7 @@ class HexcassettesAPI : PersistentState() {
 			val buf = PacketByteBufs.create()
 			buf.writeInt(playerState.ownedCassettes)
 			buf.writeInt(playerState.queuedHexes.size)
-			for (queuedHex in playerState.queuedHexes) {
-				buf.writeUuid(queuedHex.uuid)
-				buf.writeString(queuedHex.label)
-			}
+			playerState.queuedHexes.forEach { (label, _) -> buf.writeString(label) }
 			ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
 		}
 	}
