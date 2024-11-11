@@ -1,8 +1,8 @@
 package miyucomics.hexcassettes.inits
 
+import miyucomics.hexcassettes.HexcassettesAPI
 import miyucomics.hexcassettes.HexcassettesUtils
 import miyucomics.hexcassettes.client.ClientStorage
-import miyucomics.hexcassettes.HexcassettesAPI
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
