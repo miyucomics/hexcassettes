@@ -3,9 +3,8 @@ package miyucomics.hexcassettes.data
 import at.petrak.hexcasting.api.utils.asCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
-import miyucomics.hexcassettes.inits.HexcassettesNetworking
+import miyucomics.hexcassettes.HexcassettesAPI
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
@@ -15,13 +14,18 @@ class PlayerState {
 	var ownedCassettes = 0
 	val queuedHexes: MutableMap<String, QueuedHex> = mutableMapOf()
 
+	private var previousKeys: MutableSet<String> = mutableSetOf()
+
 	fun tick(player: ServerPlayerEntity) {
+		if (previousKeys != queuedHexes.keys)
+			HexcassettesAPI.syncToClient(player)
+		previousKeys = queuedHexes.keys.toMutableSet()
+
 		queuedHexes.forEach { (label, hex) ->
 			hex.delay -= 1
 			if (hex.delay <= 0) {
 				val buf = PacketByteBufs.create()
 				buf.writeString(label)
-				ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_REMOVE, buf)
 				hex.cast(player)
 			}
 		}
