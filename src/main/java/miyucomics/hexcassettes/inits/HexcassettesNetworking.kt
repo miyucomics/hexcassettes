@@ -12,7 +12,6 @@ import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
 object HexcassettesNetworking {
-	val CASSETTE_ADD: Identifier = HexcassettesUtils.id("cassette_changes")
 	val CASSETTE_REMOVE: Identifier = HexcassettesUtils.id("cassette_remove")
 	val SYNC_CASSETTES: Identifier = HexcassettesUtils.id("sync_cassettes")
 
@@ -28,12 +27,9 @@ object HexcassettesNetworking {
 	}
 
 	fun clientInit() {
+		// request a sync on join
 		ClientPlayConnectionEvents.JOIN.register { _, _, _ -> ClientPlayNetworking.send(SYNC_CASSETTES, PacketByteBufs.empty()) }
-		ClientPlayNetworking.registerGlobalReceiver(CASSETTE_ADD) { _, _, packet, _ ->
-			val string = packet.readString()
-			ClientStorage.labels[string] = Text.literal(string)
-		}
-		ClientPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, _, packet, _ -> ClientStorage.labels.remove(packet.readString()) }
+
 		ClientPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, _, packet, _ ->
 			ClientStorage.ownedCassettes = packet.readInt()
 			ClientStorage.labels.clear()

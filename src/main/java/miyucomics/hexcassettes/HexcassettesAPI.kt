@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.text.Text
 import net.minecraft.world.PersistentState
 import net.minecraft.world.World
 import java.util.*
@@ -57,21 +58,14 @@ class HexcassettesAPI : PersistentState() {
 
 		fun scheduleHex(player: ServerPlayerEntity, hex: ListIota, delay: Int, label: String) {
 			getPlayerState(player).queuedHexes[label] = QueuedHex(HexIotaTypes.serialize(hex), delay)
-
-			val buf = PacketByteBufs.create()
-			buf.writeString(label)
-			ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_ADD, buf)
 		}
 
 		fun removeWithLabel(player: ServerPlayerEntity, label: String) {
 			getPlayerState(player).queuedHexes.remove(label)
-
-			val buf = PacketByteBufs.create()
-			buf.writeString(label)
-			ServerPlayNetworking.send(player, HexcassettesNetworking.CASSETTE_REMOVE, buf)
 		}
 
 		fun syncToClient(player: ServerPlayerEntity) {
+			player.sendMessage(Text.literal("SYNCED"))
 			val playerState = getPlayerState(player)
 			val buf = PacketByteBufs.create()
 			buf.writeInt(playerState.ownedCassettes)
