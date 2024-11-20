@@ -15,9 +15,9 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 16, 16, Text.empty(), { }) {
+class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), { }) {
 	private var index = 0
-	constructor(x: Int, y: Int, index: Int) : this(x, y) {
+	constructor(index: Int) : this(0, index * 22 + 2) {
 		this.index = index
 	}
 
@@ -26,10 +26,10 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 16, 16, Text.empty(), 
 		RenderSystem.setShaderTexture(0, texture)
 		RenderSystem.enableDepthTest()
 		if (isActive()) {
-			drawTexture(matrices, this.x, this.y, 0f, 16f, this.width, this.height, 16, 32)
-			drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)], this.x + 15, this.y + 4, 0xffffff)
+			drawTexture(matrices, this.x, this.y, 0f, 20f, this.width, this.height, 11, 40)
+			drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)], this.x + 15, this.y + 5, 0xffffff)
 		} else {
-			drawTexture(matrices, this.x, this.y, 0f, 0f, this.width, this.height, 16, 32)
+			drawTexture(matrices, this.x, this.y, 0f, 0f, this.width, this.height, 11, 40)
 		}
 	}
 
