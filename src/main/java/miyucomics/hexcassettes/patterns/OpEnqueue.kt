@@ -25,7 +25,7 @@ class OpEnqueue : ConstMediaAction {
 		val playerState = HexcassettesAPI.getPlayerState(ctx.caster)
 
 		// if running quinishly, the new one appears in this one's place so we can allow one extra
-		val limit = if (isQuining) playerState.ownedCassettes  + 1 else playerState.ownedCassettes
+		val limit = if (isQuining) playerState.ownedCassettes + 1 else playerState.ownedCassettes
 		if (playerState.queuedHexes.size >= limit)
 			throw TooManyCassettesMishap()
 
@@ -36,7 +36,11 @@ class OpEnqueue : ConstMediaAction {
 
 		val delay = args.getPositiveInt(1, argc)
 		val label = args[2].display().string
-		val shortened = if (label.length > HexcassettesMain.MAX_LABEL_LENGTH) { label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH) } else { label }
+		val shortened = if (label.length > HexcassettesMain.MAX_LABEL_LENGTH) {
+			label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH)
+		} else {
+			label
+		}
 		HexcassettesAPI.scheduleHex(ctx.caster, args[0] as ListIota, delay, shortened)
 		return emptyList()
 	}
@@ -44,7 +48,9 @@ class OpEnqueue : ConstMediaAction {
 
 class TooManyCassettesMishap : Mishap() {
 	override fun accentColor(ctx: CastingContext, errorCtx: Context): FrozenColorizer = dyeColor(DyeColor.RED)
-	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text = error(HexcassettesMain.MOD_ID + ":too_many_cassettes")
+	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text =
+		error(HexcassettesMain.MOD_ID + ":too_many_cassettes")
+
 	override fun execute(ctx: CastingContext, errorCtx: Context, stack: MutableList<Iota>) {
 		HexcassettesAPI.removeAllQueued(ctx.caster)
 	}

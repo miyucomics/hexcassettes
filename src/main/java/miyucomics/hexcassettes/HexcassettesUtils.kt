@@ -26,7 +26,8 @@ object HexcassettesUtils {
 	fun takeMediaFromInventory(harness: CastingHarness, cost: Int): Int {
 		var remainingCost = cost
 
-		for (source in DiscoveryHandlers.collectMediaHolders(harness).sortedWith(Comparator(::compareMediaItem).reversed())) {
+		for (source in DiscoveryHandlers.collectMediaHolders(harness)
+			.sortedWith(Comparator(::compareMediaItem).reversed())) {
 			remainingCost -= extractMedia(source, remainingCost, simulate = false)
 			if (remainingCost <= 0)
 				break

@@ -8,5 +8,6 @@ import miyucomics.hexcassettes.HexcassettesAPI
 
 class OpSpecs : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, ctx: CastingContext) = HexcassettesAPI.getPlayerState(ctx.caster).ownedCassettes.asActionResult
+	override fun execute(args: List<Iota>, ctx: CastingContext) =
+		HexcassettesAPI.getPlayerState(ctx.caster).ownedCassettes.asActionResult
 }

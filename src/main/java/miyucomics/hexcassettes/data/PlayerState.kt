@@ -55,7 +55,10 @@ class PlayerState {
 			val state = PlayerState()
 			state.ownedCassettes = compound.getInt("owned")
 			val serializedHexes = compound.getList("hexes", NbtElement.COMPOUND_TYPE.toInt())
-			serializedHexes.forEach { hex -> state.queuedHexes[hex.asCompound.getString("label")] = QueuedHex.deserialize(hex.asCompound.getCompound("hex")) }
+			serializedHexes.forEach { hex ->
+				state.queuedHexes[hex.asCompound.getString("label")] =
+					QueuedHex.deserialize(hex.asCompound.getCompound("hex"))
+			}
 			return state
 		}
 	}

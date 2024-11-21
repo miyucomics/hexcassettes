@@ -2,10 +2,11 @@ package miyucomics.hexcassettes
 
 import com.google.gson.JsonObject
 import miyucomics.hexcassettes.HexcassettesUtils.id
-import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesPatterns
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.advancement.criterion.AbstractCriterion
 import net.minecraft.advancement.criterion.AbstractCriterionConditions
 import net.minecraft.advancement.criterion.Criteria
@@ -26,7 +27,19 @@ class HexcassettesMain : ModInitializer {
 		QUINE = Criteria.register(QuineCriterion())
 		Registry.register(Registry.ITEM, id("cassette"), CassetteItem())
 
-		HexcassettesNetworking.init()
+		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ ->
+			val label = packet.readString()
+			val state = HexcassettesAPI.getPlayerState(player).queuedHexes
+			state.remove(label)
+		}
+
+		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ ->
+			HexcassettesAPI.syncToClient(
+				player
+			)
+		}
+		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, _ -> HexcassettesAPI.removeAllQueued(player) }
+
 		HexcassettesPatterns.init()
 		HexcassettesSounds.init()
 	}
@@ -36,13 +49,21 @@ class HexcassettesMain : ModInitializer {
 		const val MAX_CASSETTES: Int = 6
 		const val MAX_LABEL_LENGTH: Int = 32
 
+		val CASSETTE_REMOVE: Identifier = id("cassette_remove")
+		val SYNC_CASSETTES: Identifier = id("sync_cassettes")
+
 		lateinit var QUINE: QuineCriterion
 	}
 }
 
-// kinda messy, but I don't want to make a whole file for this
+// kinda messy, but I don't want to make a whole file
 class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
-	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	override fun conditionsFromJson(
+		obj: JsonObject,
+		playerPredicate: EntityPredicate.Extended,
+		predicateDeserializer: AdvancementEntityPredicateDeserializer
+	) = Condition()
+
 	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
 	override fun getId() = ID
 
@@ -52,7 +73,8 @@ class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
 	}
 }
 
-class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
+class CassetteItem :
+	Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
 	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
 		if (world.isClient)
 			return super.finishUsing(stack, world, user)
