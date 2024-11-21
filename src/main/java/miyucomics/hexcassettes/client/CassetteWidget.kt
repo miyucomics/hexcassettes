@@ -1,8 +1,8 @@
 package miyucomics.hexcassettes.client
 
 import com.mojang.blaze3d.systems.RenderSystem
+import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.HexcassettesUtils
-import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
@@ -17,6 +17,7 @@ import net.minecraft.util.Identifier
 
 class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), { }) {
 	private var index = 0
+
 	constructor(index: Int) : this(0, index * 22 + 2) {
 		this.index = index
 	}
@@ -27,7 +28,14 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), 
 		RenderSystem.enableDepthTest()
 		if (isActive()) {
 			drawTexture(matrices, this.x, this.y, 0f, 20f, this.width, this.height, 11, 40)
-			drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)], this.x + 15, this.y + 5, 0xffffff)
+			drawTextWithShadow(
+				matrices,
+				MinecraftClient.getInstance().textRenderer,
+				ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)],
+				this.x + 15,
+				this.y + 5,
+				0xffffff
+			)
 		} else {
 			drawTexture(matrices, this.x, this.y, 0f, 0f, this.width, this.height, 11, 40)
 		}
@@ -42,7 +50,7 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), 
 		if (isActive()) {
 			val buf = PacketByteBufs.create()
 			buf.writeString(ClientStorage.labels.keys.elementAt(index))
-			ClientPlayNetworking.send(HexcassettesNetworking.CASSETTE_REMOVE, buf)
+			ClientPlayNetworking.send(HexcassettesMain.CASSETTE_REMOVE, buf)
 			ClientStorage.labels.remove(ClientStorage.labels.keys.elementAt(index))
 		}
 	}

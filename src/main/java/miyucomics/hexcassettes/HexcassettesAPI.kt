@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexcassettes.data.PlayerState
 import miyucomics.hexcassettes.data.QueuedHex
-import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.entity.player.PlayerEntity
@@ -27,15 +26,17 @@ class HexcassettesAPI : PersistentState() {
 	companion object {
 		private fun createFromNbt(nbt: NbtCompound): HexcassettesAPI {
 			val state = HexcassettesAPI()
-			nbt.keys.forEach { uuid -> state.players[UUID.fromString(uuid)] =
-				PlayerState.deserialize(nbt.getCompound(uuid))
+			nbt.keys.forEach { uuid ->
+				state.players[UUID.fromString(uuid)] =
+					PlayerState.deserialize(nbt.getCompound(uuid))
 			}
 			return state
 		}
 
 		private fun getServerState(server: MinecraftServer): HexcassettesAPI {
 			val persistentStateManager = server.getWorld(World.OVERWORLD)!!.persistentStateManager
-			val state = persistentStateManager.getOrCreate(Companion::createFromNbt, ::HexcassettesAPI, HexcassettesMain.MOD_ID)
+			val state =
+				persistentStateManager.getOrCreate(Companion::createFromNbt, ::HexcassettesAPI, HexcassettesMain.MOD_ID)
 			state.markDirty()
 			return state
 		}
@@ -53,7 +54,7 @@ class HexcassettesAPI : PersistentState() {
 			val buf = PacketByteBufs.create()
 			buf.writeInt(state.ownedCassettes)
 			buf.writeInt(0)
-			ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
+			ServerPlayNetworking.send(player, HexcassettesMain.SYNC_CASSETTES, buf)
 		}
 
 		fun scheduleHex(player: ServerPlayerEntity, hex: ListIota, delay: Int, label: String) {
@@ -71,7 +72,7 @@ class HexcassettesAPI : PersistentState() {
 			buf.writeInt(playerState.ownedCassettes)
 			buf.writeInt(playerState.queuedHexes.size)
 			playerState.queuedHexes.forEach { (label, _) -> buf.writeString(label) }
-			ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
+			ServerPlayNetworking.send(player, HexcassettesMain.SYNC_CASSETTES, buf)
 		}
 	}
 }

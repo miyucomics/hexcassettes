@@ -17,5 +17,6 @@ object HexcassettesPatterns {
 		register("free", "qeqwqwqwqwqeqaweqqqqqwweeweweew", HexDir.EAST, OpFree())
 	}
 
-	private fun register(name: String, signature: String, startDir: HexDir, action: Action) = PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir), HexcassettesUtils.id(name), action)
+	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =
+		PatternRegistry.mapPattern(HexPattern.fromAngles(signature, startDir), HexcassettesUtils.id(name), action)
 }
