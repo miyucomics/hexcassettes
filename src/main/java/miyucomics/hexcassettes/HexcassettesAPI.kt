@@ -66,7 +66,6 @@ class HexcassettesAPI : PersistentState() {
 		}
 
 		fun syncToClient(player: ServerPlayerEntity) {
-			player.sendMessage(Text.literal("SYNCED"))
 			val playerState = getPlayerState(player)
 			val buf = PacketByteBufs.create()
 			buf.writeInt(playerState.ownedCassettes)
