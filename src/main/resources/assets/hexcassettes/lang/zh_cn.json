@@ -1,0 +1,27 @@
+{
+	"advancements.hexcassettes.quinio.title": "QUINIO",
+	"advancements.hexcassettes.quinio.description": "让咒术施放咒术",
+
+	"subtitles.hexcassettes.cassette_eject": "磁带：弹出",
+
+	"item.hexcassettes.cassette": "磁带",
+
+	"hexcasting.mishap.hexcassettes:too_many_cassettes": "试图调度的咒术总数超出磁带的数量上限。",
+
+	"hexcassettes.page.queuing.title": "咒术排队",
+	"hexcassettes.page.queuing.0": "$(hex)咒术$()会瞬时完全施放，这是它们的本性。而为延迟$(hex)咒术$()，自然设计了一种有些奇怪的方案：一盒磁带，需要合成后“食用”的磁带。我最多能持有六盒磁带，每延迟一个$(hex)咒术$()需占用一盒。可以在物品栏中查看这些磁带，点击即可终止$(hex)咒术$()。",
+	"hexcassettes.page.queuing.craft": "使用音乐唱片合成磁带后，$(o)食用$()即可收作己用。我最多只能同时持有六盒，在此情况下再食用只会浪费。",
+    "hexcasting.spell.hexcassettes:enqueue": "入队列",
+    "hexcassettes.page.enqueue.summary": "令一个咒术入队列，并在所给数个 1/20 秒后施放。还需一个 iota 作为磁带的标签。",
+	"hexcassettes.page.queuing.1": "磁带间使用标签区分，且标签仅保留前 32 个字符。若令两个$(hex)咒术$()按照同一标签入队列，则新的会覆盖旧的。若我试图让入队咒术的数量超出磁带的数量，那么就会招致“并行处理”事故，导致当前所有磁带终止。$(br2)$(o)Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.$()",
+    "hexcassettes.page.queuing.2": "所有入过队列的$(hex)咒术$()可在聊天栏处查看。队列中的咒术表现为插入的磁带，其标签会出现在磁带侧面；按压磁带即可取消对应咒术。$(br2)死亡时，所有磁带都会强制被终止；如此就能避免陷入无尽的死亡循环了。",
+	"hexcassettes.page.queuing.3": "如果一个$(hex)咒术$()施放了与其自身近乎相同的咒术，便能达成常态$(hex)施法$()。古代的$()咒术师$()称这种现象为“守护进程”。$(hex)咒法学$()的此分支似乎尚未得到深入研究，亲自深入时务必当心：此类施放法术只会使用物品栏中的媒质；若不加监管，快速的自动施法会轻松耗尽媒质储备，当什么都不剩的时候，抽取的就是生命力了。",
+    "hexcasting.spell.hexcassettes:dequeue": "出队列",
+    "hexcassettes.page.dequeue.summary": "还可以此图案自动终止磁带。接受一个 iota，若存在标签为所给 iota 的磁带，则令其出队列。",
+	"hexcasting.spell.hexcassettes:killall": "终止队列",
+	"hexcassettes.page.killall.summary": "终止所有磁带，效果与“并行处理”事故类似。",
+	"hexcasting.spell.hexcassettes:specs": "操作员之精思",
+	"hexcassettes.page.specs.summary": "返回我可操控的磁带的总数。",
+	"hexcasting.spell.hexcassettes:free": "操作员之精思，第二型",
+	"hexcassettes.page.free.summary": "返回我当前未被占用的磁带数。"
+}
