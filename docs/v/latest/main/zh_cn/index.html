@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/58106405f344a99a1223f64abf65f4118e005f5b"
+      href="https://github.com/miyucomics/hexcassettes/tree/7d3663cae0599731778e4618557deec1d46e145d"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -146,13 +146,13 @@
       class="item-texture  texture "
     > 图案</a></summary>
       <ul>
-          <li><a href="#queuing" class="toc-elem "><img
+          <li><a href="#async" class="toc-elem "><img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/58106405f344a99a1223f64abf65f4118e005f5b/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/7d3663cae0599731778e4618557deec1d46e145d/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    > 咒术排队</a></li>
+    > Asynchronous Hexes</a></li>
       </ul>
     </details>
 </nav>
@@ -175,24 +175,24 @@
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h2>
     <p>我所发现的各式图案，和它们的功用。</p>
-<div id="queuing" class="entry">
+<div id="async" class="entry">
     <h3 class="entry-title page-header">
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/58106405f344a99a1223f64abf65f4118e005f5b/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/7d3663cae0599731778e4618557deec1d46e145d/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    >咒术排队<a
+    >Asynchronous Hexes<a
     href="#table-of-contents"
     class="permalink small"
     title="Jump to top"
   ><i class="bi bi-box-arrow-up"></i></a><a
-    href="#queuing"
+    href="#async"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p><span style="color: #b38ef3">咒术</span>会瞬时完全施放，这是它们的本性。而为延迟<span style="color: #b38ef3">咒术</span>，自然设计了一种有些奇怪的方案：一盒磁带，需要合成后“食用”的磁带。我最多能持有六盒磁带，每延迟一个<span style="color: #b38ef3">咒术</span>需占用一盒。可以在物品栏中查看这些磁带，点击即可终止<span style="color: #b38ef3">咒术</span>。</p>
+    <p>As part of their nature, <span style="color: #b38ef3">Hexes</span> evaluate in their entirety instantly. To delay <span style="color: #b38ef3">Hexes</span>, Nature has devised a quite the whimsical solution: a cassette tape that must be crafted and then &#34;consumed&#34;. I can have up to six cassettes, and each <span style="color: #b38ef3">Hex</span> I request to delay takes up one cassette. These cassettes can be viewed in my inventory and I can simply click them to abort the <span style="color: #b38ef3">Hex</span>.</p>
 <br />
   <details class="details-collapsible recipe-details">
       <summary class="collapse-details">
@@ -260,7 +260,7 @@
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/58106405f344a99a1223f64abf65f4118e005f5b/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/7d3663cae0599731778e4618557deec1d46e145d/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -268,11 +268,11 @@
     </div>
 </div>    </div>
   </details>
-      <p>使用音乐唱片合成磁带后，<i>食用</i>即可收作己用。我最多只能同时持有六盒，在此情况下再食用只会浪费。</p>
+      <p>After crafting it via a music disc, I can <i>consume</i> it to add it to my collection. I can only have six at a time and any more eaten will simply be wasted.</p>
 <br />
-  <div id="queuing@hexcassettes:enqueue" class="">
+  <div id="async@hexcassettes:enqueue" class="">
 <h4 class="pattern-title">入队列 (list, number, any →)<a
-    href="#queuing@hexcassettes:enqueue"
+    href="#async@hexcassettes:enqueue"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -326,15 +326,15 @@
       <p>令一个咒术入队列，并在所给数个 1/20 秒后施放。还需一个 iota 作为磁带的标签。</p>
   </div>
 <br />
-    <p>磁带间使用标签区分，且标签仅保留前 32 个字符。若令两个<span style="color: #b38ef3">咒术</span>按照同一标签入队列，则新的会覆盖旧的。若我试图让入队咒术的数量超出磁带的数量，那么就会招致“并行处理”事故，导致当前所有磁带终止。</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
+    <p>The label iota is used to distinguish cassettes from each other and only the first 32 characters are kept. Enqueuing two <span style="color: #b38ef3">Hexes</span> with the same label overwrites the older one. If I attempt to enqueue more <span style="color: #b38ef3">Hexes</span> than I have cassettes, I incur the Parallel Processing mishap which kills all my currently active cassettes.</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
 <br />
-    <p>所有入过队列的<span style="color: #b38ef3">咒术</span>可在聊天栏处查看。队列中的咒术表现为插入的磁带，其标签会出现在磁带侧面；按压磁带即可取消对应咒术。</p><p>死亡时，所有磁带都会强制被终止；如此就能避免陷入无尽的死亡循环了。</p>
+    <p>Once a <span style="color: #b38ef3">Hex</span> has been enqueued, I can open my chat screen to see all the cassettes I have eaten. Queued <span style="color: #b38ef3">Hexes</span> are represented as inserted cassettes with their label rendered to the side, and by pressing an cassette, I can cancel the corresponding <span style="color: #b38ef3">Hex</span>.</p><p>Dying also forcibly kills all of my cassettes so I can rest easy that I will not trap myself in an endless death cycle.</p>
 <br />
-    <p>如果一个<span style="color: #b38ef3">咒术</span>施放了与其自身近乎相同的咒术，便能达成常态<span style="color: #b38ef3">施法</span>。古代的咒术师称这种现象为“守护进程”。<span style="color: #b38ef3">咒法学</span>的此分支似乎尚未得到深入研究，亲自深入时务必当心：此类施放法术只会使用物品栏中的媒质；若不加监管，快速的自动施法会轻松耗尽媒质储备，当什么都不剩的时候，抽取的就是生命力了。</p>
+    <p>If a <span style="color: #b38ef3">Hex</span> casts a near-identical copy of itself, a phenomenon emerges that ancient <span style="color: #b38ef3">Hexcasters</span> call a daemon, which allow for passive <span style="color: #b38ef3">Hexcasting</span>. Study into this branch of <span style="color: #b38ef3">Hexcasting</span> seems limited and I shall be careful if I want to delve in: this type of casting uses exclusively the media from my inventory and if left unchecked, rapid automated casting can easily drain all my media and with nothing else to consume, my life.</p>
 <br />
-  <div id="queuing@hexcassettes:dequeue" class="">
+  <div id="async@hexcassettes:dequeue" class="">
 <h4 class="pattern-title">出队列 (any →)<a
-    href="#queuing@hexcassettes:dequeue"
+    href="#async@hexcassettes:dequeue"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -388,9 +388,9 @@
       <p>还可以此图案自动终止磁带。接受一个 iota，若存在标签为所给 iota 的磁带，则令其出队列。</p>
   </div>
 <br />
-  <div id="queuing@hexcassettes:killall" class="">
+  <div id="async@hexcassettes:killall" class="">
 <h4 class="pattern-title">终止队列<a
-    href="#queuing@hexcassettes:killall"
+    href="#async@hexcassettes:killall"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -444,9 +444,9 @@
       <p>终止所有磁带，效果与“并行处理”事故类似。</p>
   </div>
 <br />
-  <div id="queuing@hexcassettes:specs" class="">
+  <div id="async@hexcassettes:specs" class="">
 <h4 class="pattern-title">操作员之精思 (→ number)<a
-    href="#queuing@hexcassettes:specs"
+    href="#async@hexcassettes:specs"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -500,9 +500,9 @@
       <p>返回我可操控的磁带的总数。</p>
   </div>
 <br />
-  <div id="queuing@hexcassettes:free" class="">
+  <div id="async@hexcassettes:free" class="">
 <h4 class="pattern-title">操作员之精思，第二型 (→ number)<a
-    href="#queuing@hexcassettes:free"
+    href="#async@hexcassettes:free"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -556,9 +556,9 @@
       <p>返回我当前未被占用的磁带数。</p>
   </div>
 <br />
-  <div id="queuing@hexcassettes:inspect" class="">
+  <div id="async@hexcassettes:inspect" class="">
 <h4 class="pattern-title">Program Purification (→ null/list of patterns)<a
-    href="#queuing@hexcassettes:inspect"
+    href="#async@hexcassettes:inspect"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -612,9 +612,9 @@
       <p>Pushes null if I do not have an active cassette with that label, or the cassette&#39;s <span style="color: #b38ef3">Hex</span> if I do. I hear rumors of this being used for iota storage and passing information between <span style="color: #b38ef3">Hexes</span>.</p>
   </div>
 <br />
-  <div id="queuing@hexcassettes:foretell" class="">
+  <div id="async@hexcassettes:foretell" class="">
 <h4 class="pattern-title">Program Purification II (→ null/number)<a
-    href="#queuing@hexcassettes:foretell"
+    href="#async@hexcassettes:foretell"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
