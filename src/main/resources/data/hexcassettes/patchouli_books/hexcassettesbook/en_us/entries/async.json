@@ -1,5 +1,5 @@
 {
-	"name": "hexcassettes.page.queuing.title",
+	"name": "hexcassettes.page.async.title",
 	"icon": "hexcassettes:cassette",
 	"category": "hexcasting:patterns",
 	"sortnum": 30,
@@ -7,12 +7,12 @@
 	"pages": [
 		{
 			"type": "patchouli:text",
-			"text": "hexcassettes.page.queuing.0"
+			"text": "hexcassettes.page.async.0"
 		},
 		{
 			"type": "patchouli:crafting",
 			"recipe": "hexcassettes:cassette",
-			"text": "hexcassettes.page.queuing.craft"
+			"text": "hexcassettes.page.async.craft"
 		},
         {
 			"type": "hexcasting:pattern",
@@ -24,15 +24,15 @@
         },
 		{
 			"type": "patchouli:text",
-			"text": "hexcassettes.page.queuing.1"
+			"text": "hexcassettes.page.async.1"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexcassettes.page.queuing.2"
+			"text": "hexcassettes.page.async.2"
 		},
 		{
 			"type": "patchouli:text",
-			"text": "hexcassettes.page.queuing.3"
+			"text": "hexcassettes.page.async.3"
 		},
 		{
 			"type": "hexcasting:pattern",
