@@ -8,7 +8,7 @@ import miyucomics.hexcassettes.HexcassettesAPI
 class OpKillAll : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		HexcassettesAPI.removeAllQueued(ctx.caster)
+		HexcassettesAPI.dequeueAll(ctx.caster)
 		return emptyList()
 	}
 }

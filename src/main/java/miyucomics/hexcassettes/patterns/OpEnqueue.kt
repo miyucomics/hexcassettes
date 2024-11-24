@@ -36,22 +36,16 @@ class OpEnqueue : ConstMediaAction {
 
 		val delay = args.getPositiveInt(1, argc)
 		val label = args[2].display().string
-		val shortened = if (label.length > HexcassettesMain.MAX_LABEL_LENGTH) {
-			label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH)
-		} else {
-			label
-		}
-		HexcassettesAPI.scheduleHex(ctx.caster, args[0] as ListIota, delay, shortened)
+		val shortened = label.substring(HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length))
+		HexcassettesAPI.queue(ctx.caster, args[0] as ListIota, delay, shortened)
 		return emptyList()
 	}
 }
 
 class TooManyCassettesMishap : Mishap() {
-	override fun accentColor(ctx: CastingContext, errorCtx: Context): FrozenColorizer = dyeColor(DyeColor.RED)
-	override fun errorMessage(ctx: CastingContext, errorCtx: Context): Text =
-		error(HexcassettesMain.MOD_ID + ":too_many_cassettes")
-
+	override fun accentColor(ctx: CastingContext, errorCtx: Context) = dyeColor(DyeColor.RED)
+	override fun errorMessage(ctx: CastingContext, errorCtx: Context) = error(HexcassettesMain.MOD_ID + ":too_many_cassettes")
 	override fun execute(ctx: CastingContext, errorCtx: Context, stack: MutableList<Iota>) {
-		HexcassettesAPI.removeAllQueued(ctx.caster)
+		HexcassettesAPI.dequeueAll(ctx.caster)
 	}
 }

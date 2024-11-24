@@ -10,7 +10,6 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.text.Text
 import net.minecraft.world.PersistentState
 import net.minecraft.world.World
 import java.util.*
@@ -26,46 +25,34 @@ class HexcassettesAPI : PersistentState() {
 	companion object {
 		private fun createFromNbt(nbt: NbtCompound): HexcassettesAPI {
 			val state = HexcassettesAPI()
-			nbt.keys.forEach { uuid ->
-				state.players[UUID.fromString(uuid)] =
-					PlayerState.deserialize(nbt.getCompound(uuid))
-			}
+			nbt.keys.forEach { uuid -> state.players[UUID.fromString(uuid)] = PlayerState.deserialize(nbt.getCompound(uuid)) }
 			return state
 		}
 
 		private fun getServerState(server: MinecraftServer): HexcassettesAPI {
-			val persistentStateManager = server.getWorld(World.OVERWORLD)!!.persistentStateManager
-			val state =
-				persistentStateManager.getOrCreate(Companion::createFromNbt, ::HexcassettesAPI, HexcassettesMain.MOD_ID)
+			val state = server.getWorld(World.OVERWORLD)!!.persistentStateManager.getOrCreate(::createFromNbt, ::HexcassettesAPI, HexcassettesMain.MOD_ID)
 			state.markDirty()
 			return state
 		}
 
 		@JvmStatic
 		fun getPlayerState(player: PlayerEntity): PlayerState {
-			val state = getServerState(player.server!!)
-			return state.players.computeIfAbsent(player.uuid) { PlayerState() }
+			return getServerState(player.server!!).players.computeIfAbsent(player.uuid) { PlayerState() }
 		}
 
-		fun removeAllQueued(player: ServerPlayerEntity) {
-			val state = getPlayerState(player)
-			state.queuedHexes.clear()
-
-			val buf = PacketByteBufs.create()
-			buf.writeInt(state.ownedCassettes)
-			buf.writeInt(0)
-			ServerPlayNetworking.send(player, HexcassettesMain.SYNC_CASSETTES, buf)
-		}
-
-		fun scheduleHex(player: ServerPlayerEntity, hex: ListIota, delay: Int, label: String) {
+		fun queue(player: ServerPlayerEntity, hex: ListIota, delay: Int, label: String) {
 			getPlayerState(player).queuedHexes[label] = QueuedHex(HexIotaTypes.serialize(hex), delay)
 		}
 
-		fun removeWithLabel(player: ServerPlayerEntity, label: String) {
+		fun dequeueAll(player: ServerPlayerEntity) {
+			getPlayerState(player).queuedHexes.clear()
+		}
+
+		fun dequeueByName(player: ServerPlayerEntity, label: String) {
 			getPlayerState(player).queuedHexes.remove(label)
 		}
 
-		fun syncToClient(player: ServerPlayerEntity) {
+		fun sendSyncPacket(player: ServerPlayerEntity) {
 			val playerState = getPlayerState(player)
 			val buf = PacketByteBufs.create()
 			buf.writeInt(playerState.ownedCassettes)

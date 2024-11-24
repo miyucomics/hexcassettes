@@ -33,12 +33,8 @@ class HexcassettesMain : ModInitializer {
 			state.remove(label)
 		}
 
-		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ ->
-			HexcassettesAPI.syncToClient(
-				player
-			)
-		}
-		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, _ -> HexcassettesAPI.removeAllQueued(player) }
+		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ -> HexcassettesAPI.sendSyncPacket(player) }
+		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, _ -> HexcassettesAPI.dequeueAll(player) }
 
 		HexcassettesPatterns.init()
 		HexcassettesSounds.init()
@@ -56,14 +52,9 @@ class HexcassettesMain : ModInitializer {
 	}
 }
 
-// kinda messy, but I don't want to make a whole file
+// kinda messy, but I don't want to make a whole file for these
 class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
-	override fun conditionsFromJson(
-		obj: JsonObject,
-		playerPredicate: EntityPredicate.Extended,
-		predicateDeserializer: AdvancementEntityPredicateDeserializer
-	) = Condition()
-
+	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
 	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
 	override fun getId() = ID
 
@@ -73,8 +64,7 @@ class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
 	}
 }
 
-class CassetteItem :
-	Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
+class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
 	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
 		if (world.isClient)
 			return super.finishUsing(stack, world, user)
@@ -83,7 +73,7 @@ class CassetteItem :
 		val playerState = HexcassettesAPI.getPlayerState(user)
 		if (playerState.ownedCassettes < HexcassettesMain.MAX_CASSETTES) {
 			HexcassettesAPI.getPlayerState(user).ownedCassettes += 1
-			HexcassettesAPI.syncToClient(user)
+			HexcassettesAPI.sendSyncPacket(user)
 		}
 		return super.finishUsing(stack, world, user)
 	}

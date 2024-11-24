@@ -13,13 +13,12 @@ import net.minecraft.server.network.ServerPlayerEntity
 class PlayerState {
 	var ownedCassettes = 0
 	val queuedHexes: MutableMap<String, QueuedHex> = mutableMapOf()
-
-	private var previousKeys: MutableSet<String> = mutableSetOf()
+	private var previouslyActiveCassettes: MutableSet<String> = mutableSetOf()
 
 	fun tick(player: ServerPlayerEntity) {
-		if (previousKeys != queuedHexes.keys)
-			HexcassettesAPI.syncToClient(player)
-		previousKeys = queuedHexes.keys.toMutableSet()
+		if (previouslyActiveCassettes != queuedHexes.keys)
+			HexcassettesAPI.sendSyncPacket(player)
+		previouslyActiveCassettes = queuedHexes.keys.toMutableSet()
 
 		queuedHexes.forEach { (label, hex) ->
 			hex.delay -= 1
@@ -39,14 +38,14 @@ class PlayerState {
 	fun serialize(): NbtCompound {
 		val compound = NbtCompound()
 		compound.putInt("owned", ownedCassettes)
-		val serializedHexes = NbtList()
+		val hexes = NbtList()
 		queuedHexes.forEach { (label, queuedHex) ->
-			val queued = NbtCompound()
-			queued.putString("label", label)
-			queued.putCompound("hex", queuedHex.serialize())
-			serializedHexes.add(queued)
+			val hex = NbtCompound()
+			hex.putString("label", label)
+			hex.putCompound("hex", queuedHex.serialize())
+			hexes.add(hex)
 		}
-		compound.putList("hexes", serializedHexes)
+		compound.putList("hexes", hexes)
 		return compound
 	}
 
@@ -54,10 +53,8 @@ class PlayerState {
 		fun deserialize(compound: NbtCompound): PlayerState {
 			val state = PlayerState()
 			state.ownedCassettes = compound.getInt("owned")
-			val serializedHexes = compound.getList("hexes", NbtElement.COMPOUND_TYPE.toInt())
-			serializedHexes.forEach { hex ->
-				state.queuedHexes[hex.asCompound.getString("label")] =
-					QueuedHex.deserialize(hex.asCompound.getCompound("hex"))
+			compound.getList("hexes", NbtElement.COMPOUND_TYPE.toInt()).forEach { hex ->
+				state.queuedHexes[hex.asCompound.getString("label")] = QueuedHex.deserialize(hex.asCompound.getCompound("hex"))
 			}
 			return state
 		}
