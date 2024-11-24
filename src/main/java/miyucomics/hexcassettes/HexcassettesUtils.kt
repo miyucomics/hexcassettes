@@ -4,23 +4,16 @@ import at.petrak.hexcasting.api.misc.DiscoveryHandlers
 import at.petrak.hexcasting.api.misc.HexDamageSources
 import at.petrak.hexcasting.api.mod.HexConfig
 import at.petrak.hexcasting.api.spell.casting.CastingHarness
-import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.spell.mishaps.Mishap
 import at.petrak.hexcasting.api.utils.compareMediaItem
 import at.petrak.hexcasting.api.utils.extractMedia
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import at.petrak.hexcasting.xplat.IXplatAbstractions
-import miyucomics.hexcassettes.data.SilentMarker
-import net.minecraft.nbt.NbtCompound
-import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.server.world.ServerWorld
-import net.minecraft.util.Hand
 import net.minecraft.util.Identifier
 import kotlin.math.ceil
 import kotlin.math.max
 
 object HexcassettesUtils {
 	fun id(string: String) = Identifier(HexcassettesMain.MOD_ID, string)
+	fun shortenLabel(label: String) = label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length))
 
 	@JvmStatic
 	fun takeMediaFromInventory(harness: CastingHarness, cost: Int): Int {

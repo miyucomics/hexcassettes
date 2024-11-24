@@ -18,7 +18,7 @@ import net.minecraft.util.Identifier
 class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), { }) {
 	private var index = 0
 
-	constructor(index: Int) : this(0, index * 25 + 10) {
+	constructor(index: Int) : this(0, index * 23 + 5) {
 		this.index = index
 	}
 
@@ -35,8 +35,7 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), 
 	}
 
 	override fun playDownSound(soundManager: SoundManager) {
-		if (isActive())
-			soundManager.play(PositionedSoundInstance.master(HexcassettesSounds.CASSETTE_EJECT, 1.0f))
+		soundManager.play(PositionedSoundInstance.master(if (isActive()) HexcassettesSounds.CASSETTE_EJECT else HexcassettesSounds.CASSETTE_FAIL, 1.0f, 3.0f))
 	}
 
 	override fun onPress() {

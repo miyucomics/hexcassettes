@@ -1,5 +1,6 @@
 package miyucomics.hexcassettes
 
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import com.google.gson.JsonObject
 import miyucomics.hexcassettes.HexcassettesUtils.id
 import miyucomics.hexcassettes.inits.HexcassettesPatterns
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer
 import net.minecraft.predicate.entity.EntityPredicate
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
 import net.minecraft.util.registry.Registry
@@ -64,10 +66,15 @@ class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
 	}
 }
 
-class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().snack().build())) {
+class CassetteItem : Item(Settings().maxCount(1).group(IXplatAbstractions.INSTANCE.tab).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().build())) {
+	override fun getMaxUseTime(stack: ItemStack) = 100
+	override fun getEatSound() = HexcassettesSounds.CASSETTE_LOOP
+
 	override fun finishUsing(stack: ItemStack, world: World, user: LivingEntity): ItemStack {
-		if (world.isClient)
+		if (world.isClient) {
+			world.playSound(user.x, user.y, user.z, HexcassettesSounds.CASSETTE_INSERT, SoundCategory.MASTER, 5f, 1f, false)
 			return super.finishUsing(stack, world, user)
+		}
 		if (user !is ServerPlayerEntity)
 			return super.finishUsing(stack, world, user)
 		val playerState = HexcassettesAPI.getPlayerState(user)

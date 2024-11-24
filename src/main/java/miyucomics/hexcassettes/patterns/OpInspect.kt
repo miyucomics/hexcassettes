@@ -6,16 +6,15 @@ import at.petrak.hexcasting.api.spell.iota.Iota
 import at.petrak.hexcasting.api.spell.iota.NullIota
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexcassettes.HexcassettesAPI
-import miyucomics.hexcassettes.HexcassettesMain
+import miyucomics.hexcassettes.HexcassettesUtils
 
 class OpInspect : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		val label = args[0].display().string
-		val shortened = label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length))
+		val label = HexcassettesUtils.shortenLabel(args[0].display().string)
 		val queuedHexes = HexcassettesAPI.getPlayerState(ctx.caster).queuedHexes
-		if (queuedHexes.containsKey(shortened))
-			return listOf(HexIotaTypes.deserialize(HexcassettesAPI.getPlayerState(ctx.caster).queuedHexes[shortened]!!.hex, ctx.world))
+		if (queuedHexes.containsKey(label))
+			return listOf(HexIotaTypes.deserialize(HexcassettesAPI.getPlayerState(ctx.caster).queuedHexes[label]!!.hex, ctx.world))
 		return listOf(NullIota())
 	}
 }
