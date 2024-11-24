@@ -36,7 +36,7 @@ class OpEnqueue : ConstMediaAction {
 
 		val delay = args.getPositiveInt(1, argc)
 		val label = args[2].display().string
-		val shortened = label.substring(HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length))
+		val shortened = label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length))
 		HexcassettesAPI.queue(ctx.caster, args[0] as ListIota, delay, shortened)
 		return emptyList()
 	}
