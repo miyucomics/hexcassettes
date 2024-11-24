@@ -26,8 +26,7 @@ object HexcassettesUtils {
 	fun takeMediaFromInventory(harness: CastingHarness, cost: Int): Int {
 		var remainingCost = cost
 
-		for (source in DiscoveryHandlers.collectMediaHolders(harness)
-			.sortedWith(Comparator(::compareMediaItem).reversed())) {
+		for (source in DiscoveryHandlers.collectMediaHolders(harness).sortedWith(Comparator(::compareMediaItem).reversed())) {
 			remainingCost -= extractMedia(source, remainingCost, simulate = false)
 			if (remainingCost <= 0)
 				break
@@ -42,13 +41,5 @@ object HexcassettesUtils {
 		}
 
 		return remainingCost
-	}
-
-	fun cast(world: ServerWorld, user: ServerPlayerEntity, hex: NbtCompound): CastingHarness {
-		val harness = IXplatAbstractions.INSTANCE.getHarness(user, Hand.MAIN_HAND)
-		(harness.ctx as SilentMarker).delayCast()
-		harness.stack = mutableListOf()
-		harness.executeIotas((HexIotaTypes.deserialize(hex, world) as ListIota).list.toList(), world)
-		return harness
 	}
 }

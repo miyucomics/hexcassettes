@@ -1,9 +1,13 @@
 package miyucomics.hexcassettes.data
 
+import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import miyucomics.hexcassettes.HexcassettesUtils
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.util.Hand
 
 data class QueuedHex(val hex: NbtCompound, var delay: Int) {
 	fun serialize(): NbtCompound {
@@ -14,7 +18,10 @@ data class QueuedHex(val hex: NbtCompound, var delay: Int) {
 	}
 
 	fun cast(player: ServerPlayerEntity) {
-		HexcassettesUtils.cast(player.getWorld(), player, hex)
+		val harness = IXplatAbstractions.INSTANCE.getHarness(player, Hand.MAIN_HAND)
+		(harness.ctx as SilentMarker).delayCast()
+		harness.stack = mutableListOf()
+		harness.executeIotas((HexIotaTypes.deserialize(hex, player.getWorld()) as ListIota).list.toList(), player.getWorld())
 	}
 
 	companion object {

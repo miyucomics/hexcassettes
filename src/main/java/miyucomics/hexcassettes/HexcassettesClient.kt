@@ -9,13 +9,7 @@ import net.minecraft.text.Text
 
 class HexcassettesClient : ClientModInitializer {
 	override fun onInitializeClient() {
-		ClientPlayConnectionEvents.JOIN.register { _, _, _ ->
-			ClientPlayNetworking.send(
-				HexcassettesMain.SYNC_CASSETTES,
-				PacketByteBufs.empty()
-			)
-		}
-
+		ClientPlayConnectionEvents.JOIN.register { _, _, _ -> ClientPlayNetworking.send(HexcassettesMain.SYNC_CASSETTES, PacketByteBufs.empty()) }
 		ClientPlayNetworking.registerGlobalReceiver(HexcassettesMain.SYNC_CASSETTES) { _, _, packet, _ ->
 			ClientStorage.ownedCassettes = packet.readInt()
 			ClientStorage.labels.clear()
