@@ -10,7 +10,7 @@ class OpDequeue : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val label = args[0].display().string
-		HexcassettesAPI.dequeueByName(ctx.caster, label.substring(HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length)))
+		HexcassettesAPI.dequeueByName(ctx.caster, label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length)))
 		return emptyList()
 	}
 }
