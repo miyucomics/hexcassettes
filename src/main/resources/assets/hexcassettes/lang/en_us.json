@@ -3,6 +3,9 @@
 	"advancements.hexcassettes.quinio.description": "Make a Hex cast a Hex",
 
 	"subtitles.hexcassettes.cassette_eject": "Cassette ejects",
+	"subtitles.hexcassettes.cassette_fail": "Cassette clicks",
+	"subtitles.hexcassettes.cassette_insert": "Cassette inserted",
+	"subtitles.hexcassettes.cassette_loop": "Cassette whirrs",
 
 	"item.hexcassettes.cassette": "Cassette",
 

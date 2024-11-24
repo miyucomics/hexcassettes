@@ -1,6 +1,5 @@
 package miyucomics.hexcassettes.patterns
 
-import at.petrak.hexcasting.api.misc.FrozenColorizer
 import at.petrak.hexcasting.api.spell.ConstMediaAction
 import at.petrak.hexcasting.api.spell.casting.CastingContext
 import at.petrak.hexcasting.api.spell.getList
@@ -11,8 +10,8 @@ import at.petrak.hexcasting.api.spell.mishaps.Mishap
 import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName
 import miyucomics.hexcassettes.HexcassettesAPI
 import miyucomics.hexcassettes.HexcassettesMain
+import miyucomics.hexcassettes.HexcassettesUtils
 import miyucomics.hexcassettes.data.SilentMarker
-import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 
 class OpEnqueue : ConstMediaAction {
@@ -35,9 +34,7 @@ class OpEnqueue : ConstMediaAction {
 			throw MishapOthersName(trueName)
 
 		val delay = args.getPositiveInt(1, argc)
-		val label = args[2].display().string
-		val shortened = label.substring(0, HexcassettesMain.MAX_LABEL_LENGTH.coerceAtMost(label.length))
-		HexcassettesAPI.queue(ctx.caster, args[0] as ListIota, delay, shortened)
+		HexcassettesAPI.queue(ctx.caster, args[0] as ListIota, delay, HexcassettesUtils.shortenLabel(args[2].display().string))
 		return emptyList()
 	}
 }

@@ -2,5 +2,17 @@
 	"cassette_eject": {
 		"subtitle": "subtitles.hexcassettes.cassette_eject",
 		"sounds": ["hexcassettes:cassette_eject"]
+	},
+	"cassette_fail": {
+		"subtitle": "subtitles.hexcassettes.cassette_fail",
+		"sounds": ["hexcassettes:cassette_fail"]
+	},
+	"cassette_insert": {
+		"subtitle": "subtitles.hexcassettes.cassette_insert",
+		"sounds": ["hexcassettes:cassette_insert"]
+	},
+	"cassette_loop": {
+		"subtitle": "subtitles.hexcassettes.cassette_loop",
+		"sounds": ["hexcassettes:cassette_loop"]
 	}
 }

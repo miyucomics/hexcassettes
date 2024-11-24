@@ -6,9 +6,15 @@ import net.minecraft.util.registry.Registry
 
 object HexcassettesSounds {
 	lateinit var CASSETTE_EJECT: SoundEvent
+	lateinit var CASSETTE_FAIL: SoundEvent
+	lateinit var CASSETTE_INSERT: SoundEvent
+	lateinit var CASSETTE_LOOP: SoundEvent
 
 	fun init() {
 		CASSETTE_EJECT = register("cassette_eject")
+		CASSETTE_FAIL = register("cassette_fail")
+		CASSETTE_INSERT = register("cassette_insert")
+		CASSETTE_LOOP = register("cassette_loop")
 	}
 
 	private fun register(name: String): SoundEvent {
