@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Hexcassettes Book</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="The Hexcassettes Book, all in one place." />
+      <meta name="author" content="miyucomics" />
+        <link rel="None" type="image/ico" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" href="favicon-64x64.png" />
+        <link rel="icon" type="image/png" href="favicon-96x96.png" />
+        <link rel="icon" type="image/png" href="favicon-180x180.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-167x167.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-180x180.png" />
+        <link rel="None" type="image/png" href="mstile-70x70.png" />
+        <link rel="None" type="image/png" href="mstile-270x270.png" />
+        <link rel="None" type="image/png" href="mstile-310x310.png" />
+        <link rel="None" type="image/png" href="mstile-310x150.png" />
+        <link rel="shortcut icon" type="image/png" href="favicon-196x196.png" />
+      <link rel="mask-icon" href="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/main/media/safari-pinned-tab.svg" color="#332233">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hexcassettes Book" />
+<meta property="og:image" content="https://miyucomics.github.io/hexcassettes/v/1.0.0/1.0.0/zh_cn/icon.png" />
+<meta property="og:url" content="https://miyucomics.github.io/hexcassettes/v/1.0.0/1.0.0/zh_cn" />
+<meta property="og:description" content="The Hexcassettes Book, all in one place." />
+<meta property="og:site_name" content="Hexcassettes (1.0.0)" />
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="textures.css">
+      <noscript>
+        <style>
+          /* for accessibility */
+          .spoilered {
+            filter: none !important;
+          }
+        </style>
+      </noscript>
+        <script type="module" src="index.js"></script>
+  <script type="module" src="hexcasting.js"></script>
+  <script type="module" src="hexcasting_render.js"></script>
+  </head>
+  <body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#navbar-collapse"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../../../..">Hexcassettes Book</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+            <li>
+    <a
+      href="https://github.com/miyucomics/hexcassettes/tree/a667d3134a7e5e03e6517960728621c7dafd330c"
+        target="_blank"
+      class="navbar-link"
+      role="button"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >GitHub <i class="bi bi-box-arrow-up-right external-link-icon"></i></a>
+  </li>
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >1.0.0 <span class="caret"></span></a>
+          <ul class="dropdown-menu" id="version-dropdown"></ul>
+        </li>
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >简体中文 (中国大陆) <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-left" id="lang-dropdown"></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" style="margin-top: 3em;">
+  <blockquote>
+      <h1><p>这是Hexcassettes文档的在线版本。</p></h1>
+      <p><strong>条目的模糊处理相当于剧透警告</strong>。点击条目即可取消模糊，不过这么做有可能破坏游戏后期的进程与体验。也可点击<a href="?nospoiler">此处</a>以取消所有模糊。</p>
+      <span id="old-version-notice" class="hidden">
+        <br />
+        <p><i>往事犹若异乡；他们在那里做的事情都不一样。</i></p>
+      </span>
+  </blockquote>
+</div>
+<div class="container">
+<div id="table-of-contents"></div>
+<nav class="toc-container">
+  <h2 class="page-header">
+    <span class="nobr">目录<a
+      href="javascript:void(0)"
+      class="permalink toggle-link small"
+      data-target="toc-category"
+      title="显示或收起全部"
+    ><i class="bi bi-list-nested"></i></a><a
+    href="#table-of-contents"
+    class="permalink small toc-permalink"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></span>
+  </h2>
+    <details class="toc-category">
+      <summary><a href="#patterns" class="toc-elem "><img
+      title="书架"
+      alt="书架"
+      src="https://hexdoc-dev.github.io/hexdoc-minecraft/v/1.19.2/1.0.dev1/assets/minecraft/textures/block/bookshelf.png"
+      loading="lazy"
+      class="item-texture  texture "
+    > 图案</a></summary>
+      <ul>
+          <li><a href="#async" class="toc-elem "><img
+      title="磁带"
+      alt="磁带"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/a667d3134a7e5e03e6517960728621c7dafd330c/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > 异步咒术</a></li>
+      </ul>
+    </details>
+</nav>
+  <main class="book-body">
+<section id="patterns">
+    <h2 class="category-title page-header">
+    <img
+      title="书架"
+      alt="书架"
+      src="https://hexdoc-dev.github.io/hexdoc-minecraft/v/1.19.2/1.0.dev1/assets/minecraft/textures/block/bookshelf.png"
+      loading="lazy"
+      class="item-texture  texture "
+    >图案<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>我所发现的各式图案，和它们的功用。</p>
+<div id="async" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="磁带"
+      alt="磁带"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/a667d3134a7e5e03e6517960728621c7dafd330c/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >异步咒术<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#async"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p><span style="color: #b38ef3">咒术</span>会瞬时完全施放，这是它们的本性。而为延迟<span style="color: #b38ef3">咒术</span>，自然设计了一种有些奇怪的方案：一盒磁带，需要合成后“食用”的磁带。我最多能持有六盒磁带，每延迟一个<span style="color: #b38ef3">咒术</span>需占用一盒。可以在物品栏中查看这些磁带，点击即可终止<span style="color: #b38ef3">咒术</span>。</p>
+<br />
+  <details class="details-collapsible recipe-details">
+      <summary class="collapse-details">
+    <span class="collapse-recipe-show">点击以显示配方</span>
+    <span class="collapse-recipe-hide">点击以隐藏配方</span>
+  </summary>
+    <div class="crafting-tables">
+<div>
+    <h5>磁带</h5>
+    <div class="crafting-table">
+        <img
+      title="工作台"
+      alt="工作台"
+      src="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/3cd4e6e94280448caf430f172926a380469baaaf/src/hexdoc/_export/resources/assets/minecraft/textures/gui/hexdoc/crafting_table.png"
+      class="texture pixelated"
+    >
+  <div class="crafting-table-grid">
+        <div></div>        <div class="texture item-texture multi-textures cycle-textures">
+                <img
+      title="充能紫水晶"
+      alt="充能紫水晶"
+      src="https://raw.githubusercontent.com/FallingColors/HexMod/f569ba1530666f43e84584e446e6fd060395b5f4/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      loading="lazy"
+      class="item-texture multi-texture-active texture pixelated"
+    >
+        </div>
+        <div></div>        <div class="texture item-texture multi-textures cycle-textures">
+                <img
+      title="充能紫水晶"
+      alt="充能紫水晶"
+      src="https://raw.githubusercontent.com/FallingColors/HexMod/f569ba1530666f43e84584e446e6fd060395b5f4/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      loading="lazy"
+      class="item-texture multi-texture-active texture pixelated"
+    >
+        </div>
+        <div class="texture item-texture multi-textures cycle-textures">
+                <img
+      title="Tag: 唱片"
+      alt="Tag: 唱片"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAC4jAAAuIwF4pT92AAAANUlEQVQ4y2NgGJRAXV39v7q6+n9cfGTARKllFBvAiOxMUjTevHmTkSouGPhAHA0DWnmBrgAANLIZgSXEQxIAAAAASUVORK5CYII="
+      loading="lazy"
+      class="item-texture multi-texture-active texture pixelated"
+    >
+        </div>
+        <div class="texture item-texture multi-textures cycle-textures">
+                <img
+      title="充能紫水晶"
+      alt="充能紫水晶"
+      src="https://raw.githubusercontent.com/FallingColors/HexMod/f569ba1530666f43e84584e446e6fd060395b5f4/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      loading="lazy"
+      class="item-texture multi-texture-active texture pixelated"
+    >
+        </div>
+        <div></div>        <div class="texture item-texture multi-textures cycle-textures">
+                <img
+      title="充能紫水晶"
+      alt="充能紫水晶"
+      src="https://raw.githubusercontent.com/FallingColors/HexMod/f569ba1530666f43e84584e446e6fd060395b5f4/Common/src/main/resources/assets/hexcasting/textures/item/charged_amethyst.png"
+      loading="lazy"
+      class="item-texture multi-texture-active texture pixelated"
+    >
+        </div>
+        <div></div>  </div>
+  <div class="crafting-table-result recipe-item-slot">
+    <img
+      title="磁带"
+      alt="磁带"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/a667d3134a7e5e03e6517960728621c7dafd330c/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >
+  </div>
+    </div>
+</div>    </div>
+  </details>
+      <p>使用音乐唱片合成磁带后，<i>食用</i>即可收作己用。我最多只能同时持有六盒，在此情况下再食用只会浪费。</p>
+<br />
+  <div id="async@hexcassettes:enqueue" class="">
+<h4 class="pattern-title">入队列 (list, number, any →)<a
+    href="#async@hexcassettes:enqueue"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww"
+        data-start="east"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
+  </details>
+      <p>令一个<span style="color: #b38ef3">咒术</span>入队列，并在所给数个 1/20 秒后施放。还需一个 iota 作为磁带的标签。</p>
+  </div>
+<br />
+    <p>磁带间使用标签区分，且标签仅保留前 32 个字符。若令两个<span style="color: #b38ef3">咒术</span>按照同一标签入队列，则新的会覆盖旧的。若我试图让入队<span style="color: #b38ef3">咒术</span>的数量超出磁带的数量，那么就会招致“并行处理”事故，导致当前所有磁带终止。</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
+<br />
+    <p>所有入过队列的<span style="color: #b38ef3">咒术</span>可在聊天栏处查看。队列中的<span style="color: #b38ef3">咒术</span>表现为插入的磁带，其标签会出现在磁带侧面；按压磁带即可取消对应<span style="color: #b38ef3">咒术</span>。</p><p>死亡时，所有磁带都会强制被终止；如此就能避免陷入无尽的死亡循环了。</p>
+<br />
+    <p>如果一个<span style="color: #b38ef3">咒术</span>施放了与其自身近乎相同的咒术，便能达成常态<span style="color: #b38ef3">施法</span>。古代的咒术师称这种现象为“守护进程”。<span style="color: #b38ef3">咒法学</span>的此分支似乎尚未得到深入研究，亲自深入时务必当心：此类施放法术只会使用物品栏中的媒质；若不加监管，快速的自动施法会轻松耗尽媒质储备，当什么都不剩的时候，抽取的就是生命力了。</p>
+<br />
+  <div id="async@hexcassettes:dequeue" class="">
+<h4 class="pattern-title">出队列 (any →)<a
+    href="#async@hexcassettes:dequeue"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeeewwqqwqwqqweawwqwqwwqwwqwqww"
+        data-start="west"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeeewwqqwqwqqweawwqwqwwqwwqwqww</canvas>
+  </details>
+      <p>还可以此图案自动终止磁带。接受一个 iota，若存在标签为所给 iota 的磁带，则令其出队列。</p>
+  </div>
+<br />
+  <div id="async@hexcassettes:killall" class="">
+<h4 class="pattern-title">终止队列<a
+    href="#async@hexcassettes:killall"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeeewwqqwqwqqw"
+        data-start="west"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeeewwqqwqwqqw</canvas>
+  </details>
+      <p>终止所有磁带，效果与“并行处理”事故类似。</p>
+  </div>
+<br />
+  <div id="async@hexcassettes:specs" class="">
+<h4 class="pattern-title">线程之精思 (→ number)<a
+    href="#async@hexcassettes:specs"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqq"
+        data-start="east"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqq</canvas>
+  </details>
+      <p>返回我目前的磁带槽总数。</p>
+  </div>
+<br />
+  <div id="async@hexcassettes:free" class="">
+<h4 class="pattern-title">线程之精思，第二型 (→ number)<a
+    href="#async@hexcassettes:free"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweew"
+        data-start="east"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweew</canvas>
+  </details>
+      <p>返回我目前的空闲磁带槽总数。</p>
+  </div>
+<br />
+  <div id="async@hexcassettes:inspect" class="">
+<h4 class="pattern-title">程序之纯化 (→ null/list of patterns)<a
+    href="#async@hexcassettes:inspect"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeee"
+        data-start="west"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeee</canvas>
+  </details>
+      <p>若所给标签无对应活动中磁带，返回 Null；若有，返回磁带的<span style="color: #b38ef3">咒术</span>。我听传言称，这个图案能用来存储 iota，也可用来在<span style="color: #b38ef3">咒术</span>间传递信息。</p>
+  </div>
+<br />
+  <div id="async@hexcassettes:foretell" class="">
+<h4 class="pattern-title">程序之纯化，第二型 (→ null/number)<a
+    href="#async@hexcassettes:foretell"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeeedww"
+        data-start="west"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeeedww</canvas>
+  </details>
+      <p>若所给标签无对应活动中磁带，返回 Null；若有，返回其还需多少个 1/20 秒才启动。</p>
+  </div>
+<br />
+</div>
+</section>
+  </main>
+</div>
+      <footer class="footer">
+        <div class="container text-muted">
+          <p>该页面不是Minecraft的官方产品，不隶属于Mojang和Microsoft，且不代表Mojang和Microsoft的意见。</p><p>Minecraft的游戏内容和资源均为各自所有者的知识财产。</p><p>使用<a href="https://pypi.org/project/hexdoc/" target="_blank">hexdoc</a>精心制作。❤️</p>
+        </div>
+      </footer>
+  </body>
+</html>
