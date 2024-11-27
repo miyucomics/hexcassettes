@@ -12,7 +12,7 @@
 	"hexcasting.mishap.hexcassettes:too_many_cassettes": "Attempted to schedule more Hexes than owned cassettes.",
 
 	"hexcassettes.page.async.title": "Asynchronous Hexes",
-	"hexcassettes.page.async.0": "As part of their nature, _Hexes evaluate in their entirety instantly. To delay _Hexes, Nature has devised a quite the whimsical solution: a cassette tape that must be crafted and then \"consumed\". I can have up to six cassettes, and each _Hex I request to delay takes up one cassette. These cassettes can be viewed in my inventory and I can simply click them to abort the _Hex.",
+	"hexcassettes.page.async.0": "As part of their nature, _Hexes evaluate in their entirety instantly. To delay _Hexes, Nature has devised a quite the whimsical solution: a cassette tape that must be crafted and then \"consumed\". I can have up to six cassettes, and each _Hex I request to delay takes up one cassette. These cassettes can be viewed when chatting or casting with a staff and I can simply click them to abort the _Hex.",
 	"hexcassettes.page.async.craft": "After crafting it via a music disc, I can $(o)consume$() it to add it to my collection. I can only have six at a time and any more eaten will simply be wasted.",
     "hexcasting.spell.hexcassettes:enqueue": "Enqueue",
     "hexcassettes.page.enqueue.summary": "Enqueues a _Hex to cast after that many twentieths of a second. It takes an iota to use as the label for the cassette.",
