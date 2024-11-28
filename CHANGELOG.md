@@ -2,6 +2,7 @@
 
 # 1.1.0
 - added cassettes to the staff casting screen
+- changed position of cassettes to lower-right corner
 - fixed location description of cassettes
 - fixed parameters for Program Purifications
 
