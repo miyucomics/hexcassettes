@@ -9,7 +9,8 @@
 		"PlayerEntityMixin"
 	],
 	"client": [
-		"ChatScreenMixin"
+		"ChatScreenMixin",
+		"GuiSpellcastingMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
