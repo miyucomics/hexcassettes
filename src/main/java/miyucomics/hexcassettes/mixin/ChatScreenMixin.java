@@ -19,6 +19,6 @@ public abstract class ChatScreenMixin extends Screen {
 	@Inject(method = "init", at = @At("TAIL"))
 	private void initCassettes(CallbackInfo ci) {
 		for (int i = 0; i < ClientStorage.ownedCassettes; i++)
-			addDrawableChild(new CassetteWidget(i));
+			addDrawableChild(new CassetteWidget(i, width - 11, height - 151 + i * 23));
 	}
 }

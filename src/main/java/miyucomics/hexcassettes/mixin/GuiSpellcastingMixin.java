@@ -3,7 +3,6 @@ package miyucomics.hexcassettes.mixin;
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
 import miyucomics.hexcassettes.client.CassetteWidget;
 import miyucomics.hexcassettes.client.ClientStorage;
-import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,6 +19,6 @@ public abstract class GuiSpellcastingMixin extends Screen {
 	@Inject(method = "init", at = @At("TAIL"))
 	private void initCassettes(CallbackInfo ci) {
 		for (int i = 0; i < ClientStorage.ownedCassettes; i++)
-			addDrawableChild(new CassetteWidget(i));
+			addDrawableChild(new CassetteWidget(i, width - 11, height - 151 + i * 23));
 	}
 }
