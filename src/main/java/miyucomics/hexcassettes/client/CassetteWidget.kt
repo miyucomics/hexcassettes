@@ -28,7 +28,7 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), 
 		RenderSystem.enableDepthTest()
 		if (isActive()) {
 			drawTexture(matrices, this.x, this.y, 0f, 20f, this.width, this.height, 11, 40)
-			val text = ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)]
+			val text = ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)] ?: return
 			drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, text, this.x - MinecraftClient.getInstance().textRenderer.getWidth(text) - 10, this.y + 5, 0xffffff)
 		} else {
 			drawTexture(matrices, this.x, this.y, 0f, 0f, this.width, this.height, 11, 40)
