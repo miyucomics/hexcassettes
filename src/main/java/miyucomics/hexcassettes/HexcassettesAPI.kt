@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
 import miyucomics.hexcassettes.data.PlayerState
 import miyucomics.hexcassettes.data.QueuedHex
+import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.entity.player.PlayerEntity
@@ -58,7 +59,7 @@ class HexcassettesAPI : PersistentState() {
 			buf.writeInt(playerState.ownedCassettes)
 			buf.writeInt(playerState.queuedHexes.size)
 			playerState.queuedHexes.forEach { (label, _) -> buf.writeString(label) }
-			ServerPlayNetworking.send(player, HexcassettesMain.SYNC_CASSETTES, buf)
+			ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
 		}
 	}
 }
