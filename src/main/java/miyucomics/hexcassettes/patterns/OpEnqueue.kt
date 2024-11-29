@@ -12,6 +12,7 @@ import miyucomics.hexcassettes.HexcassettesAPI
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.HexcassettesUtils
 import miyucomics.hexcassettes.data.SilentMarker
+import miyucomics.hexcassettes.inits.HexcassettesAdvancements
 import net.minecraft.util.DyeColor
 
 class OpEnqueue : ConstMediaAction {
@@ -19,7 +20,7 @@ class OpEnqueue : ConstMediaAction {
 	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
 		val isQuining = (ctx as SilentMarker).isDelayCast()
 		if (isQuining)
-			HexcassettesMain.QUINE.trigger(ctx.caster)
+			HexcassettesAdvancements.QUINE.trigger(ctx.caster)
 
 		val playerState = HexcassettesAPI.getPlayerState(ctx.caster)
 
