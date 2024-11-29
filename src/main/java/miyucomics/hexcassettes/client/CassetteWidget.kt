@@ -1,8 +1,8 @@
 package miyucomics.hexcassettes.client
 
 import com.mojang.blaze3d.systems.RenderSystem
-import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.HexcassettesUtils
+import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
@@ -43,7 +43,7 @@ class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), 
 		if (isActive()) {
 			val buf = PacketByteBufs.create()
 			buf.writeString(ClientStorage.labels.keys.elementAt(index))
-			ClientPlayNetworking.send(HexcassettesMain.CASSETTE_REMOVE, buf)
+			ClientPlayNetworking.send(HexcassettesNetworking.CASSETTE_REMOVE, buf)
 		}
 	}
 
