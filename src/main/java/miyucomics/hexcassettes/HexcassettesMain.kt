@@ -27,6 +27,9 @@ import net.minecraft.world.World
 class HexcassettesMain : ModInitializer {
 	override fun onInitialize() {
 		QUINE = Criteria.register(QuineCriterion())
+		TAPE_WORM = Criteria.register(TapeWormCriterion())
+		FULL_ARSENAL = Criteria.register(FullArsenalCriterion())
+
 		Registry.register(Registry.ITEM, id("cassette"), CassetteItem())
 
 		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ ->
@@ -51,6 +54,8 @@ class HexcassettesMain : ModInitializer {
 		val SYNC_CASSETTES: Identifier = id("sync_cassettes")
 
 		lateinit var QUINE: QuineCriterion
+		lateinit var TAPE_WORM: TapeWormCriterion
+		lateinit var FULL_ARSENAL: FullArsenalCriterion
 	}
 }
 
@@ -63,6 +68,28 @@ class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
 	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
 	companion object {
 		val ID: Identifier = id("quinio")
+	}
+}
+
+class TapeWormCriterion : AbstractCriterion<TapeWormCriterion.Condition>() {
+	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
+	override fun getId() = ID
+
+	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
+	companion object {
+		val ID: Identifier = id("tape_worm")
+	}
+}
+
+class FullArsenalCriterion : AbstractCriterion<FullArsenalCriterion.Condition>() {
+	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
+	override fun getId() = ID
+
+	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
+	companion object {
+		val ID: Identifier = id("full_arsenal")
 	}
 }
 
@@ -79,7 +106,10 @@ class CassetteItem : Item(Settings().maxCount(1).group(IXplatAbstractions.INSTAN
 			return super.finishUsing(stack, world, user)
 		val playerState = HexcassettesAPI.getPlayerState(user)
 		if (playerState.ownedCassettes < HexcassettesMain.MAX_CASSETTES) {
+			HexcassettesMain.TAPE_WORM.trigger(user)
 			HexcassettesAPI.getPlayerState(user).ownedCassettes += 1
+			if (HexcassettesAPI.getPlayerState(user).ownedCassettes == HexcassettesMain.MAX_CASSETTES)
+				HexcassettesMain.FULL_ARSENAL.trigger(user)
 			HexcassettesAPI.sendSyncPacket(user)
 		}
 		return super.finishUsing(stack, world, user)

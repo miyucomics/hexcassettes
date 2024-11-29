@@ -1,0 +1,24 @@
+{
+	"parent": "hexcasting:root",
+	"criteria": {
+		"tape_worm": {
+			"trigger": "hexcassettes:tape_worm"
+		}
+	},
+	"display": {
+		"announce_to_chat": true,
+		"title": {
+			"translate": "advancements.hexcassettes.tape_worm.title"
+		},
+		"description": {
+			"translate": "advancements.hexcassettes.tape_worm.description"
+		},
+		"frame": "task",
+		"hidden": true,
+		"icon": {
+			"item": "minecraft:music_disc_blocks"
+		},
+		"show_toast": true
+	},
+	"requirements": [["tape_worm"]]
+}
