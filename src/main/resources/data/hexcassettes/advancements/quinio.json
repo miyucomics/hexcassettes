@@ -1,5 +1,5 @@
 {
-	"parent": "hexcasting:root",
+	"parent": "hexcassettes:tape_worm",
 	"criteria": {
 		"quinio": {
 			"trigger": "hexcassettes:quinio"

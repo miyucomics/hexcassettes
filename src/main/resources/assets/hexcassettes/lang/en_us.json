@@ -1,6 +1,10 @@
 {
-	"advancements.hexcassettes.quinio.title": "Quinio",
-	"advancements.hexcassettes.quinio.description": "Make a Hex cast a Hex",
+	"advancements.hexcassettes.quinio.title": "QUINIO",
+	"advancements.hexcassettes.quinio.description": "Make a Hex cast a Hex.",
+	"advancements.hexcassettes.tape_worm.title": "Tape Worm?",
+	"advancements.hexcassettes.tape_worm.description": "Consume a cassette tape.",
+	"advancements.hexcassettes.full_arsenal.title": "Full Album",
+	"advancements.hexcassettes.full_arsenal.description": "Acquire a full arsenal of cassettes.",
 
 	"subtitles.hexcassettes.cassette_eject": "Cassette ejects",
 	"subtitles.hexcassettes.cassette_fail": "Cassette clicks",
