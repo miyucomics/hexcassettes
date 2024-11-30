@@ -1,9 +1,10 @@
 package miyucomics.hexcassettes.data
 
+import at.petrak.hexcasting.api.spell.casting.CastingContext
+import at.petrak.hexcasting.api.spell.casting.CastingHarness
 import at.petrak.hexcasting.api.spell.iota.ListIota
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
-import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
@@ -17,7 +18,8 @@ data class QueuedHex(val hex: NbtCompound, var delay: Int) {
 	}
 
 	fun cast(player: ServerPlayerEntity) {
-		val harness = IXplatAbstractions.INSTANCE.getHarness(player, Hand.MAIN_HAND)
+		val hand = if (!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty) Hand.OFF_HAND else Hand.MAIN_HAND
+		val harness = CastingHarness(CastingContext(player, hand, CastingContext.CastSource.PACKAGED_HEX))
 		(harness.ctx as SilentMarker).delayCast()
 		harness.stack = mutableListOf()
 		harness.executeIotas((HexIotaTypes.deserialize(hex, player.getWorld()) as ListIota).list.toList(), player.getWorld())
