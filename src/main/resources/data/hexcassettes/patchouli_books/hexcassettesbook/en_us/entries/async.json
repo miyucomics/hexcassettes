@@ -81,6 +81,10 @@
 			"input": "any",
 			"output": "null/number",
 			"text": "hexcassettes.page.foretell.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexcassettes.page.async.4"
 		}
 	]
 }
