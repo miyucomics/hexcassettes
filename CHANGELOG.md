@@ -1,6 +1,9 @@
 # Hexcassettes
 
-# 1.1.0
+## 1.1.1
+- fixed a bug with large lists that caused crash loops
+
+## 1.1.0
 - added advancement for eating a cassette and having a full album
 - added cassettes to the staff casting screen
 - added warning about rapidly renaming cassettes
