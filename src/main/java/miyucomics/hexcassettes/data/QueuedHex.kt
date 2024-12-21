@@ -22,7 +22,9 @@ data class QueuedHex(val hex: NbtCompound, var delay: Int) {
 		val harness = CastingHarness(CastingContext(player, hand, CastingContext.CastSource.PACKAGED_HEX))
 		(harness.ctx as SilentMarker).delayCast()
 		harness.stack = mutableListOf()
-		harness.executeIotas((HexIotaTypes.deserialize(hex, player.getWorld()) as ListIota).list.toList(), player.getWorld())
+		val actualHex = HexIotaTypes.deserialize(hex, player.getWorld())
+		if (actualHex is ListIota)
+			harness.executeIotas(actualHex.list.toList(), player.getWorld())
 	}
 
 	companion object {
