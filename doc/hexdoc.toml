@@ -1,5 +1,5 @@
 modid = "hexcassettes"
-book = "hexcassettes:hexcassettesbook"
+book = "hexcasting:thehexbook"
 default_lang = "en_us"
 default_branch = "main"
 

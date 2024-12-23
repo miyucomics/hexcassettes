@@ -7,31 +7,31 @@ import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.render.GameRenderer
 import net.minecraft.client.sound.PositionedSoundInstance
 import net.minecraft.client.sound.SoundManager
-import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), { }) {
+class CassetteWidget(x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), { }, { supplier -> supplier.get() }) {
 	private var index = 0
 
 	constructor(index: Int, x: Int, y: Int) : this(x, y) {
 		this.index = index
 	}
 
-	override fun renderButton(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
-		RenderSystem.setShader { GameRenderer.getPositionTexShader() }
+	override fun renderButton(drawContext: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
+		RenderSystem.setShader { GameRenderer.getPositionTexProgram() }
 		RenderSystem.setShaderTexture(0, texture)
 		RenderSystem.enableDepthTest()
 		if (isActive()) {
-			drawTexture(matrices, this.x, this.y, 0f, 20f, this.width, this.height, 11, 40)
+			drawContext.drawTexture(texture, this.x, this.y, 0f, 20f, this.width, this.height, 11, 40)
 			val text = ClientStorage.labels[ClientStorage.labels.keys.elementAt(index)] ?: return
-			drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, text, this.x - MinecraftClient.getInstance().textRenderer.getWidth(text) - 10, this.y + 5, 0xffffff)
+			drawContext.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, text, this.x - MinecraftClient.getInstance().textRenderer.getWidth(text) - 10, this.y + 5, 0xffffff)
 		} else {
-			drawTexture(matrices, this.x, this.y, 0f, 0f, this.width, this.height, 11, 40)
+			drawContext.drawTexture(texture, this.x, this.y, 0f, 0f, this.width, this.height, 11, 40)
 		}
 	}
 

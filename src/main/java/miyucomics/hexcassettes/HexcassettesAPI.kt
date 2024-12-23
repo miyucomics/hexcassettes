@@ -1,7 +1,7 @@
 package miyucomics.hexcassettes
 
-import at.petrak.hexcasting.api.spell.iota.ListIota
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import miyucomics.hexcassettes.data.PlayerState
 import miyucomics.hexcassettes.data.QueuedHex
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
@@ -42,7 +42,7 @@ class HexcassettesAPI : PersistentState() {
 		}
 
 		fun queue(player: ServerPlayerEntity, hex: ListIota, delay: Int, label: String) {
-			getPlayerState(player).queuedHexes[label] = QueuedHex(HexIotaTypes.serialize(hex), delay)
+			getPlayerState(player).queuedHexes[label] = QueuedHex(IotaType.serialize(hex), delay)
 		}
 
 		fun dequeueAll(player: ServerPlayerEntity) {

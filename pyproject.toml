@@ -20,7 +20,7 @@ dynamic = ["version", "dependencies", "optional-dependencies"]
 
 [project.urls]
 Homepage = "https://miyucomics.github.io/hexcassettes/"
-Source = "https://github.com/miyucomics/hexcassettes/"
+Source = "https://github.com/miyucomics/hexcassettes"
 
 # Gradle version/deps
 

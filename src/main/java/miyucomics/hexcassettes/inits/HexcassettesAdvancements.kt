@@ -6,7 +6,7 @@ import net.minecraft.advancement.criterion.AbstractCriterion
 import net.minecraft.advancement.criterion.AbstractCriterionConditions
 import net.minecraft.advancement.criterion.Criteria
 import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer
-import net.minecraft.predicate.entity.EntityPredicate
+import net.minecraft.predicate.entity.LootContextPredicate
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Identifier
 
@@ -25,33 +25,33 @@ object HexcassettesAdvancements {
 
 
 class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
-	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	override fun conditionsFromJson(jsonObject: JsonObject, lootContextPredicate: LootContextPredicate, advancementEntityPredicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
 	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
 	override fun getId() = ID
 
-	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
+	class Condition : AbstractCriterionConditions(ID, LootContextPredicate.EMPTY)
 	companion object {
 		val ID: Identifier = id("quinio")
 	}
 }
 
 class TapeWormCriterion : AbstractCriterion<TapeWormCriterion.Condition>() {
-	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	override fun conditionsFromJson(jsonObject: JsonObject, lootContextPredicate: LootContextPredicate, advancementEntityPredicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
 	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
 	override fun getId() = ID
 
-	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
+	class Condition : AbstractCriterionConditions(ID, LootContextPredicate.EMPTY)
 	companion object {
 		val ID: Identifier = id("tape_worm")
 	}
 }
 
 class FullArsenalCriterion : AbstractCriterion<FullArsenalCriterion.Condition>() {
-	override fun conditionsFromJson(obj: JsonObject, playerPredicate: EntityPredicate.Extended, predicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
+	override fun conditionsFromJson(jsonObject: JsonObject, lootContextPredicate: LootContextPredicate, advancementEntityPredicateDeserializer: AdvancementEntityPredicateDeserializer) = Condition()
 	fun trigger(player: ServerPlayerEntity) = trigger(player) { true }
 	override fun getId() = ID
 
-	class Condition : AbstractCriterionConditions(ID, EntityPredicate.Extended.EMPTY)
+	class Condition : AbstractCriterionConditions(ID, LootContextPredicate.EMPTY)
 	companion object {
 		val ID: Identifier = id("full_arsenal")
 	}

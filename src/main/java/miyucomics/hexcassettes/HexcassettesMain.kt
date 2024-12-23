@@ -1,25 +1,31 @@
 package miyucomics.hexcassettes
 
-import at.petrak.hexcasting.xplat.IXplatAbstractions
+import at.petrak.hexcasting.api.HexAPI
 import miyucomics.hexcassettes.HexcassettesUtils.id
 import miyucomics.hexcassettes.inits.HexcassettesAdvancements
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesPatterns
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
+import net.minecraft.registry.RegistryKey
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Rarity
-import net.minecraft.util.registry.Registry
 import net.minecraft.world.World
 
 class HexcassettesMain : ModInitializer {
 	override fun onInitialize() {
-		Registry.register(Registry.ITEM, id("cassette"), CassetteItem())
+		val cassette = CassetteItem()
+		Registry.register(Registries.ITEM, id("cassette"), cassette)
+		ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.key, HexAPI.modLoc("hexcasting"))).register { group -> group.add(cassette) }
+
 		HexcassettesAdvancements.init()
 		HexcassettesNetworking.init()
 		HexcassettesPatterns.init()
@@ -34,7 +40,7 @@ class HexcassettesMain : ModInitializer {
 }
 
 // kinda messy, but I don't want to make a whole file for these
-class CassetteItem : Item(Settings().maxCount(1).group(IXplatAbstractions.INSTANCE.tab).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().build())) {
+class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(FoodComponent.Builder().alwaysEdible().build())) {
 	override fun getMaxUseTime(stack: ItemStack) = 100
 	override fun getEatSound() = HexcassettesSounds.CASSETTE_LOOP
 

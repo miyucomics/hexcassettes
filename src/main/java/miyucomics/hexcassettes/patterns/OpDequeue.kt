@@ -1,15 +1,18 @@
 package miyucomics.hexcassettes.patterns
 
-import at.petrak.hexcasting.api.spell.ConstMediaAction
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.iota.Iota
+import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.Iota
 import miyucomics.hexcassettes.HexcassettesAPI
 import miyucomics.hexcassettes.HexcassettesUtils
+import net.minecraft.server.network.ServerPlayerEntity
 
 class OpDequeue : ConstMediaAction {
 	override val argc = 1
-	override fun execute(args: List<Iota>, ctx: CastingContext): List<Iota> {
-		HexcassettesAPI.dequeueByName(ctx.caster, HexcassettesUtils.shortenLabel(args[0].display().string))
+	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
+		val caster = env.castingEntity
+		if (caster != null && caster is ServerPlayerEntity)
+			HexcassettesAPI.dequeueByName(caster, HexcassettesUtils.shortenLabel(args[0].display().string))
 		return emptyList()
 	}
 }
