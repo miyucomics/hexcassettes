@@ -35,5 +35,5 @@
 	"hexcassettes.page.inspect.summary": "Pushes null if I do not have an active cassette with that label, or the cassette's _Hex if I do. I hear rumors of this being used for iota storage and passing information between _Hexes.",
 	"hexcasting.action.hexcassettes:foretell": "Program Purification II",
 	"hexcassettes.page.foretell.summary": "Pushes null if I do not have an active cassette with that label, or how many twentieths of a second until that cassette fires if I do.",
-	"hexcassettes.page.async.4": "I shall also note that rapidly changing cassette names (for example a cassette that enqueues itself with a different name) may be difficult to terminate. I can always resort to $(l:hexcassettes:async#hexcassettes:killall)$(action)Disqueue$() in such cases."
+	"hexcassettes.page.async.4": "I shall also note that rapidly changing cassette names (for example a cassette that enqueues itself with a different name) may be difficult to terminate. I can always resort to $(l:async#hexcassettes:killall)$(action)Disqueue$() in such cases."
 }
