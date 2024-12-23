@@ -1,5 +1,9 @@
 # Hexcassettes
 
+## 1.1.2
+- updated to 1.20.1
+- removed cassettes from chat screen
+
 ## 1.1.1
 - fixed a bug with large lists that caused crash loops
 

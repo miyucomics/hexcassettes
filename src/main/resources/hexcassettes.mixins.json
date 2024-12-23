@@ -4,13 +4,10 @@
 	"compatibilityLevel": "JAVA_17",
 	"minVersion": "0.8",
 	"mixins": [
-		"CastingContextMixin",
-		"CastingHarnessMixin",
 		"PlayerEntityMixin"
 	],
 	"client": [
-		"ChatScreenMixin",
-		"GuiSpellcastingMixin"
+		"ChatScreenMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

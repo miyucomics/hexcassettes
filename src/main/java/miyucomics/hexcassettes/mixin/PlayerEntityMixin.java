@@ -13,7 +13,7 @@ public class PlayerEntityMixin {
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void runCassettes(CallbackInfo ci) {
 		PlayerEntity player = (PlayerEntity) (Object) this;
-		if (player.world.isClient)
+		if (player.getWorld().isClient)
 			return;
 		HexcassettesAPI.getPlayerState(player).tick((ServerPlayerEntity) player);
 	}

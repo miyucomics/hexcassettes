@@ -1,10 +1,10 @@
 package miyucomics.hexcassettes.data
 
-import at.petrak.hexcasting.api.spell.casting.CastingContext
-import at.petrak.hexcasting.api.spell.casting.CastingHarness
-import at.petrak.hexcasting.api.spell.iota.ListIota
+import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
+import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.utils.putCompound
-import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import miyucomics.hexcassettes.CassetteCastEnv
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
@@ -19,12 +19,10 @@ data class QueuedHex(val hex: NbtCompound, var delay: Int) {
 
 	fun cast(player: ServerPlayerEntity) {
 		val hand = if (!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty) Hand.OFF_HAND else Hand.MAIN_HAND
-		val harness = CastingHarness(CastingContext(player, hand, CastingContext.CastSource.PACKAGED_HEX))
-		(harness.ctx as SilentMarker).delayCast()
-		harness.stack = mutableListOf()
-		val actualHex = HexIotaTypes.deserialize(hex, player.getWorld())
-		if (actualHex is ListIota)
-			harness.executeIotas(actualHex.list.toList(), player.getWorld())
+		val harness = CastingVM.empty(CassetteCastEnv(player, hand))
+		val hexIota = IotaType.deserialize(hex, player.serverWorld)
+		if (hexIota is ListIota)
+			harness.queueExecuteAndWrapIotas(hexIota.list.toList(), player.serverWorld)
 	}
 
 	companion object {
