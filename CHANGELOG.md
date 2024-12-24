@@ -1,5 +1,8 @@
 # Hexcassettes
 
+## 1.1.3
+- minor bug fix: cassettes are now in the staff screen after wrong deletion
+
 ## 1.1.2
 - updated to 1.20.1
 - removed cassettes from chat screen
