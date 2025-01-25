@@ -16,7 +16,6 @@ on:
         options:
           - none
           - PyPI
-          # - TestPyPI
 
 env:
   PYPI_PACKAGE: hexdoc-hexcassettes
