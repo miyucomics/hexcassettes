@@ -1,5 +1,8 @@
 # Hexcassettes
 
+## 1.1.4
+- minor bug fix: cassettes don't clear on crossing End Portal
+
 ## 1.1.3
 - minor bug fix: cassettes are now in the staff screen after wrong deletion
 

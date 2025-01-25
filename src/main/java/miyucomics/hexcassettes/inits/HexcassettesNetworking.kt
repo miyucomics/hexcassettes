@@ -38,6 +38,6 @@ object HexcassettesNetworking {
 		}
 
 		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ -> HexcassettesAPI.sendSyncPacket(player) }
-		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, _ -> HexcassettesAPI.dequeueAll(player) }
+		ServerPlayerEvents.AFTER_RESPAWN.register { _, player, alive -> if (!alive) HexcassettesAPI.dequeueAll(player) }
 	}
 }
