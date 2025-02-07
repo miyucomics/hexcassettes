@@ -31,9 +31,5 @@
 	"hexcassettes.page.specs.summary": "返回我目前的磁带槽总数。",
 	"hexcasting.action.hexcassettes:free": "线程之精思，第二型",
 	"hexcassettes.page.free.summary": "返回我目前的空闲磁带槽总数。",
-	"hexcasting.action.hexcassettes:inspect": "程序之纯化",
-	"hexcassettes.page.inspect.summary": "若所给标签无对应活动中磁带，返回 Null；若有，返回磁带的$(hex)咒术$()。我听传言称，这个图案能用来存储 iota，也可用来在$(hex)咒术$()间传递信息。",
-	"hexcasting.action.hexcassettes:foretell": "程序之纯化，第二型",
-	"hexcassettes.page.foretell.summary": "若所给标签无对应活动中磁带，返回 Null；若有，返回其还需多少个 1/20 秒才启动。",
 	"hexcassettes.page.async.4": "名称快速切换的磁带会很难终止；比如，会使用新标签将自身入队列的磁带。此类情况需格外注意，但无论如何都有$(l:async#hexcassettes:killall)$(action)终止队列$()作为兜底。"
 }

@@ -17,8 +17,6 @@ object HexcassettesPatterns {
 		register("killall", "eqeweweweweqedwqeeeeewwqqwqwqqw", HexDir.WEST, OpKillAll())
 		register("specs", "qeqwqwqwqwqeqaweqqqqq", HexDir.EAST, OpSpecs())
 		register("free", "qeqwqwqwqwqeqaweqqqqqwweeweweew", HexDir.EAST, OpFree())
-		register("inspect", "eqeweweweweqedwqeeeee", HexDir.WEST, OpInspect())
-		register("foretell", "eqeweweweweqedwqeeeeedww", HexDir.WEST, OpForetell())
 	}
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) {
