@@ -12,18 +12,22 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
-	private var rawIntIndex = 0
-	private var interpolatedIndex = 0f
 	private var lastUpdateTime = System.currentTimeMillis()
+	private var interpolatedIndex = 0f
+
+	init {
+		ClientStorage.selectedCassette = Math.floorMod(ClientStorage.selectedCassette, NUMBER_OF_CASSETTES)
+		interpolatedIndex = ClientStorage.selectedCassette - 2f
+	}
 
 	override fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
 		when (keyCode) {
-			GLFW.GLFW_KEY_A -> rawIntIndex -= 1
-			GLFW.GLFW_KEY_S -> rawIntIndex += 1
-			GLFW.GLFW_KEY_H -> rawIntIndex -= 1
-			GLFW.GLFW_KEY_L -> rawIntIndex += 1
-			GLFW.GLFW_KEY_LEFT -> rawIntIndex -= 1
-			GLFW.GLFW_KEY_RIGHT -> rawIntIndex += 1
+			GLFW.GLFW_KEY_A -> ClientStorage.selectedCassette -= 1
+			GLFW.GLFW_KEY_S -> ClientStorage.selectedCassette += 1
+			GLFW.GLFW_KEY_H -> ClientStorage.selectedCassette -= 1
+			GLFW.GLFW_KEY_L -> ClientStorage.selectedCassette += 1
+			GLFW.GLFW_KEY_LEFT -> ClientStorage.selectedCassette -= 1
+			GLFW.GLFW_KEY_RIGHT -> ClientStorage.selectedCassette += 1
 		}
 		return super.keyPressed(keyCode, scanCode, modifiers)
 	}
@@ -39,13 +43,13 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 		val elapsedTime = (currentTime - lastUpdateTime) / 1000.0f
 		lastUpdateTime = currentTime
 
-		val rawDiff = (rawIntIndex - interpolatedIndex + NUMBER_OF_CASSETTES) % NUMBER_OF_CASSETTES
+		val rawDiff = (ClientStorage.selectedCassette - interpolatedIndex + NUMBER_OF_CASSETTES) % NUMBER_OF_CASSETTES
 		val diff = if (rawDiff > NUMBER_OF_CASSETTES / 2) rawDiff - NUMBER_OF_CASSETTES else rawDiff
 		interpolatedIndex += diff * 0.15f * elapsedTime * 60
 
 		val client = MinecraftClient.getInstance()
 
-		val trueIndex = Math.floorMod(rawIntIndex, NUMBER_OF_CASSETTES)
+		val trueIndex = Math.floorMod(ClientStorage.selectedCassette, NUMBER_OF_CASSETTES)
 
 		(0 until NUMBER_OF_CASSETTES).sortedBy { i -> -abs(i - trueIndex) }.forEach { i ->
 			val radians = ((i - interpolatedIndex) / NUMBER_OF_CASSETTES) * 2 * PI
