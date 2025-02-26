@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/8790f9aad1724f337d3ace2285edbe1bb4bba986"
+      href="https://github.com/miyucomics/hexcassettes/tree/f6cbf44ad902f8ae6bd1cc81c6eed6cbee4192f3"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,7 +149,7 @@
           <li><a href="#async" class="toc-elem "><img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/8790f9aad1724f337d3ace2285edbe1bb4bba986/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/f6cbf44ad902f8ae6bd1cc81c6eed6cbee4192f3/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Asynchronous Hexes</a></li>
@@ -180,7 +180,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/8790f9aad1724f337d3ace2285edbe1bb4bba986/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/f6cbf44ad902f8ae6bd1cc81c6eed6cbee4192f3/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Asynchronous Hexes<a
@@ -260,7 +260,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/8790f9aad1724f337d3ace2285edbe1bb4bba986/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/f6cbf44ad902f8ae6bd1cc81c6eed6cbee4192f3/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -268,7 +268,7 @@
     </div>
 </div>    </div>
   </details>
-      <p>After crafting it by plating a music disc with a hefty amount of charged amethyst to facilitate the assimilation, I can <i>consume</i> it to add it to my mind&#39;s collection. I can only have six cassettes at a time and any more eaten will simply be wasted.</p>
+      <p>After plating a <span style="color: #b0b">Music Disc</span> with a hefty amount of <span style="color: #b0b"><a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#items/amethyst">Charged Amethyst</a></span> to enable the <i>abstraction</i>, I can <i>consume</i> my creation using magic and a lot of chewing to add it to my mind&#39;s collection. I can only have six cassettes at a time and any more eaten will simply be wasted.</p>
 <br />
   <div id="async@hexcassettes:enqueue" class="">
 <h4 class="pattern-title">Enqueue (list, number, any →)<a
@@ -556,7 +556,119 @@
       <p>Pushes the number of non-busy cassette slots that I currently have.</p>
   </div>
 <br />
-    <p>I shall also note that rapidly changing cassette names (for example a cassette that enqueues itself with a different name) may be difficult to terminate. I can always resort to <a href="#async@hexcassettes:killall"><span style="color: #fc77be">Disqueue</span></a> in such cases.</p>
+    <p>hexcassettes.page.async.4</p>
+<br />
+  <div id="async@hexcassettes:inspect" class="">
+<h4 class="pattern-title">Program Purification (any → null/list of patterns)<a
+    href="#async@hexcassettes:inspect"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeee"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeee</canvas>
+  </details>
+      <p>Pushes null if I do not have an active cassette with that label, or the cassette&#39;s <span style="color: #b38ef3">Hex</span> if I do. I hear rumors of this being used for iota storage and passing information between <span style="color: #b38ef3">Hexes</span>.</p>
+  </div>
+<br />
+  <div id="async@hexcassettes:foretell" class="">
+<h4 class="pattern-title">Program Purification II (any → null/number)<a
+    href="#async@hexcassettes:foretell"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="eqeweweweweqedwqeeeeedww"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeeedww</canvas>
+  </details>
+      <p>Pushes null if I do not have an active cassette with that label, or how many twentieths of a second until that cassette fires if I do.</p>
+  </div>
 <br />
 </div>
 </section>
