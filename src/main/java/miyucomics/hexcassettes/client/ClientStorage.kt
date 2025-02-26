@@ -7,4 +7,6 @@ object ClientStorage {
 	var ownedCassettes: Int = 0
 	@JvmField
 	val labels: LinkedHashMap<String, Text> = LinkedHashMap()
+
+	var selectedCassette = 0
 }
