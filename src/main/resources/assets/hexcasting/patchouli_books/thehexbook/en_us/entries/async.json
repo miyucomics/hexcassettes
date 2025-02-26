@@ -69,6 +69,22 @@
 		{
 			"type": "patchouli:text",
 			"text": "hexcassettes.page.async.4"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexcassettes:inspect",
+			"anchor": "hexcassettes:inspect",
+			"input": "any",
+			"output": "null/list of patterns",
+			"text": "hexcassettes.page.inspect.summary"
+		},
+		{
+			"type": "hexcasting:pattern",
+			"op_id": "hexcassettes:foretell",
+			"anchor": "hexcassettes:foretell",
+			"input": "any",
+			"output": "null/number",
+			"text": "hexcassettes.page.foretell.summary"
 		}
 	]
 }

@@ -6,9 +6,6 @@
 	"mixins": [
 		"PlayerEntityMixin"
 	],
-	"client": [
-		"GuiSpellcastingMixin"
-	],
 	"injectors": {
 		"defaultRequire": 1
 	}
