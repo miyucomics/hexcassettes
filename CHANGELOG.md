@@ -3,10 +3,9 @@
 ## 1.2.0
 - added screen for managing cassettes
   - allows for mishapping cassettes to still be cancelled even when your staff is wrenched from your hand
+- changed cassettes to dequeue before they cast so Program Purification can not self-read
 - removed cassettes from the staff casting screen
-- removed Program Purification and Program Purification II
-  - I just didn't like them anymore since they made quines too easy
-  - they also had weird bugs
+- rewrote a lot of code under the hood
 
 ## 1.1.4
 - minor bug fix: cassettes don't clear on crossing End Portal

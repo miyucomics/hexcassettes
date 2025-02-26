@@ -20,19 +20,16 @@ class PlayerState {
 			HexcassettesAPI.sendSyncPacket(player)
 		previouslyActiveCassettes = queuedHexes.keys.toMutableSet()
 
-		queuedHexes.forEach { (label, hex) ->
-			hex.delay -= 1
+		queuedHexes.forEach { (_, hex) -> hex.delay -= 1 }
+
+		val iterator = queuedHexes.iterator()
+		while (iterator.hasNext()) {
+			val hex = iterator.next().value
 			if (hex.delay <= 0) {
-				val buf = PacketByteBufs.create()
-				buf.writeString(label)
+				iterator.remove()
 				hex.cast(player)
 			}
 		}
-
-		val iterator = queuedHexes.iterator()
-		while (iterator.hasNext())
-			if (iterator.next().value.delay <= 0)
-				iterator.remove()
 	}
 
 	fun serialize(): NbtCompound {
