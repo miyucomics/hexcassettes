@@ -4,7 +4,6 @@ import at.petrak.hexcasting.api.utils.asCompound
 import at.petrak.hexcasting.api.utils.putCompound
 import at.petrak.hexcasting.api.utils.putList
 import miyucomics.hexcassettes.HexcassettesAPI
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
