@@ -1,16 +1,13 @@
 package miyucomics.hexcassettes.patterns
 
 import at.petrak.hexcasting.api.casting.RenderedSpell
-import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.castables.SpellAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import at.petrak.hexcasting.api.misc.MediaConstants
 import miyucomics.hexcassettes.HexcassettesAPI
 import net.minecraft.server.network.ServerPlayerEntity
-import net.minecraft.util.math.Vec3d
 
 class OpKillAll : SpellAction {
 	override val argc = 0
