@@ -1,6 +1,5 @@
 package miyucomics.hexcassettes.client
 
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.text.Text
@@ -17,7 +16,8 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 	private var interpolatedIndex = 0f
 
 	init {
-		ClientStorage.selectedCassette = Math.floorMod(ClientStorage.selectedCassette, NUMBER_OF_CASSETTES)
+		if (ClientStorage.ownedCassettes != 0)
+			ClientStorage.selectedCassette = Math.floorMod(ClientStorage.selectedCassette, ClientStorage.ownedCassettes)
 		interpolatedIndex = ClientStorage.selectedCassette - 2f
 	}
 
@@ -36,6 +36,9 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 	override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
 		super.render(context, mouseX, mouseY, delta)
 
+		if (ClientStorage.ownedCassettes == 0)
+			return
+
 		val matrices = context.matrices
 		val centerX = this.width / 2
 		val centerY = this.height / 2
@@ -44,15 +47,15 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 		val elapsedTime = (currentTime - lastUpdateTime) / 1000.0f
 		lastUpdateTime = currentTime
 
-		val rawDiff = (ClientStorage.selectedCassette - interpolatedIndex + NUMBER_OF_CASSETTES) % NUMBER_OF_CASSETTES
-		val diff = if (rawDiff > NUMBER_OF_CASSETTES / 2) rawDiff - NUMBER_OF_CASSETTES else rawDiff
+		val rawDiff = (ClientStorage.selectedCassette - interpolatedIndex + ClientStorage.ownedCassettes) % ClientStorage.ownedCassettes
+		val diff = if (rawDiff > ClientStorage.ownedCassettes / 2) rawDiff - ClientStorage.ownedCassettes else rawDiff
 		interpolatedIndex += diff * 0.15f * elapsedTime * 60
 
-		val trueIndex = Math.floorMod(ClientStorage.selectedCassette, NUMBER_OF_CASSETTES)
-		(0 until NUMBER_OF_CASSETTES).sortedBy { i -> -abs(i - trueIndex) }.forEach { i ->
-			val radians = ((i - interpolatedIndex) / NUMBER_OF_CASSETTES) * 2 * PI
+		val trueIndex = Math.floorMod(ClientStorage.selectedCassette, ClientStorage.ownedCassettes)
+		(0 until ClientStorage.ownedCassettes).sortedBy { i -> -abs(i - trueIndex) }.forEach { i ->
+			val radians = ((i - interpolatedIndex) / ClientStorage.ownedCassettes) * 2 * PI
 			val x = centerX + RADIUS * sin(radians)
-			val y = centerY + RADIUS * cos(radians) * 0.5f
+			val y = centerY + RADIUS * cos(radians) * 0.5f + sin(currentTime.toDouble() / 1000f + i * 10f).toFloat() * 5f
 
 			val scale = (0.6f + 0.4f * (1 + cos(radians))) * 3
 			val skew = MathHelper.clamp(sin(radians) * 0.3f, -0.3f, 0.3f)
@@ -68,7 +71,6 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 
 	companion object {
 		private const val PI = 3.1415927f
-		private const val NUMBER_OF_CASSETTES = 6
 		private const val RADIUS = 100
 	}
 }
