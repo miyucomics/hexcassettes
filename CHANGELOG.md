@@ -6,6 +6,7 @@
 - changed cassettes to dequeue before they cast so Program Purification can not self-read
 - removed cassettes from the staff casting screen
 - rewrote a lot of code under the hood
+- changed to storing cassette data in player rather than persistent state
 
 ## 1.1.4
 - minor bug fix: cassettes don't clear on crossing End Portal

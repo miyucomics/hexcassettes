@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import miyucomics.hexcassettes.HexcassettesAPI
+import miyucomics.hexcassettes.PlayerEntityMinterface
 import net.minecraft.server.network.ServerPlayerEntity
 
 class OpKillAll : SpellAction {
@@ -19,7 +19,7 @@ class OpKillAll : SpellAction {
 
 	private data class Spell(val caster: ServerPlayerEntity) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			HexcassettesAPI.dequeueAll(caster)
+			(env.castingEntity as PlayerEntityMinterface).getCassetteState().queuedHexes.replaceAll { null }
 		}
 	}
 }

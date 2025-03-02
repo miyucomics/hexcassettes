@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.castables.Action
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.hex.HexActions
-import miyucomics.hexcassettes.HexcassettesUtils
+import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.patterns.*
 import net.minecraft.registry.Registry
 
@@ -21,7 +21,6 @@ object HexcassettesPatterns {
 		register("foretell", "eqeweweweweqedwqeeeeedww", HexDir.WEST, OpForetell())
 	}
 
-	private fun register(name: String, signature: String, startDir: HexDir, action: Action) {
-		Registry.register(HexActions.REGISTRY, HexcassettesUtils.id(name), ActionRegistryEntry(HexPattern.fromAngles(signature, startDir), action))
-	}
+	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =
+		Registry.register(HexActions.REGISTRY, HexcassettesMain.id(name), ActionRegistryEntry(HexPattern.fromAngles(signature, startDir), action))
 }

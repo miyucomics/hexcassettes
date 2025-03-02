@@ -1,12 +1,12 @@
 package miyucomics.hexcassettes.client
 
-import net.minecraft.text.Text
+import miyucomics.hexcassettes.HexcassettesMain
 
 object ClientStorage {
 	@JvmField
 	var ownedCassettes: Int = 0
 	@JvmField
-	val labels: LinkedHashMap<String, Text> = LinkedHashMap()
+	val mask: MutableList<Boolean> = MutableList(HexcassettesMain.MAX_CASSETTES) { false }
 
 	var selectedCassette = 0
 }

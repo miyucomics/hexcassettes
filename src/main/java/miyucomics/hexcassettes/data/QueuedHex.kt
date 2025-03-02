@@ -26,6 +26,7 @@ data class QueuedHex(val hex: NbtCompound, var delay: Int) {
 	}
 
 	companion object {
-		fun deserialize(compound: NbtCompound) = QueuedHex(compound.getCompound("hex"), compound.getInt("delay"))
+		fun deserialize(compound: NbtCompound) =
+			QueuedHex(compound.getCompound("hex"), compound.getInt("delay"))
 	}
 }
