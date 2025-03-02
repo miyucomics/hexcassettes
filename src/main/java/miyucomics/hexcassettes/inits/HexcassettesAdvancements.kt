@@ -1,7 +1,7 @@
 package miyucomics.hexcassettes.inits
 
 import com.google.gson.JsonObject
-import miyucomics.hexcassettes.HexcassettesUtils.id
+import miyucomics.hexcassettes.HexcassettesMain
 import net.minecraft.advancement.criterion.AbstractCriterion
 import net.minecraft.advancement.criterion.AbstractCriterionConditions
 import net.minecraft.advancement.criterion.Criteria
@@ -31,7 +31,7 @@ class QuineCriterion : AbstractCriterion<QuineCriterion.Condition>() {
 
 	class Condition : AbstractCriterionConditions(ID, LootContextPredicate.EMPTY)
 	companion object {
-		val ID: Identifier = id("quinio")
+		val ID: Identifier = HexcassettesMain.id("quinio")
 	}
 }
 
@@ -42,7 +42,7 @@ class TapeWormCriterion : AbstractCriterion<TapeWormCriterion.Condition>() {
 
 	class Condition : AbstractCriterionConditions(ID, LootContextPredicate.EMPTY)
 	companion object {
-		val ID: Identifier = id("tape_worm")
+		val ID: Identifier = HexcassettesMain.id("tape_worm")
 	}
 }
 
@@ -53,6 +53,6 @@ class FullArsenalCriterion : AbstractCriterion<FullArsenalCriterion.Condition>()
 
 	class Condition : AbstractCriterionConditions(ID, LootContextPredicate.EMPTY)
 	companion object {
-		val ID: Identifier = id("full_arsenal")
+		val ID: Identifier = HexcassettesMain.id("full_arsenal")
 	}
 }

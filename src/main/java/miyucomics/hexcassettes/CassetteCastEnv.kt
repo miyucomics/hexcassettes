@@ -15,6 +15,6 @@ class CassetteCastEnv(caster: ServerPlayerEntity, castingHand: Hand) : PlayerBas
 	public override fun extractMediaEnvironment(costLeft: Long, simulate: Boolean): Long {
 		if (caster.isCreative)
 			return 0
-		return this.extractMediaFromInventory(costLeft, this.canOvercast(), simulate)
+		return this.extractMediaFromInventory(costLeft, true, simulate)
 	}
 }
