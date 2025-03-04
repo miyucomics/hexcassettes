@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/650a62e6e2b02b13f4459a45f447efd3c4a4f4ff"
+      href="https://github.com/miyucomics/hexcassettes/tree/b1ff312be2ca9df521e98411991f2bd61c48a66f"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,7 +149,7 @@
           <li><a href="#async" class="toc-elem "><img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/650a62e6e2b02b13f4459a45f447efd3c4a4f4ff/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > 异步咒术</a></li>
@@ -180,7 +180,7 @@
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/650a62e6e2b02b13f4459a45f447efd3c4a4f4ff/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >异步咒术<a
@@ -260,7 +260,7 @@
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/650a62e6e2b02b13f4459a45f447efd3c4a4f4ff/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -271,7 +271,7 @@
       <p>为促使音乐唱片与<span style="color: #74b3f2">媒质</span>结合，我为其镀上了相当多的充能紫水晶，最终合成了磁带；<i>食用</i>即可收作己用。我最多只能同时持有六盒磁带，在此情况下再食用只会浪费。</p>
 <br />
   <div id="async@hexcassettes:enqueue" class="">
-<h4 class="pattern-title">入队列 (list, number, any →)<a
+<h4 class="pattern-title">入队列 (list, number, number →)<a
     href="#async@hexcassettes:enqueue"
     class="permalink small"
     title="Permalink"
@@ -333,7 +333,7 @@
     <p>如果一个<span style="color: #b38ef3">咒术</span>施放了与其自身近乎相同的<span style="color: #b38ef3">咒术</span>，便能达成常态<span style="color: #b38ef3">施法</span>。古代的<span style="color: #b38ef3">咒术师</span>称这种现象为“守护进程”。<span style="color: #b38ef3">咒法学</span>的此分支似乎尚未得到深入研究，亲自深入时务必当心：此类施法方式只会使用物品栏中的<span style="color: #74b3f2">媒质</span>；若不加监管，快速的自动施法会轻松耗尽<span style="color: #74b3f2">媒质</span>储备，当什么都不剩的时候，抽取的就是生命力了。</p>
 <br />
   <div id="async@hexcassettes:dequeue" class="">
-<h4 class="pattern-title">出队列 (any →)<a
+<h4 class="pattern-title">出队列 (number →)<a
     href="#async@hexcassettes:dequeue"
     class="permalink small"
     title="Permalink"
@@ -501,7 +501,7 @@
   </div>
 <br />
   <div id="async@hexcassettes:free" class="">
-<h4 class="pattern-title">线程之精思，第二型 (→ number)<a
+<h4 class="pattern-title">线程之精思，第二型 (→ list of numbers)<a
     href="#async@hexcassettes:free"
     class="permalink small"
     title="Permalink"
@@ -556,10 +556,8 @@
       <p>返回我目前的空闲磁带槽总数。</p>
   </div>
 <br />
-    <p>名称快速切换的磁带会很难终止；比如，会使用新标签将自身入队列的磁带。此类情况需格外注意，但无论如何都有<a href="#async@hexcassettes:killall"><span style="color: #fc77be">终止队列</span></a>作为兜底。</p>
-<br />
   <div id="async@hexcassettes:inspect" class="">
-<h4 class="pattern-title">Program Purification (any → null/list of patterns)<a
+<h4 class="pattern-title">Program Purification (number → null/list of patterns)<a
     href="#async@hexcassettes:inspect"
     class="permalink small"
     title="Permalink"
@@ -615,7 +613,7 @@
   </div>
 <br />
   <div id="async@hexcassettes:foretell" class="">
-<h4 class="pattern-title">Program Purification II (any → null/number)<a
+<h4 class="pattern-title">Program Purification II (number → null/number)<a
     href="#async@hexcassettes:foretell"
     class="permalink small"
     title="Permalink"
@@ -669,6 +667,8 @@
   </details>
       <p>Pushes null if I do not have an active cassette with that label, or how many twentieths of a second until that cassette fires if I do.</p>
   </div>
+<br />
+    <p>名称快速切换的磁带会很难终止；比如，会使用新标签将自身入队列的磁带。此类情况需格外注意，但无论如何都有<a href="#async@hexcassettes:killall"><span style="color: #fc77be">终止队列</span></a>作为兜底。</p>
 <br />
 </div>
 </section>
