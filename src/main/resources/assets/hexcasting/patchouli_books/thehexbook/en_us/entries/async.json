@@ -18,7 +18,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexcassettes:enqueue",
 			"anchor": "hexcassettes:enqueue",
-			"input": "list, number, any",
+			"input": "list, number, number",
 			"output": "",
 			"text": "hexcassettes.page.enqueue.summary"
         },
@@ -38,7 +38,7 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexcassettes:dequeue",
 			"anchor": "hexcassettes:dequeue",
-			"input": "any",
+			"input": "number",
 			"output": "",
 			"text": "hexcassettes.page.dequeue.summary"
 		},
@@ -63,18 +63,14 @@
 			"op_id": "hexcassettes:free",
 			"anchor": "hexcassettes:free",
 			"input": "",
-			"output": "number",
+			"output": "list of numbers",
 			"text": "hexcassettes.page.free.summary"
-		},
-		{
-			"type": "patchouli:text",
-			"text": "hexcassettes.page.async.4"
 		},
 		{
 			"type": "hexcasting:pattern",
 			"op_id": "hexcassettes:inspect",
 			"anchor": "hexcassettes:inspect",
-			"input": "any",
+			"input": "number",
 			"output": "null/list of patterns",
 			"text": "hexcassettes.page.inspect.summary"
 		},
@@ -82,9 +78,13 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexcassettes:foretell",
 			"anchor": "hexcassettes:foretell",
-			"input": "any",
+			"input": "number",
 			"output": "null/number",
 			"text": "hexcassettes.page.foretell.summary"
+		},
+		{
+			"type": "patchouli:text",
+			"text": "hexcassettes.page.async.4"
 		}
 	]
 }

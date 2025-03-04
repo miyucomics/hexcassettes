@@ -37,8 +37,6 @@ class OpEnqueue : SpellAction {
 		val cassetteData = (caster as PlayerEntityMinterface).getCassetteState()
 		if (index >= cassetteData.ownedSlots)
 			throw NotEnoughCassettes()
-		if (cassetteData.queuedHexes.size >= cassetteData.ownedSlots)
-			throw NotEnoughCassettes()
 
 		args.getList(0, argc)
 		val trueName = MishapOthersName.getTrueNameFromDatum(args[0], caster)
