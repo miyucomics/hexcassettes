@@ -1,5 +1,6 @@
 package miyucomics.hexcassettes.client
 
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.text.Text
@@ -67,6 +68,10 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 			context.drawTexture(Identifier("hexcassettes", "textures/cassette.png"), -16, -8, 0, 0f, 0f, 32, 16, 32, 16)
 			matrices.pop()
 		}
+
+		matrices.push()
+		context.drawText(MinecraftClient.getInstance().textRenderer, "Cassette #$trueIndex", centerX, centerY, 32, false)
+		matrices.pop()
 	}
 
 	companion object {

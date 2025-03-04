@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingVM
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.utils.putCompound
+import at.petrak.hexcasting.api.utils.serializeToNBT
 import miyucomics.hexcassettes.CassetteCastEnv
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
