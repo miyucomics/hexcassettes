@@ -9,7 +9,7 @@ import net.minecraft.client.option.KeyBinding
 import org.lwjgl.glfw.GLFW
 
 class HexcassettesClient : ClientModInitializer {
-	private val openCassettesKeybind = KeyBinding("key.hexcassettes.view_cassettes", GLFW.GLFW_KEY_L, "key.categories.hexcassettes")
+	private val openCassettesKeybind = KeyBinding("key.hexcassettes.view_cassettes", GLFW.GLFW_KEY_I, "key.categories.hexcassettes")
 
 	override fun onInitializeClient() {
 		KeyBindingHelper.registerKeyBinding(openCassettesKeybind)
