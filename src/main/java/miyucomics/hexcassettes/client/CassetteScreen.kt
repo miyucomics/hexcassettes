@@ -12,14 +12,14 @@ import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 
-class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
+class CassetteScreen : Screen(Text.translatable("screen.hexical.cassette")) {
 	private var lastUpdateTime = System.currentTimeMillis()
 	private var interpolatedIndex = 0f
 
 	init {
 		if (ClientStorage.ownedCassettes != 0)
 			ClientStorage.selectedCassette = Math.floorMod(ClientStorage.selectedCassette, ClientStorage.ownedCassettes)
-		interpolatedIndex = ClientStorage.selectedCassette - 2f
+		interpolatedIndex = ClientStorage.selectedCassette.toFloat()
 	}
 
 	override fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
@@ -30,12 +30,15 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 			GLFW.GLFW_KEY_L -> ClientStorage.selectedCassette += 1
 			GLFW.GLFW_KEY_LEFT -> ClientStorage.selectedCassette -= 1
 			GLFW.GLFW_KEY_RIGHT -> ClientStorage.selectedCassette += 1
+
 		}
 		return super.keyPressed(keyCode, scanCode, modifiers)
 	}
 
 	override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
 		super.render(context, mouseX, mouseY, delta)
+
+		context.fillGradient(0, 0, this.width, this.height, -1072689136, -804253680)
 
 		if (ClientStorage.ownedCassettes == 0)
 			return
@@ -56,13 +59,13 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 		(0 until ClientStorage.ownedCassettes).sortedBy { i -> -abs(i - trueIndex) }.forEach { i ->
 			val radians = ((i - interpolatedIndex) / ClientStorage.ownedCassettes) * 2 * PI
 			val x = centerX + RADIUS * sin(radians)
-			val y = centerY + RADIUS * cos(radians) * 0.5f + sin(currentTime.toDouble() / 1000f + i * 10f).toFloat() * 5f
+			val y = centerY + RADIUS * cos(radians) * 0.5f
 
 			val scale = (0.6f + 0.4f * (1 + cos(radians))) * 3
 			val skew = MathHelper.clamp(sin(radians) * 0.3f, -0.3f, 0.3f)
 
 			matrices.push()
-			matrices.translate(x, y, 0f)
+			matrices.translate(x, y + sin(currentTime.toDouble() / 1000f + i * 10f).toFloat() * 5f, 0f)
 			matrices.scale(scale, scale, 1f)
 			matrices.multiply(RotationAxis.POSITIVE_Z.rotation(skew))
 			context.drawTexture(Identifier("hexcassettes", "textures/cassette.png"), -16, -8, 0, 0f, 0f, 32, 16, 32, 16)
@@ -70,12 +73,23 @@ class CassetteScreen : Screen(Text.literal("Cassette Screen")) {
 		}
 
 		matrices.push()
-		context.drawText(MinecraftClient.getInstance().textRenderer, "Cassette #$trueIndex", centerX, centerY, 32, false)
+		context.drawCenteredTextWithShadow(
+			MinecraftClient.getInstance().textRenderer,
+			Text.literal("Cassette #$trueIndex"),
+			centerX, centerY / 4,
+			(0xFFFFFFFF).toInt()
+		)
+		context.drawCenteredTextWithShadow(
+			MinecraftClient.getInstance().textRenderer,
+			Text.literal(ClientStorage.mask[trueIndex].toString()),
+			centerX, 7 * centerY / 4,
+			(0xFFFFFFFF).toInt()
+		)
 		matrices.pop()
 	}
 
 	companion object {
 		private const val PI = 3.1415927f
-		private const val RADIUS = 100
+		private const val RADIUS = 125
 	}
 }
