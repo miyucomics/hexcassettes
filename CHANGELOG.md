@@ -3,6 +3,7 @@
 ## 1.2.0
 - added screen for managing cassettes
   - allows for mishapping cassettes to still be cancelled even when your staff is wrenched from your hand
+- added reflection for whether something is running in a cassette
 - changed cassettes to dequeue before they cast so Program Purification can not self-read
 - removed cassettes from the staff casting screen
 - rewrote a lot of code under the hood
