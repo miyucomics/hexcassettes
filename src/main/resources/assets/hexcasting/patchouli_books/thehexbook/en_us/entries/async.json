@@ -18,9 +18,9 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexcassettes:enqueue",
 			"anchor": "hexcassettes:enqueue",
-			"input": "list, number, number",
+			"input": "list, number",
 			"output": "",
-			"text": "hexcassettes.page.enqueue.summary"
+			"text": "hexcassettes.page.enqueue.summary.0"
         },
 		{
 			"type": "patchouli:text",
@@ -90,9 +90,9 @@
 			"type": "hexcasting:pattern",
 			"op_id": "hexcassettes:enqueue",
 			"anchor": "hexcassettes:enqueue2",
-			"input": "list, number",
+			"input": "list, number, number",
 			"output": "number",
-			"text": "hexcassettes.page.enqueue.summary.2"
+			"text": "hexcassettes.page.enqueue.summary.1"
 		}
 	]
 }
