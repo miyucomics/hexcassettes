@@ -40,6 +40,6 @@
 	"hexcassettes.page.foretell.summary": "Pushes $(l:casting/influences)$(thing)Null$() if I do not have an active $(thing)Cassette$() at that index, or how many twentieths of a second until that $(thing)Cassette$() fires if I do.",
     "hexcassettes.page.enqueue.summary.1": "A variant of $(l:async#hexcassettes:enqueue)$(action)Enqueue$() that takes an index right after the _Hex. It will force that $(thing)Cassette$()'s _Hex to the new one, regardless if one exists.",
 	"hexcassettes.page.async.4": "If that index does not exist, incurs the Memory Overflow mishap, killing all my active $(thing)Cassettes$().",
-	"hexcasting.action.hexcassettes:self_info": "State Reflection",
-	"hexcassettes.page.self_info.summary": "Pushes the current index of the $(thing)Cassette$() this _Hex is running in or $(l:casting/influences)$(thing)Null$() if it is not running in a $(thing)Cassette$()."
+	"hexcasting.action.hexcassettes:self": "State Reflection",
+	"hexcassettes.page.self.summary": "Pushes the current index of the $(thing)Cassette$() this _Hex is running in or $(l:casting/influences)$(thing)Null$() if it is not running in a $(thing)Cassette$()."
 }

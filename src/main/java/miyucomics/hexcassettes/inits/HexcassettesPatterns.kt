@@ -19,7 +19,7 @@ object HexcassettesPatterns {
 		register("free", "qeqwqwqwqwqeqaweqqqqqaww", HexDir.EAST, OpFree())
 		register("inspect", "eqeweweweweqedwqeeeee", HexDir.WEST, OpInspect())
 		register("foretell", "eqeweweweweqedwqeeeeedww", HexDir.WEST, OpForetell())
-		register("self_info", "qeqwqwqwqwqeqaweqqqqqwweeweweew", HexDir.EAST, OpSelfInfo())
+		register("self", "qeqwqwqwqwqeqaweqqqqqwweeweweew", HexDir.EAST, OpSelf())
 	}
 
 	private fun register(name: String, signature: String, startDir: HexDir, action: Action) =
