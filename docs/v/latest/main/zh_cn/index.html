@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/b1ff312be2ca9df521e98411991f2bd61c48a66f"
+      href="https://github.com/miyucomics/hexcassettes/tree/87fcc6422b5a995f7a70f3dae207ef420d55ebc7"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,7 +149,7 @@
           <li><a href="#async" class="toc-elem "><img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > 异步咒术</a></li>
@@ -180,7 +180,7 @@
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >异步咒术<a
@@ -260,7 +260,7 @@
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -271,7 +271,7 @@
       <p>为促使音乐唱片与<span style="color: #74b3f2">媒质</span>结合，我为其镀上了相当多的充能紫水晶，最终合成了磁带；<i>食用</i>即可收作己用。我最多只能同时持有六盒磁带，在此情况下再食用只会浪费。</p>
 <br />
   <div id="async@hexcassettes:enqueue" class="">
-<h4 class="pattern-title">入队列 (list, number, number →)<a
+<h4 class="pattern-title">入队列 (list, number → number)<a
     href="#async@hexcassettes:enqueue"
     class="permalink small"
     title="Permalink"
@@ -323,7 +323,7 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
   </details>
-      <p>令一个<span style="color: #b38ef3">咒术</span>入队列，并在所给数个 1/20 秒后施放。还需一个 iota 作为磁带的标签。</p>
+      <p>Enqueues a <span style="color: #b38ef3">Hex</span> to cast after that many twentieths of a second. Queues it into the first free <span style="color: #8d6acc">Cassette</span> or the current <span style="color: #8d6acc">Cassette</span> and pushes the index of that <span style="color: #8d6acc">Cassette</span>.</p>
   </div>
 <br />
     <p>磁带间使用标签区分，且标签仅保留前 32 个字符。若令两个<span style="color: #b38ef3">咒术</span>按照同一标签入队列，则新的会覆盖旧的。若我试图让入队<span style="color: #b38ef3">咒术</span>的数量超出磁带的数量，那么就会招致“并行处理”事故，导致当前所有磁带终止。</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
@@ -548,10 +548,10 @@
         class="spell-viz"
         width="216"
         height="216"
-        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweew"
+        data-string="qeqwqwqwqwqeqaweqqqqqaww"
         data-start="east"
         data-per-world="False"
-      >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweew</canvas>
+      >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqaww</canvas>
   </details>
       <p>返回我目前的空闲磁带槽总数。</p>
   </div>
@@ -609,11 +609,11 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeee</canvas>
   </details>
-      <p>Pushes null if I do not have an active cassette with that label, or the cassette&#39;s <span style="color: #b38ef3">Hex</span> if I do. I hear rumors of this being used for iota storage and passing information between <span style="color: #b38ef3">Hexes</span>.</p>
+      <p>Pushes <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if I do not have an active <span style="color: #8d6acc">Cassette</span> at that index, or the <span style="color: #8d6acc">Cassette</span>&#39;s <span style="color: #b38ef3">Hex</span> if I do. I hear rumors of this being used for iota storage and passing information between <span style="color: #b38ef3">Hexes</span>.</p>
   </div>
 <br />
   <div id="async@hexcassettes:foretell" class="">
-<h4 class="pattern-title">Program Purification II (number → null/number)<a
+<h4 class="pattern-title">Oracle Purification (number → null/number)<a
     href="#async@hexcassettes:foretell"
     class="permalink small"
     title="Permalink"
@@ -665,10 +665,122 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeeedww</canvas>
   </details>
-      <p>Pushes null if I do not have an active cassette with that label, or how many twentieths of a second until that cassette fires if I do.</p>
+      <p>Pushes <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if I do not have an active <span style="color: #8d6acc">Cassette</span> at that index, or how many twentieths of a second until that <span style="color: #8d6acc">Cassette</span> fires if I do.</p>
+  </div>
+<br />
+  <div id="async@hexcassettes:enqueue" class="">
+<h4 class="pattern-title">入队列 (list, number, number → number)<a
+    href="#async@hexcassettes:enqueue"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >渲染方式</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >配色</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww"
+        data-start="east"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
+  </details>
+      <p>A variant of <a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">Enqueue</span></a> that takes an index right after the <span style="color: #b38ef3">Hex</span>. It will force that <span style="color: #8d6acc">Cassette</span>&#39;s <span style="color: #b38ef3">Hex</span> to the new one, regardless if one exists.</p>
   </div>
 <br />
     <p>名称快速切换的磁带会很难终止；比如，会使用新标签将自身入队列的磁带。此类情况需格外注意，但无论如何都有<a href="#async@hexcassettes:killall"><span style="color: #fc77be">终止队列</span></a>作为兜底。</p>
+<br />
+  <div id="async@hexcassettes:self" class="">
+<h4 class="pattern-title">State Reflection (→ null/number)<a
+    href="#async@hexcassettes:self"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >渲染方式</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >配色</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweew"
+        data-start="east"
+        data-per-world="False"
+      >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweew</canvas>
+  </details>
+      <p>Pushes the current index of the <span style="color: #8d6acc">Cassette</span> this <span style="color: #b38ef3">Hex</span> is running in or <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if it is not running in a <span style="color: #8d6acc">Cassette</span>.</p>
+  </div>
 <br />
 </div>
 </section>

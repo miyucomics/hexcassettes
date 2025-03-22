@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/b1ff312be2ca9df521e98411991f2bd61c48a66f"
+      href="https://github.com/miyucomics/hexcassettes/tree/87fcc6422b5a995f7a70f3dae207ef420d55ebc7"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,7 +149,7 @@
           <li><a href="#async" class="toc-elem "><img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Asynchronous Hexes</a></li>
@@ -180,7 +180,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Asynchronous Hexes<a
@@ -192,7 +192,7 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p>As part of their nature, <span style="color: #b38ef3">Hexes</span> evaluate in their entirety instantly. To delay <span style="color: #b38ef3">Hexes</span>, Nature has devised a quite the whimsical solution: a cassette tape that must be crafted and then &#34;consumed&#34;. I may have up to six of these, and each holds a <span style="color: #b38ef3">Hex</span> I request to delay until that <span style="color: #b38ef3">Hex</span> casts. Then the cassette becomes free to hold further <span style="color: #b38ef3">Hexes</span>.</p>
+    <p>As part of their nature, <span style="color: #b38ef3">Hexes</span> evaluate in their entirety in one instant. To postpone <span style="color: #b38ef3">Hexes</span> for later, Nature has devised quite the whimsical solution: a <span style="color: #b0b">Cassette Tape</span> that must be crafted and then &#34;consumed&#34;. I may have up to six at any time. Each one holds a <span style="color: #b38ef3">Hex</span> I requested to delay until that <span style="color: #b38ef3">Hex</span> is ready to cast. After casting, the <span style="color: #8d6acc">Cassette</span> becomes free to hold other <span style="color: #b38ef3">Hexes</span>.</p>
 <br />
   <details class="details-collapsible recipe-details">
       <summary class="collapse-details">
@@ -260,7 +260,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/b1ff312be2ca9df521e98411991f2bd61c48a66f/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -268,10 +268,10 @@
     </div>
 </div>    </div>
   </details>
-      <p>After plating a <span style="color: #b0b">Music Disc</span> with a hefty amount of <span style="color: #b0b"><a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#items/amethyst">Charged Amethyst</a></span> to enable the <i>abstraction</i>, I can <i>consume</i> my creation using magic and a lot of chewing to add it to my mind&#39;s collection.</p>
+      <p>After plating a <span style="color: #b0b">Music Disc</span> with a hefty amount of <span style="color: #b0b"><a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#items/amethyst">Charged Amethyst</a></span> to enable the <i>abstraction</i>, I can <i>consume</i> my glorious creation using a combination of magic, willpower, and a lot of chewing to add it to my mind&#39;s collection.</p>
 <br />
   <div id="async@hexcassettes:enqueue" class="">
-<h4 class="pattern-title">Enqueue (list, number, number →)<a
+<h4 class="pattern-title">Enqueue (list, number → number)<a
     href="#async@hexcassettes:enqueue"
     class="permalink small"
     title="Permalink"
@@ -323,14 +323,14 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
   </details>
-      <p>Enqueues a <span style="color: #b38ef3">Hex</span> to cast after that many twentieths of a second. It takes an additional number to use as an index.</p>
+      <p>Enqueues a <span style="color: #b38ef3">Hex</span> to cast after that many twentieths of a second. Queues it into the first free <span style="color: #8d6acc">Cassette</span> or the current <span style="color: #8d6acc">Cassette</span> and pushes the index of that <span style="color: #8d6acc">Cassette</span>.</p>
   </div>
 <br />
-    <p>The index number is used to distinguish cassettes and ranges from 0 to one less than the number of cassettes I have. Enqueuing two <span style="color: #b38ef3">Hexes</span> at the same index overwrites the older one. If I attempt to enqueue more <span style="color: #b38ef3">Hexes</span> than I have cassettes, I incur the Parallel Processing mishap which kills all my currently active cassettes.</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
+    <p>The index number is used to distinguish <span style="color: #8d6acc">Cassettes</span> from each other. It ranges from 0 to one less than the number of <span style="color: #8d6acc">Cassettes</span> I have in my mind&#39;s collection. If <a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">Enqueue</span></a> can not find a free <span style="color: #8d6acc">Cassette</span>, incurs the Parallel Processing mishap, killing all my active <span style="color: #8d6acc">Cassettes</span>.</p><p>Seems to hint that my reality has a disturbingly low <i>temporal resolution</i>.. best not to dwell on that.</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
 <br />
-    <p>I can concentrate by pressing key.hexcassettes.view_cassettes to see all my cassettes. I can use the arrow keys to cycle through to my preferred one. Queued <span style="color: #b38ef3">Hexes</span> are represented as inserted cassettes with their label rendered to the side, and by pressing an cassette, I can cancel the corresponding <span style="color: #b38ef3">Hex</span>.</p><p>Dying also forcibly kills all of my cassettes so I can rest easy that I will not trap myself in an endless death cycle.</p>
+    <p>I can ponder my <span style="color: #8d6acc">Cassettes</span> by pressing <span style="color: #8d6acc">Ponder Cassettes</span> and cycle through them with the arrow keys. Queued <span style="color: #b38ef3">Hexes</span> are represented as inserted <span style="color: #8d6acc">Cassettes</span> with their label rendered to the side, and by pressing an <span style="color: #8d6acc">Cassette</span>, I can cancel the corresponding <span style="color: #b38ef3">Hex</span>.</p><p>Dying also forcibly disqueues all of my <span style="color: #8d6acc">Cassettes</span>. I can rest easy that I will not trap myself in an endless death cycle.</p>
 <br />
-    <p>If a <span style="color: #b38ef3">Hex</span> casts a near-identical copy of itself, a phenomenon emerges that ancient <span style="color: #b38ef3">Hexcasters</span> call a daemon, which allows for passive <span style="color: #b38ef3">Hexcasting</span>. Study into this branch of <span style="color: #b38ef3">Hexcasting</span> seems limited and I shall be careful if I want to delve in: this type of casting uses exclusively the <span style="color: #74b3f2">media</span> from my inventory and if left unchecked, rapid automated casting can easily drain all my <span style="color: #74b3f2">media</span> and with nothing else to consume, my life.</p>
+    <p>If a <span style="color: #8d6acc">Cassette</span> enqueues a near-identical copy of itself, a phenomenon emerges that ancient <span style="color: #b38ef3">Hexcasters</span> call a daemon: passive, constant <span style="color: #b38ef3">Hexcasting</span>. Study into this branch of <span style="color: #b38ef3">Hexcasting</span> seems limited due to the great danger of manipulating time: <span style="color: #8d6acc">Cassette</span> <span style="color: #b38ef3">Hexes</span> exclusively use the <span style="color: #74b3f2">media</span> from my inventory. If left unchecked, it can easily drain my <span style="color: #74b3f2">media</span> and then my life.</p>
 <br />
   <div id="async@hexcassettes:dequeue" class="">
 <h4 class="pattern-title">Dequeue (number →)<a
@@ -385,7 +385,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeeewwqqwqwqqweawwqwqwwqwwqwqww</canvas>
   </details>
-      <p>I can also automate killing cassettes with this pattern. It takes an iota and dequeues the cassette with that label if it exists.</p>
+      <p>Dequeues the <span style="color: #8d6acc">Cassette</span> at the provided index, freeing it instantly and cancelling the <span style="color: #b38ef3">Hex</span> within it.</p>
   </div>
 <br />
   <div id="async@hexcassettes:killall" class="">
@@ -441,7 +441,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeeewwqqwqwqqw</canvas>
   </details>
-      <p>Terminates all cassettes, similar to the effects of the Parallel Processing mishap.</p>
+      <p>Dequeues all <span style="color: #8d6acc">Cassettes</span>. Useful for ouroboros-like <span style="color: #b38ef3">Hexes</span> that bypass regular dequeuing via two mutually resurrecting <span style="color: #8d6acc">Cassettes</span>.</p>
   </div>
 <br />
   <div id="async@hexcassettes:specs" class="">
@@ -497,11 +497,11 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqq</canvas>
   </details>
-      <p>Pushes the total number of cassettes slots that I currently have.</p>
+      <p>Pushes the total number of <span style="color: #8d6acc">Cassettes</span> that I have in my mind&#39;s collection.</p>
   </div>
 <br />
   <div id="async@hexcassettes:free" class="">
-<h4 class="pattern-title">Threading Reflection II (→ list of numbers)<a
+<h4 class="pattern-title">Idling Reflection (→ list of numbers)<a
     href="#async@hexcassettes:free"
     class="permalink small"
     title="Permalink"
@@ -548,12 +548,12 @@
         class="spell-viz"
         width="216"
         height="216"
-        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweew"
+        data-string="qeqwqwqwqwqeqaweqqqqqaww"
         data-start="east"
         data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweew</canvas>
+      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqaww</canvas>
   </details>
-      <p>Pushes a list of non-busy cassette slots that I currently have.</p>
+      <p>Pushes a list of the indices of my non-busy <span style="color: #8d6acc">Cassettes</span>.</p>
   </div>
 <br />
   <div id="async@hexcassettes:inspect" class="">
@@ -609,11 +609,11 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeee</canvas>
   </details>
-      <p>Pushes null if I do not have an active cassette with that label, or the cassette&#39;s <span style="color: #b38ef3">Hex</span> if I do. I hear rumors of this being used for iota storage and passing information between <span style="color: #b38ef3">Hexes</span>.</p>
+      <p>Pushes <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if I do not have an active <span style="color: #8d6acc">Cassette</span> at that index, or the <span style="color: #8d6acc">Cassette</span>&#39;s <span style="color: #b38ef3">Hex</span> if I do. I hear rumors of this being used for iota storage and passing information between <span style="color: #b38ef3">Hexes</span>.</p>
   </div>
 <br />
   <div id="async@hexcassettes:foretell" class="">
-<h4 class="pattern-title">Program Purification II (number → null/number)<a
+<h4 class="pattern-title">Oracle Purification (number → null/number)<a
     href="#async@hexcassettes:foretell"
     class="permalink small"
     title="Permalink"
@@ -665,10 +665,122 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: eqeweweweweqedwqeeeeedww</canvas>
   </details>
-      <p>Pushes null if I do not have an active cassette with that label, or how many twentieths of a second until that cassette fires if I do.</p>
+      <p>Pushes <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if I do not have an active <span style="color: #8d6acc">Cassette</span> at that index, or how many twentieths of a second until that <span style="color: #8d6acc">Cassette</span> fires if I do.</p>
   </div>
 <br />
-    <p>hexcassettes.page.async.4</p>
+  <div id="async@hexcassettes:enqueue" class="">
+<h4 class="pattern-title">Enqueue (list, number, number → number)<a
+    href="#async@hexcassettes:enqueue"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
+  </details>
+      <p>A variant of <a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">Enqueue</span></a> that takes an index right after the <span style="color: #b38ef3">Hex</span>. It will force that <span style="color: #8d6acc">Cassette</span>&#39;s <span style="color: #b38ef3">Hex</span> to the new one, regardless if one exists.</p>
+  </div>
+<br />
+    <p>If that index does not exist, incurs the Memory Overflow mishap, killing all my active <span style="color: #8d6acc">Cassettes</span>.</p>
+<br />
+  <div id="async@hexcassettes:self" class="">
+<h4 class="pattern-title">State Reflection (→ null/number)<a
+    href="#async@hexcassettes:self"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweew"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweew</canvas>
+  </details>
+      <p>Pushes the current index of the <span style="color: #8d6acc">Cassette</span> this <span style="color: #b38ef3">Hex</span> is running in or <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if it is not running in a <span style="color: #8d6acc">Cassette</span>.</p>
+  </div>
 <br />
 </div>
 </section>
