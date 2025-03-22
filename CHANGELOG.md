@@ -4,10 +4,13 @@
 - added screen for managing cassettes
   - allows for mishapping cassettes to still be cancelled even when your staff is wrenched from your hand
 - added reflection for whether something is running in a cassette
+- added variant of Enqueue that requires no index
+- added damage to mishaps in a cassette
+- changed cassettes to use an index rather than a label
 - changed cassettes to dequeue before they cast so Program Purification can not self-read
+- changed to storing cassette data in player rather than persistent state
 - removed cassettes from the staff casting screen
 - rewrote a lot of code under the hood
-- changed to storing cassette data in player rather than persistent state
 
 ## 1.1.4
 - minor bug fix: cassettes don't clear on crossing End Portal

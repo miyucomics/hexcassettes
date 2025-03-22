@@ -2,8 +2,10 @@ package miyucomics.hexcassettes
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
+import at.petrak.hexcasting.api.casting.eval.sideeffects.OperatorSideEffect.DoMishap
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.xplat.IXplatAbstractions
+import net.minecraft.entity.damage.DamageSource
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
 
@@ -16,5 +18,10 @@ class CassetteCastEnv(caster: ServerPlayerEntity, castingHand: Hand) : PlayerBas
 		if (caster.isCreative)
 			return 0
 		return this.extractMediaFromInventory(costLeft, true, simulate)
+	}
+
+	override fun sendMishapMsgToPlayer(mishap: DoMishap) {
+		super.sendMishapMsgToPlayer(mishap)
+		this.caster.damage(world.damageSources.create(HexcassettesMain.BAD_QUINE), 1f)
 	}
 }
