@@ -1,11 +1,13 @@
 package miyucomics.hexcassettes
 
 import at.petrak.hexcasting.api.HexAPI
+import miyucomics.hexcassettes.data.CassetteState
 import miyucomics.hexcassettes.inits.HexcassettesAdvancements
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesPatterns
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.damage.DamageType
@@ -27,6 +29,7 @@ class HexcassettesMain : ModInitializer {
 		val cassette = CassetteItem()
 		Registry.register(Registries.ITEM, id("cassette"), cassette)
 		ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.key, HexAPI.modLoc("hexcasting"))).register { group -> group.add(cassette) }
+		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, _ -> (newPlayer as PlayerEntityMinterface).getCassetteState().ownedSlots = (oldPlayer as PlayerEntityMinterface).getCassetteState().ownedSlots }
 
 		HexcassettesAdvancements.init()
 		HexcassettesNetworking.init()
@@ -38,8 +41,6 @@ class HexcassettesMain : ModInitializer {
 		const val MOD_ID: String = "hexcassettes"
 		const val MAX_CASSETTES: Int = 6
 		fun id(string: String) = Identifier(MOD_ID, string)
-
-		val BAD_QUINE: RegistryKey<DamageType> = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, id("bad_quine"))
 	}
 }
 

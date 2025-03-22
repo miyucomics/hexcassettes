@@ -19,9 +19,4 @@ class CassetteCastEnv(caster: ServerPlayerEntity, castingHand: Hand) : PlayerBas
 			return 0
 		return this.extractMediaFromInventory(costLeft, true, simulate)
 	}
-
-	override fun sendMishapMsgToPlayer(mishap: DoMishap) {
-		super.sendMishapMsgToPlayer(mishap)
-		this.caster.damage(world.damageSources.create(HexcassettesMain.BAD_QUINE), 1f)
-	}
 }
