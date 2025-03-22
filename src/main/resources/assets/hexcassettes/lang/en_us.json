@@ -5,6 +5,7 @@
 	"advancements.hexcassettes.tape_worm.description": "Consume a cassette tape.",
 	"advancements.hexcassettes.full_arsenal.title": "Full Album",
 	"advancements.hexcassettes.full_arsenal.description": "Acquire a full arsenal of cassettes.",
+	"death.attack.bad_quine": "%1$s lost control of infinity",
 	"key.categories.hexcassettes": "Hexcassettes",
 	"key.hexcassettes.view_cassettes": "Ponder Cassettes",
 	"item.hexcassettes.cassette": "Cassette",

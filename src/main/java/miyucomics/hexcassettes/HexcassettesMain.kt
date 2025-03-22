@@ -8,12 +8,14 @@ import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.entity.LivingEntity
+import net.minecraft.entity.damage.DamageType
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.Identifier
@@ -36,6 +38,8 @@ class HexcassettesMain : ModInitializer {
 		const val MOD_ID: String = "hexcassettes"
 		const val MAX_CASSETTES: Int = 6
 		fun id(string: String) = Identifier(MOD_ID, string)
+
+		val BAD_QUINE: RegistryKey<DamageType> = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, id("bad_quine"))
 	}
 }
 
