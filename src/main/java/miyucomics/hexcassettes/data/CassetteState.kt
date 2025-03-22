@@ -39,7 +39,7 @@ class CassetteState {
 			val hex = queuedHexes[i]
 			if (hex != null && hex.delay <= 0) {
 				queuedHexes[i] = null
-				hex.cast(player)
+				hex.cast(player, i)
 			}
 		}
 	}

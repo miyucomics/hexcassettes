@@ -38,7 +38,7 @@ class OpEnqueue : Action {
 
 		when (val next = stack.removeLast()) {
 			is ListIota -> {
-				val index = cassetteState.queuedHexes.indexOfFirst { it == null }
+				val index = if (env is CassetteCastEnv) env.index else cassetteState.queuedHexes.indexOfFirst { it == null }
 				if (index == -1 || index >= cassetteState.ownedSlots)
 					throw NoFreeCassettes()
 				cassetteState.queuedHexes[index] = QueuedHex(IotaType.serialize(next), delayValue)

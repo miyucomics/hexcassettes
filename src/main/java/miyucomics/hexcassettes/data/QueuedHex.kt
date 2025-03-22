@@ -18,9 +18,9 @@ data class QueuedHex(val hex: NbtCompound, var delay: Int) {
 		return compound
 	}
 
-	fun cast(player: ServerPlayerEntity) {
+	fun cast(player: ServerPlayerEntity, index: Int) {
 		val hand = if (!player.getStackInHand(Hand.MAIN_HAND).isEmpty && player.getStackInHand(Hand.OFF_HAND).isEmpty) Hand.OFF_HAND else Hand.MAIN_HAND
-		val harness = CastingVM.empty(CassetteCastEnv(player, hand))
+		val harness = CastingVM.empty(CassetteCastEnv(player, hand, index))
 		val hexIota = IotaType.deserialize(hex, player.serverWorld)
 		if (hexIota is ListIota)
 			harness.queueExecuteAndWrapIotas(hexIota.list.toList(), player.serverWorld)
