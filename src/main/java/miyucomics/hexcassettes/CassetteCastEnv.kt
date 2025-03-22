@@ -9,7 +9,7 @@ import net.minecraft.entity.damage.DamageSource
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
 
-class CassetteCastEnv(caster: ServerPlayerEntity, castingHand: Hand) : PlayerBasedCastEnv(caster, castingHand) {
+class CassetteCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val index: Int) : PlayerBasedCastEnv(caster, castingHand) {
 	override fun getCastingHand(): Hand = this.castingHand
 	override fun produceParticles(particles: ParticleSpray, pigment: FrozenPigment) {}
 	override fun getPigment(): FrozenPigment = IXplatAbstractions.INSTANCE.getPigment(this.caster)

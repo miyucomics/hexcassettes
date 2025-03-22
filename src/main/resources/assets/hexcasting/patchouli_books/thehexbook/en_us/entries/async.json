@@ -19,7 +19,7 @@
 			"op_id": "hexcassettes:enqueue",
 			"anchor": "hexcassettes:enqueue",
 			"input": "list, number",
-			"output": "",
+			"output": "number",
 			"text": "hexcassettes.page.enqueue.summary.0"
         },
 		{
