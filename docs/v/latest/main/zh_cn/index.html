@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/87fcc6422b5a995f7a70f3dae207ef420d55ebc7"
+      href="https://github.com/miyucomics/hexcassettes/tree/388a40f54c9a2dfd8611185e75931cfaa494fb80"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,7 +149,7 @@
           <li><a href="#async" class="toc-elem "><img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/388a40f54c9a2dfd8611185e75931cfaa494fb80/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > 异步咒术</a></li>
@@ -180,7 +180,7 @@
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/388a40f54c9a2dfd8611185e75931cfaa494fb80/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >异步咒术<a
@@ -192,7 +192,7 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p><span style="color: #b38ef3">咒术</span>会瞬时完全施放，这是它们的本性。而为延迟<span style="color: #b38ef3">咒术</span>，自然设计了一套有些奇怪的方案：一盒磁带，需要合成后“食用”的磁带。让一个<span style="color: #b38ef3">咒术</span>延迟执行时，其会占用一个磁带“槽”，直至执行后再释放。可以在使用法杖施法时查看这些槽位，点击它们即可终止<span style="color: #b38ef3">咒术</span>。</p>
+    <p><span style="color: #b38ef3">咒术</span>会在单个时间片段内完全施放，这是它们的本性。而为延迟<span style="color: #b38ef3">咒术</span>，自然设计了一套有些奇怪的方案：<span style="color: #b0b">一盒磁带</span>，需要“食用”的磁带。我最多可同时持有六盒磁带。每盒磁带都可容纳单个需延迟执行的<span style="color: #b38ef3">咒术</span>，直至可以施放时再施放。此后，该<span style="color: #8d6acc">磁带</span>会空出，供其他<span style="color: #b38ef3">咒术</span>使用。</p>
 <br />
   <details class="details-collapsible recipe-details">
       <summary class="collapse-details">
@@ -260,7 +260,7 @@
     <img
       title="磁带"
       alt="磁带"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/87fcc6422b5a995f7a70f3dae207ef420d55ebc7/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/388a40f54c9a2dfd8611185e75931cfaa494fb80/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -268,7 +268,7 @@
     </div>
 </div>    </div>
   </details>
-      <p>为促使音乐唱片与<span style="color: #74b3f2">媒质</span>结合，我为其镀上了相当多的充能紫水晶，最终合成了磁带；<i>食用</i>即可收作己用。我最多只能同时持有六盒磁带，在此情况下再食用只会浪费。</p>
+      <p>为促使<span style="color: #b0b">音乐唱片</span>与<span style="color: #74b3f2">媒质</span><i>融合</i>，我为其镀上了相当多的<span style="color: #b0b"><a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#items/amethyst">充能紫水晶</a></span>。所得的智慧结晶需要<i>食用</i>，魔法、意志、持之以恒地咀嚼，三者缺一不可；这一过程后，即可将其收作己用。</p>
 <br />
   <div id="async@hexcassettes:enqueue" class="">
 <h4 class="pattern-title">入队列 (list, number → number)<a
@@ -326,11 +326,11 @@
       <p>Enqueues a <span style="color: #b38ef3">Hex</span> to cast after that many twentieths of a second. Queues it into the first free <span style="color: #8d6acc">Cassette</span> or the current <span style="color: #8d6acc">Cassette</span> and pushes the index of that <span style="color: #8d6acc">Cassette</span>.</p>
   </div>
 <br />
-    <p>磁带间使用标签区分，且标签仅保留前 32 个字符。若令两个<span style="color: #b38ef3">咒术</span>按照同一标签入队列，则新的会覆盖旧的。若我试图让入队<span style="color: #b38ef3">咒术</span>的数量超出磁带的数量，那么就会招致“并行处理”事故，导致当前所有磁带终止。</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
+    <p><span style="color: #8d6acc">磁带</span>间使用索引数区分。索引自 0 起始，至目前意识中<span style="color: #8d6acc">磁带</span>的总数之前为止。如果<a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">入队列</span></a>找不到空闲的<span style="color: #8d6acc">磁带</span>，则会招致“并行处理”事故：终止所有活跃中的<span style="color: #8d6acc">磁带</span>。</p><p>这似乎表明我所处现实的<i>时间分辨率</i>很低……还是别再想了。</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
 <br />
-    <p>所有入过队列的<span style="color: #b38ef3">咒术</span>可在使用法杖时查看。队列中的<span style="color: #b38ef3">咒术</span>表现为插入的磁带，其标签会出现在磁带侧面；按压磁带即可取消对应<span style="color: #b38ef3">咒术</span>。</p><p>死亡时，所有磁带都会强制被终止；如此就能避免陷入无尽的死亡循环了。</p>
+    <p>按下<span style="color: #8d6acc">思索磁带</span>键可以思索<span style="color: #8d6acc">磁带</span>，使用方向键可循环切换。已入队列的<span style="color: #b38ef3">咒术</span>会显现为插入的<span style="color: #8d6acc">磁带</span>，同时在侧面显示其标签。按压<span style="color: #8d6acc">磁带</span>可以取消对应<span style="color: #b38ef3">咒术</span>。</p><p>死亡也会强制将所有<span style="color: #8d6acc">磁带</span>清出队列。如此就无需担心了——我不会陷入无穷无尽的死亡循环了。</p>
 <br />
-    <p>如果一个<span style="color: #b38ef3">咒术</span>施放了与其自身近乎相同的<span style="color: #b38ef3">咒术</span>，便能达成常态<span style="color: #b38ef3">施法</span>。古代的<span style="color: #b38ef3">咒术师</span>称这种现象为“守护进程”。<span style="color: #b38ef3">咒法学</span>的此分支似乎尚未得到深入研究，亲自深入时务必当心：此类施法方式只会使用物品栏中的<span style="color: #74b3f2">媒质</span>；若不加监管，快速的自动施法会轻松耗尽<span style="color: #74b3f2">媒质</span>储备，当什么都不剩的时候，抽取的就是生命力了。</p>
+    <p>若<span style="color: #8d6acc">磁带</span>将其自身的副本稍加改动后入队列，便会出现一种特殊现象：常态、持续的<span style="color: #b38ef3">施法</span>。古代的<span style="color: #b38ef3">咒术师们</span>称之为守护进程。<span style="color: #b38ef3">咒法学</span>的这一分支并未得到深入研究，也许是因为操控时间危险性极高：<span style="color: #8d6acc">磁带</span>中<span style="color: #b38ef3">咒术</span>只会消耗物品栏中的<span style="color: #74b3f2">媒质</span>。若是不加监测，它能轻松耗光我的<span style="color: #74b3f2">媒质</span>，然后便是我的生命。</p>
 <br />
   <div id="async@hexcassettes:dequeue" class="">
 <h4 class="pattern-title">出队列 (number →)<a
@@ -385,7 +385,7 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeeewwqqwqwqqweawwqwqwwqwwqwqww</canvas>
   </details>
-      <p>还可用此图案自动终止磁带。接受一个 iota，若存在标签为所给 iota 的磁带，则令其出队列。</p>
+      <p>令所给索引处的<span style="color: #8d6acc">磁带</span>出队列，让其进入空闲状态，并取消其中<span style="color: #b38ef3">咒术</span>。</p>
   </div>
 <br />
   <div id="async@hexcassettes:killall" class="">
@@ -441,7 +441,7 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeeewwqqwqwqqw</canvas>
   </details>
-      <p>终止所有磁带，效果与“并行处理”事故类似。</p>
+      <p>令所有<span style="color: #8d6acc">磁带</span>出队列。很适合给那些和衔尾蛇一样的<span style="color: #b38ef3">咒术</span>用：两个互相激活的<span style="color: #8d6acc">磁带</span>无法以常规手段出队列。</p>
   </div>
 <br />
   <div id="async@hexcassettes:specs" class="">
@@ -497,11 +497,11 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqq</canvas>
   </details>
-      <p>返回我目前的磁带槽总数。</p>
+      <p>返回我意识中当前的<span style="color: #8d6acc">磁带</span>总数。</p>
   </div>
 <br />
   <div id="async@hexcassettes:free" class="">
-<h4 class="pattern-title">线程之精思，第二型 (→ list of numbers)<a
+<h4 class="pattern-title">空闲之精思 (→ list of numbers)<a
     href="#async@hexcassettes:free"
     class="permalink small"
     title="Permalink"
@@ -553,11 +553,11 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqaww</canvas>
   </details>
-      <p>返回我目前的空闲磁带槽总数。</p>
+      <p>返回我意识中当前的空闲<span style="color: #8d6acc">磁带</span>索引列表。</p>
   </div>
 <br />
   <div id="async@hexcassettes:inspect" class="">
-<h4 class="pattern-title">Program Purification (number → null/list of patterns)<a
+<h4 class="pattern-title">程序之纯化 (number → null/list of patterns)<a
     href="#async@hexcassettes:inspect"
     class="permalink small"
     title="Permalink"
@@ -609,11 +609,11 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeee</canvas>
   </details>
-      <p>Pushes <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if I do not have an active <span style="color: #8d6acc">Cassette</span> at that index, or the <span style="color: #8d6acc">Cassette</span>&#39;s <span style="color: #b38ef3">Hex</span> if I do. I hear rumors of this being used for iota storage and passing information between <span style="color: #b38ef3">Hexes</span>.</p>
+      <p>若所给索引处<span style="color: #8d6acc">磁带</span>不处于活跃状态，返回 <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a>；否则返回其中<span style="color: #b38ef3">咒术</span>。我听过一些传言，说这个图案可以用来存储 iota，也可以用来在<span style="color: #b38ef3">咒术</span>间传递信息。</p>
   </div>
 <br />
   <div id="async@hexcassettes:foretell" class="">
-<h4 class="pattern-title">Oracle Purification (number → null/number)<a
+<h4 class="pattern-title">先知之纯化 (number → null/number)<a
     href="#async@hexcassettes:foretell"
     class="permalink small"
     title="Permalink"
@@ -665,7 +665,7 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：eqeweweweweqedwqeeeeedww</canvas>
   </details>
-      <p>Pushes <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if I do not have an active <span style="color: #8d6acc">Cassette</span> at that index, or how many twentieths of a second until that <span style="color: #8d6acc">Cassette</span> fires if I do.</p>
+      <p>若所给索引处<span style="color: #8d6acc">磁带</span>不处于活跃状态，返回 <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a>；否则返回该<span style="color: #8d6acc">磁带</span>会在多少个 1/20 秒后施放。</p>
   </div>
 <br />
   <div id="async@hexcassettes:enqueue" class="">
@@ -721,13 +721,13 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
   </details>
-      <p>A variant of <a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">Enqueue</span></a> that takes an index right after the <span style="color: #b38ef3">Hex</span>. It will force that <span style="color: #8d6acc">Cassette</span>&#39;s <span style="color: #b38ef3">Hex</span> to the new one, regardless if one exists.</p>
+      <p><a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">入队列</span></a>的一个变种，在<span style="color: #b38ef3">咒术</span>后还需向其提供一个索引。它会强制将该<span style="color: #8d6acc">磁带</span>中的<span style="color: #b38ef3">咒术</span>换为所给参数，无论原先里面有没有<span style="color: #b38ef3">咒术</span>。</p>
   </div>
 <br />
-    <p>名称快速切换的磁带会很难终止；比如，会使用新标签将自身入队列的磁带。此类情况需格外注意，但无论如何都有<a href="#async@hexcassettes:killall"><span style="color: #fc77be">终止队列</span></a>作为兜底。</p>
+    <p>如果所给的索引不存在，则招致“内存溢出”事故：终止所有活跃中的<span style="color: #8d6acc">磁带</span>。</p>
 <br />
   <div id="async@hexcassettes:self" class="">
-<h4 class="pattern-title">State Reflection (→ null/number)<a
+<h4 class="pattern-title">状态之精思 (→ null/number)<a
     href="#async@hexcassettes:self"
     class="permalink small"
     title="Permalink"
@@ -779,7 +779,7 @@
         data-per-world="False"
       >浏览器不支持图案的可视化。图案代码见此：qeqwqwqwqwqeqaweqqqqqwweeweweew</canvas>
   </details>
-      <p>Pushes the current index of the <span style="color: #8d6acc">Cassette</span> this <span style="color: #b38ef3">Hex</span> is running in or <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if it is not running in a <span style="color: #8d6acc">Cassette</span>.</p>
+      <p>返回当前<span style="color: #b38ef3">咒术</span>所在<span style="color: #8d6acc">磁带</span>的索引。若不在<span style="color: #8d6acc">磁带</span>中运行，则返回 <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a>。</p>
   </div>
 <br />
 </div>
