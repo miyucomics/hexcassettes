@@ -60,11 +60,11 @@
 		},
 		{
 			"type": "hexcasting:pattern",
-			"op_id": "hexcassettes:free",
-			"anchor": "hexcassettes:free",
+			"op_id": "hexcassettes:busy",
+			"anchor": "hexcassettes:busy",
 			"input": "",
 			"output": "list of numbers",
-			"text": "hexcassettes.page.free.summary"
+			"text": "hexcassettes.page.busy.summary"
 		},
 		{
 			"type": "hexcasting:pattern",

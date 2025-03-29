@@ -16,7 +16,7 @@ object HexcassettesPatterns {
 		register("dequeue", "eqeweweweweqedwqeeeeewwqqwqwqqweawwqwqwwqwwqwqww", HexDir.WEST, OpDequeue())
 		register("killall", "eqeweweweweqedwqeeeeewwqqwqwqqw", HexDir.WEST, OpKillAll())
 		register("specs", "qeqwqwqwqwqeqaweqqqqq", HexDir.EAST, OpSpecs())
-		register("free", "qeqwqwqwqwqeqaweqqqqqaww", HexDir.EAST, OpBusy())
+		register("busy", "qeqwqwqwqwqeqaweqqqqqaww", HexDir.EAST, OpBusy())
 		register("inspect", "eqeweweweweqedwqeeeee", HexDir.WEST, OpInspect())
 		register("foretell", "eqeweweweweqedwqeeeeedww", HexDir.WEST, OpForetell())
 		register("self", "qeqwqwqwqwqeqaweqqqqqwweeweweew", HexDir.EAST, OpSelf())
