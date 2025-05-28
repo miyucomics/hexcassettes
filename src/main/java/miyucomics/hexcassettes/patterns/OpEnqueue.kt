@@ -6,15 +6,21 @@ import at.petrak.hexcasting.api.casting.eval.OperationResult
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
+import at.petrak.hexcasting.api.casting.getInt
+import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
+import at.petrak.hexcasting.api.casting.math.EulerPathFinder
+import at.petrak.hexcasting.api.casting.math.HexDir
+import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import com.sun.tools.javac.tree.TreeInfo.args
 import miyucomics.hexcassettes.CassetteCastEnv
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.PlayerEntityMinterface
@@ -38,7 +44,7 @@ class OpEnqueue : Action {
 
 		when (val next = stack.removeLast()) {
 			is ListIota -> {
-				val index = if (env is CassetteCastEnv) env.pattern else cassetteState.queuedHexes.indexOfFirst { it == null }
+				val index = if (env is CassetteCastEnv) env.pattern else EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)
 				if (cassetteState.queuedHexes.keys.size >= HexcassettesMain.MAX_CASSETTES)
 					throw NoFreeCassettes()
 				cassetteState.queuedHexes[index] = QueuedHex(IotaType.serialize(next), delayValue)
@@ -74,6 +80,6 @@ class NotEnoughCassettes : Mishap() {
 	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
 		val caster = env.castingEntity
 		if (caster is ServerPlayerEntity)
-			(caster as PlayerEntityMinterface).getCassetteState().queuedHexes.replaceAll { null }
+			(caster as PlayerEntityMinterface).getCassetteState().queuedHexes.clear()
 	}
 }
