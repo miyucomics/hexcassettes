@@ -1,11 +1,11 @@
 # Hexcassettes
 
-## 1.2.0
+## 2.0.0
 - added screen for managing cassettes
   - allows for mishapping cassettes to still be cancelled even when your staff is wrenched from your hand
 - added reflection for whether something is running in a cassette and its index
 - added variant of Enqueue that requires no index
-- changed cassettes to use a pattern anyways rather than a label
+- changed cassettes to use a pattern rather than a label
 - changed cassettes to dequeue before they cast so Program Purification can not self-read
 - changed to storing cassette data in player rather than persistent state
 - removed cassettes from the staff casting screen
