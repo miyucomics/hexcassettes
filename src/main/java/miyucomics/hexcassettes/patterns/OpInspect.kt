@@ -1,25 +1,18 @@
 package miyucomics.hexcassettes.patterns
 
+import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
-import at.petrak.hexcasting.api.casting.getPositiveIntUnder
+import at.petrak.hexcasting.api.casting.getPattern
+import at.petrak.hexcasting.api.casting.getPlayer
 import at.petrak.hexcasting.api.casting.iota.Iota
-import at.petrak.hexcasting.api.casting.iota.IotaType
-import at.petrak.hexcasting.api.casting.iota.NullIota
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.PlayerEntityMinterface
 
 class OpInspect : ConstMediaAction {
-	override val argc = 1
+	override val argc = 2
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
-		if (env !is PlayerBasedCastEnv)
-			throw MishapBadCaster()
-		val queuedHexes = (env.castingEntity as PlayerEntityMinterface).getCassetteState().queuedHexes
-		val index = args.getPositiveIntUnder(0, HexcassettesMain.MAX_CASSETTES, argc)
-		if (queuedHexes[index] != null)
-			return listOf(IotaType.deserialize(queuedHexes[index]!!.hex, env.world))
-		return listOf(NullIota())
+		val player = args.getPlayer(0, argc)
+		val pattern = args.getPattern(1, argc)
+		return (player as PlayerEntityMinterface).getCassetteState().queuedHexes.containsKey(pattern).asActionResult
 	}
 }

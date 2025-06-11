@@ -6,8 +6,6 @@ import at.petrak.hexcasting.api.casting.eval.OperationResult
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
-import at.petrak.hexcasting.api.casting.getInt
-import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
@@ -19,8 +17,8 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
-import com.sun.tools.javac.tree.TreeInfo.args
 import miyucomics.hexcassettes.CassetteCastEnv
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.PlayerEntityMinterface
@@ -34,15 +32,17 @@ class OpEnqueue : Action {
 			throw MishapBadCaster()
 		if (env is CassetteCastEnv)
 			HexcassettesMain.QUINE.trigger(env.castingEntity as ServerPlayerEntity)
+		if (image.stack.size < 2)
+			throw MishapNotEnoughArgs(2, image.stack.size)
 		val cassetteState = (env.castingEntity as PlayerEntityMinterface).getCassetteState()
 
 		val stack = image.stack.toMutableList()
-		val delay = stack.removeLast()
+		val delay = stack.removeAt(stack.lastIndex)
 		if (delay !is DoubleIota || delay.double <= 0)
 			throw MishapInvalidIota.of(delay, 0, "double.positive")
 		val delayValue = delay.double.toInt()
 
-		when (val next = stack.removeLast()) {
+		when (val next = stack.removeAt(stack.lastIndex)) {
 			is ListIota -> {
 				val index = if (env is CassetteCastEnv) env.pattern else EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)
 				if (cassetteState.queuedHexes.keys.size >= HexcassettesMain.MAX_CASSETTES)
@@ -55,7 +55,7 @@ class OpEnqueue : Action {
 				if (!cassetteState.queuedHexes.keys.contains(key) && cassetteState.queuedHexes.keys.size >= HexcassettesMain.MAX_CASSETTES)
 					throw NotEnoughCassettes()
 
-				val hex = stack.removeLast()
+				val hex = stack.removeAt(stack.lastIndex)
 				if (hex !is ListIota)
 					throw MishapInvalidIota.ofType(hex, 2, "list")
 
