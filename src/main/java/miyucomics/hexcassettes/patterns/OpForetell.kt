@@ -1,8 +1,10 @@
 package miyucomics.hexcassettes.patterns
 
+import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
+import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.getPositiveIntUnder
 import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
@@ -17,9 +19,7 @@ class OpForetell : ConstMediaAction {
 		if (env !is PlayerBasedCastEnv)
 			throw MishapBadCaster()
 		val queuedHexes = (env.castingEntity as PlayerEntityMinterface).getCassetteState().queuedHexes
-		val index = args.getPositiveIntUnder(0, HexcassettesMain.MAX_CASSETTES, argc)
-		if (queuedHexes[index] != null)
-			return listOf(DoubleIota(queuedHexes[index]!!.delay.toDouble()))
-		return listOf(NullIota())
+		val pattern = args.getPattern(0, argc)
+		return queuedHexes[pattern]?.delay?.asActionResult ?: null.asActionResult
 	}
 }

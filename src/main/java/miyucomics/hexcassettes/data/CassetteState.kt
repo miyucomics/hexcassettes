@@ -34,7 +34,7 @@ class CassetteState {
 			}
 		}
 
-		val activeIndices = queuedHexes.keys.map { it.toString() }.toSet()
+		val activeIndices = queuedHexes.keys.map { HexcassettesMain.serializeKey(it) }.toSet()
 		if (previouslyActiveSlots != activeIndices)
 			sync(player)
 		previouslyActiveSlots = activeIndices

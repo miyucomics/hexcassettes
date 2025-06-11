@@ -9,5 +9,5 @@ import miyucomics.hexcassettes.CassetteCastEnv
 
 class OpSelf : ConstMediaAction {
 	override val argc = 0
-	override fun execute(args: List<Iota>, env: CastingEnvironment) = (env as? CassetteCastEnv)?.index?.asActionResult ?: listOf(NullIota())
+	override fun execute(args: List<Iota>, env: CastingEnvironment) = (env as? CassetteCastEnv)?.pattern?.asActionResult ?: listOf(NullIota())
 }

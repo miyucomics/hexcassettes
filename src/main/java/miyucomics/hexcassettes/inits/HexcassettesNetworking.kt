@@ -19,15 +19,17 @@ object HexcassettesNetworking {
 
 		ClientPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, _, packet, _ ->
 			ClientStorage.ownedCassettes = packet.readInt()
-			ClientStorage.mask.replaceAll { false }
+			ClientStorage.activeCassettes.clear()
 			val count = packet.readInt()
-			repeat(count) { ClientStorage.mask[packet.readInt()] = true }
+			repeat(count) {
+				ClientStorage.activeCassettes.add(HexcassettesMain.deserializeKey(packet.readString()))
+			}
 		}
 	}
 
 	@JvmStatic
 	fun init() {
-		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ -> (player as PlayerEntityMinterface).getCassetteState().queuedHexes[packet.readInt()] = null }
+		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ -> (player as PlayerEntityMinterface).getCassetteState().queuedHexes.remove(HexcassettesMain.deserializeKey(packet.readString())) }
 		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ -> (player as PlayerEntityMinterface).getCassetteState().sync(player) }
 	}
 }

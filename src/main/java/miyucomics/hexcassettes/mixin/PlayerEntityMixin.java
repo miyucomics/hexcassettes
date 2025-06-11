@@ -5,6 +5,7 @@ import miyucomics.hexcassettes.data.CassetteState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,7 +37,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 	}
 
 	@Override
-	public CassetteState getCassetteState() {
+	public @NotNull CassetteState getCassetteState() {
 		return cassetteState;
 	}
 }

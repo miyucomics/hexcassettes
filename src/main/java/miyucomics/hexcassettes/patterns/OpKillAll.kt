@@ -19,7 +19,7 @@ class OpKillAll : SpellAction {
 
 	private data class Spell(val caster: ServerPlayerEntity) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			(env.castingEntity as PlayerEntityMinterface).getCassetteState().queuedHexes.replaceAll { null }
+			(env.castingEntity as PlayerEntityMinterface).getCassetteState().queuedHexes.clear()
 		}
 	}
 }

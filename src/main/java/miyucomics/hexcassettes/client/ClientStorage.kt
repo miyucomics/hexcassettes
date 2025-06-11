@@ -1,12 +1,9 @@
 package miyucomics.hexcassettes.client
 
-import miyucomics.hexcassettes.HexcassettesMain
+import at.petrak.hexcasting.api.casting.math.HexPattern
 
 object ClientStorage {
-	@JvmField
 	var ownedCassettes: Int = 0
-	@JvmField
-	val mask: MutableList<Boolean> = MutableList(HexcassettesMain.MAX_CASSETTES) { false }
-
-	var selectedCassette = 0
+	var selectedCassette: Int = 0
+	val activeCassettes: MutableList<HexPattern> = mutableListOf()
 }
