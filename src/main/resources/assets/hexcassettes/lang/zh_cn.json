@@ -35,7 +35,7 @@
 	"hexcasting.action.hexcassettes:busy": "运作之精思",
 	"hexcassettes.page.busy.summary": "返回所有忙状态$(thing)磁带$()的图案组成的列表。",
 	"hexcasting.action.hexcassettes:inspect": "程序之馏化",
-	"hexcassettes.page.inspect.summary": "检查所给玩家是否拥有以所给图案标识的$(thing)磁带$()。",
+	"hexcassettes.page.inspect.summary": "检验所给玩家是否拥有以所给图案标识的$(thing)磁带$()。",
 	"hexcasting.action.hexcassettes:foretell": "先知之纯化",
 	"hexcassettes.page.foretell.summary": "若所给图案处$(thing)磁带$()不处于活跃状态，返回 $(l:casting/influences)$(thing)Null$()；否则返回该$(thing)磁带$()会在多少个 1/20 秒后施放。",
     "hexcassettes.page.enqueue.summary.1": "$(l:async#hexcassettes:enqueue)$(action)入队列$()的一个变种，还需向其提供一个图案。若已经存在使用该图案的$(thing)磁带$()，则覆盖其中$(hex)咒术$()；否则将$(hex)咒术$()分配至空磁带槽。",
