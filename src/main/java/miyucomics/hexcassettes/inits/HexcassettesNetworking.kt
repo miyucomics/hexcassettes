@@ -29,7 +29,7 @@ object HexcassettesNetworking {
 
 	@JvmStatic
 	fun init() {
-		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ -> (player as PlayerEntityMinterface).getCassetteState().queuedHexes.remove(HexcassettesMain.deserializeKey(packet.readString())) }
+		ServerPlayNetworking.registerGlobalReceiver(CASSETTE_REMOVE) { _, player, _, packet, _ -> (player as PlayerEntityMinterface).getCassetteState().hexes.remove(HexcassettesMain.deserializeKey(packet.readString())) }
 		ServerPlayNetworking.registerGlobalReceiver(SYNC_CASSETTES) { _, player, _, _, _ -> (player as PlayerEntityMinterface).getCassetteState().sync(player) }
 	}
 }

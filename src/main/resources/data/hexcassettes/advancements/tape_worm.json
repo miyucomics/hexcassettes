@@ -14,7 +14,7 @@
 			"translate": "advancements.hexcassettes.tape_worm.description"
 		},
 		"frame": "task",
-		"hidden": true,
+		"hidden": false,
 		"icon": {
 			"item": "minecraft:music_disc_blocks"
 		},

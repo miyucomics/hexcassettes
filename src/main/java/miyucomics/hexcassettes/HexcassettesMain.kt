@@ -31,9 +31,9 @@ class HexcassettesMain : ModInitializer {
 		val cassette = CassetteItem()
 		Registry.register(Registries.ITEM, id("cassette"), cassette)
 		ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.key, HexAPI.modLoc("hexcasting"))).register { group -> group.add(cassette) }
-		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, _ -> (newPlayer as PlayerEntityMinterface).getCassetteState().ownedSlots = (oldPlayer as PlayerEntityMinterface).getCassetteState().ownedSlots }
+		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, _ -> (newPlayer as PlayerEntityMinterface).getCassetteState().owned = (oldPlayer as PlayerEntityMinterface).getCassetteState().owned }
 
-		QUINE = Criteria.register(QuineCriterion())
+		QUINIO = Criteria.register(QuineCriterion())
 		TAPE_WORM = Criteria.register(TapeWormCriterion())
 		FULL_ARSENAL = Criteria.register(FullArsenalCriterion())
 
@@ -47,7 +47,7 @@ class HexcassettesMain : ModInitializer {
 		const val MAX_CASSETTES: Int = 6
 		fun id(string: String) = Identifier(MOD_ID, string)
 
-		lateinit var QUINE: QuineCriterion
+		lateinit var QUINIO: QuineCriterion
 		lateinit var TAPE_WORM: TapeWormCriterion
 		lateinit var FULL_ARSENAL: FullArsenalCriterion
 
@@ -75,10 +75,10 @@ class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(Fo
 			return super.finishUsing(stack, world, user)
 
 		val cassetteData = (user as PlayerEntityMinterface).getCassetteState()
-		if (cassetteData.ownedSlots < HexcassettesMain.MAX_CASSETTES) {
+		if (cassetteData.owned < HexcassettesMain.MAX_CASSETTES) {
 			HexcassettesMain.TAPE_WORM.trigger(user)
-			cassetteData.ownedSlots += 1
-			if (cassetteData.ownedSlots == HexcassettesMain.MAX_CASSETTES)
+			cassetteData.owned += 1
+			if (cassetteData.owned == HexcassettesMain.MAX_CASSETTES)
 				HexcassettesMain.FULL_ARSENAL.trigger(user)
 			cassetteData.sync(user)
 		}

@@ -20,7 +20,7 @@ class OpDequeue : SpellAction {
 
 	private data class Spell(val pattern: HexPattern) : RenderedSpell {
 		override fun cast(env: CastingEnvironment) {
-			(env.castingEntity as PlayerEntityMinterface).getCassetteState().queuedHexes.remove(pattern)
+			(env.castingEntity as PlayerEntityMinterface).getCassetteState().hexes.remove(pattern)
 		}
 	}
 }
