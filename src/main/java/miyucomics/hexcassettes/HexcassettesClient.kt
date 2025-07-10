@@ -22,6 +22,6 @@ class HexcassettesClient : ClientModInitializer {
 	}
 
 	companion object {
-		val CASSETTE_KEYBIND = KeyBinding("key.hexcassettes.view_cassettes", GLFW.GLFW_KEY_I, "key.categories.hexcassettes")
+		val CASSETTE_KEYBIND = KeyBinding("key.hexcassettes.view_cassettes", GLFW.GLFW_KEY_G, "key.categories.hexcassettes")
 	}
 }

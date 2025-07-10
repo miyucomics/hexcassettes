@@ -25,6 +25,7 @@ import miyucomics.hexcassettes.PlayerEntityMinterface
 import miyucomics.hexcassettes.data.QueuedHex
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.DyeColor
+import kotlin.math.roundToInt
 
 class OpEnqueue : Action {
 	override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
@@ -37,33 +38,27 @@ class OpEnqueue : Action {
 		val cassetteState = (env.castingEntity as PlayerEntityMinterface).getCassetteState()
 
 		val stack = image.stack.toMutableList()
-		val delay = stack.removeAt(stack.lastIndex)
-		if (delay !is DoubleIota || delay.double <= 0)
-			throw MishapInvalidIota.of(delay, 0, "double.positive")
-		val delayValue = delay.double.toInt()
-
-		when (val next = stack.removeAt(stack.lastIndex)) {
-			is ListIota -> {
-				val index = if (env is CassetteCastEnv) env.pattern else EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)
-				if (cassetteState.queuedHexes.keys.size >= HexcassettesMain.MAX_CASSETTES)
-					throw NoFreeCassettes()
-				cassetteState.queuedHexes[index] = QueuedHex(IotaType.serialize(next), delayValue)
-				stack.add(PatternIota(index))
-			}
-			is PatternIota -> {
-				val key = next.pattern
-				if (!cassetteState.queuedHexes.keys.contains(key) && cassetteState.queuedHexes.keys.size >= HexcassettesMain.MAX_CASSETTES)
-					throw NotEnoughCassettes()
-
-				val hex = stack.removeAt(stack.lastIndex)
-				if (hex !is ListIota)
-					throw MishapInvalidIota.ofType(hex, 2, "list")
-
-				cassetteState.queuedHexes[key] = QueuedHex(IotaType.serialize(hex), delayValue)
-			}
-			else -> throw MishapInvalidIota.of(next, 1, "hex_or_key")
+		var key = if (env is CassetteCastEnv) env.pattern else EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)
+		var labelled = 0
+		if (stack.last() is PatternIota) {
+			key = (stack.removeLast() as PatternIota).pattern
+			labelled++
 		}
 
+		val potentialDelay = stack.removeLast()
+		if (potentialDelay !is DoubleIota || potentialDelay.double - potentialDelay.double.roundToInt() > DoubleIota.TOLERANCE || potentialDelay.double.roundToInt() <= 0)
+			throw MishapInvalidIota.of(potentialDelay, labelled, "int.positive")
+
+		val potentialHex = stack.removeLast()
+		if (potentialHex !is ListIota)
+			throw MishapInvalidIota.ofType(potentialHex, labelled + 1, "list")
+
+		if (!cassetteState.queuedHexes.containsKey(key) && cassetteState.queuedHexes.keys.size >= HexcassettesMain.MAX_CASSETTES)
+			throw NoFreeCassettes()
+		cassetteState.queuedHexes[key] = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt())
+
+		if (labelled == 1)
+			stack.add(PatternIota(key))
 		return OperationResult(image.copy(stack = stack), listOf(), continuation, HexEvalSounds.SPELL)
 	}
 }
@@ -72,14 +67,4 @@ class NoFreeCassettes : Mishap() {
 	override fun accentColor(env: CastingEnvironment, errorCtx: Context) = dyeColor(DyeColor.RED)
 	override fun errorMessage(env: CastingEnvironment, errorCtx: Context) = error(HexcassettesMain.MOD_ID + ":no_free_cassettes")
 	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {}
-}
-
-class NotEnoughCassettes : Mishap() {
-	override fun accentColor(env: CastingEnvironment, errorCtx: Context) = dyeColor(DyeColor.RED)
-	override fun errorMessage(env: CastingEnvironment, errorCtx: Context) = error(HexcassettesMain.MOD_ID + ":not_enough_cassettes")
-	override fun execute(env: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
-		val caster = env.castingEntity
-		if (caster is ServerPlayerEntity)
-			(caster as PlayerEntityMinterface).getCassetteState().queuedHexes.clear()
-	}
 }
