@@ -57,7 +57,7 @@ class OpEnqueue : Action {
 			throw NoFreeCassettes()
 		cassetteState.queuedHexes[key] = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt())
 
-		if (labelled == 1)
+		if (labelled == 0)
 			stack.add(PatternIota(key))
 		return OperationResult(image.copy(stack = stack), listOf(), continuation, HexEvalSounds.SPELL)
 	}
