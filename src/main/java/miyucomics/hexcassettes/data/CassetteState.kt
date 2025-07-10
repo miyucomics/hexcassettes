@@ -5,6 +5,7 @@ import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
+import net.minecraft.data.client.TextureMap.pattern
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
 
@@ -53,13 +54,11 @@ class CassetteState {
 		@JvmStatic
 		fun deserialize(compound: NbtCompound): CassetteState {
 			val state = CassetteState()
-			state.ownedSlots = compound.getInt("owned")
 
+			state.ownedSlots = compound.getInt("owned")
 			val hexes = compound.getCompound("hexes")
-			hexes.keys.forEach { pattern ->
-				val hexCompound = hexes.getCompound(pattern)
-				val hex = QueuedHex.deserialize(hexCompound.getCompound("hex"))
-				state.queuedHexes[HexcassettesMain.deserializeKey(pattern)] = hex
+			hexes.keys.forEach {
+				state.queuedHexes[HexcassettesMain.deserializeKey(it)] = QueuedHex.deserialize(hexes.getCompound(it))
 			}
 
 			return state

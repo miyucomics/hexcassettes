@@ -1,7 +1,7 @@
 {
 	"name": "hexcassettes.page.async.title",
 	"icon": "hexcassettes:cassette",
-	"category": "hexcasting:patterns",
+	"category": "hexcasting:patterns/spells",
 	"sortnum": 30,
 	"advancement": "hexcasting:root",
 	"pages": [
