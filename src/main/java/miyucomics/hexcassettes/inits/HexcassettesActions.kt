@@ -9,7 +9,7 @@ import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.patterns.*
 import net.minecraft.registry.Registry
 
-object HexcassettesPatterns {
+object HexcassettesActions {
 	@JvmStatic
 	fun init() {
 		register("enqueue", "qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST, OpEnqueue())

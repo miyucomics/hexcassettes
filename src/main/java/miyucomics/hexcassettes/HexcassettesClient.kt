@@ -9,15 +9,19 @@ import net.minecraft.client.option.KeyBinding
 import org.lwjgl.glfw.GLFW
 
 class HexcassettesClient : ClientModInitializer {
-	private val openCassettesKeybind = KeyBinding("key.hexcassettes.view_cassettes", GLFW.GLFW_KEY_I, "key.categories.hexcassettes")
-
 	override fun onInitializeClient() {
-		KeyBindingHelper.registerKeyBinding(openCassettesKeybind)
+		KeyBindingHelper.registerKeyBinding(CASSETTE_KEYBIND)
+
 		ClientTickEvents.END_CLIENT_TICK.register { client ->
-			if (openCassettesKeybind.isPressed && client.currentScreen !is CassetteScreen)
+			if (CASSETTE_KEYBIND.isPressed && client.currentScreen == null) {
 				client.setScreen(CassetteScreen())
+			}
 		}
 
 		HexcassettesNetworking.clientInit()
+	}
+
+	companion object {
+		val CASSETTE_KEYBIND = KeyBinding("key.hexcassettes.view_cassettes", GLFW.GLFW_KEY_I, "key.categories.hexcassettes")
 	}
 }
