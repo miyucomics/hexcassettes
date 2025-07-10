@@ -38,7 +38,7 @@ class HexcassettesMain : ModInitializer {
 		FULL_ARSENAL = Criteria.register(FullArsenalCriterion())
 
 		HexcassettesNetworking.init()
-		HexcassettesPatterns.init()
+		HexcassettesActions.init()
 		HexcassettesSounds.init()
 	}
 
