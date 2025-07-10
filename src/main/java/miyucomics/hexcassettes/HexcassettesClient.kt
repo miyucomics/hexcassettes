@@ -11,17 +11,15 @@ import org.lwjgl.glfw.GLFW
 class HexcassettesClient : ClientModInitializer {
 	override fun onInitializeClient() {
 		KeyBindingHelper.registerKeyBinding(CASSETTE_KEYBIND)
+		HexcassettesNetworking.clientInit()
 
 		ClientTickEvents.END_CLIENT_TICK.register { client ->
-			if (CASSETTE_KEYBIND.isPressed && client.currentScreen == null) {
+			if (CASSETTE_KEYBIND.isPressed && client.currentScreen == null)
 				client.setScreen(CassetteScreen())
-			}
 		}
-
-		HexcassettesNetworking.clientInit()
 	}
 
 	companion object {
-		val CASSETTE_KEYBIND = KeyBinding("key.hexcassettes.view_cassettes", GLFW.GLFW_KEY_G, "key.categories.hexcassettes")
+		val CASSETTE_KEYBIND = KeyBinding("key.hexcassettes.ponder_cassette", GLFW.GLFW_KEY_G, "key.categories.hexcassettes")
 	}
 }

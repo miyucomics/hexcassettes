@@ -31,8 +31,6 @@ class OpEnqueue : Action {
 	override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
 		if (env !is PlayerBasedCastEnv)
 			throw MishapBadCaster()
-		if (env is CassetteCastEnv)
-			HexcassettesMain.QUINE.trigger(env.castingEntity as ServerPlayerEntity)
 		if (image.stack.size < 2)
 			throw MishapNotEnoughArgs(2, image.stack.size)
 		val cassetteState = (env.castingEntity as PlayerEntityMinterface).getCassetteState()
@@ -53,9 +51,13 @@ class OpEnqueue : Action {
 		if (potentialHex !is ListIota)
 			throw MishapInvalidIota.ofType(potentialHex, labelled + 1, "list")
 
-		if (!cassetteState.queuedHexes.containsKey(key) && cassetteState.queuedHexes.keys.size >= HexcassettesMain.MAX_CASSETTES)
+		if (!cassetteState.hexes.containsKey(key) && cassetteState.hexes.keys.size >= cassetteState.owned)
 			throw NoFreeCassettes()
-		cassetteState.queuedHexes[key] = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt())
+
+		var depth = 0
+		if (env is CassetteCastEnv)
+			depth = env.depth + 1
+		cassetteState.hexes[key] = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt(), depth)
 
 		if (labelled == 0)
 			stack.add(PatternIota(key))

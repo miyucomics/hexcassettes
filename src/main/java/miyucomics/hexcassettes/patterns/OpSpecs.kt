@@ -13,6 +13,6 @@ class OpSpecs : ConstMediaAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env !is PlayerBasedCastEnv)
 			throw MishapBadCaster()
-		return (env.castingEntity as PlayerEntityMinterface).getCassetteState().ownedSlots.asActionResult
+		return (env.castingEntity as PlayerEntityMinterface).getCassetteState().owned.asActionResult
 	}
 }

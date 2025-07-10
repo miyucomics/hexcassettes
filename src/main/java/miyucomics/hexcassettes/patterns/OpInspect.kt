@@ -13,6 +13,6 @@ class OpInspect : ConstMediaAction {
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		val player = args.getPlayer(0, argc)
 		val pattern = args.getPattern(1, argc)
-		return (player as PlayerEntityMinterface).getCassetteState().queuedHexes.containsKey(pattern).asActionResult
+		return (player as PlayerEntityMinterface).getCassetteState().hexes.containsKey(pattern).asActionResult
 	}
 }
