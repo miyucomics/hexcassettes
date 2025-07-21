@@ -17,6 +17,7 @@ export_dir = "src/hexdoc_hexcassettes/_export/generated"
 icon = "icon.png"
 include = [
     "hexcassettes",
+    "hexpose",
     "hexcasting",
     "hexdoc",
 ]

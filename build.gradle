@@ -27,6 +27,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version"
 	modImplementation "net.fabricmc:fabric-language-kotlin:$fabric_kotlin_version"
 
+	modImplementation "miyucomics.hexpose:hexpose:$hexpose_version"
 	modImplementation("at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcasting_version") {
 		exclude module: "phosphor"
 		exclude module: "lithium"

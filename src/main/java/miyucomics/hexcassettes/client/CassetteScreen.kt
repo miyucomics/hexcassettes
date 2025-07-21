@@ -20,7 +20,7 @@ class CassetteScreen : Screen(Text.of("Cassettes")) {
 		translateOffset = panelWidth.toDouble()
 		animationProgress = 0.0
 		for (i in 0 until ClientStorage.ownedCassettes)
-			addDrawableChild(CassetteWidget(i, width - 11, height - 38 - i * 23))
+			addDrawableChild(CassetteWidget(i, width - 16, 16 + i * 25))
 	}
 
 	override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {

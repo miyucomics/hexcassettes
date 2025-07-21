@@ -2,13 +2,12 @@ package miyucomics.hexcassettes
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
-import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.api.pigment.FrozenPigment
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.Hand
 
-class CassetteCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val pattern: HexPattern, val depth: Int = 0) : PlayerBasedCastEnv(caster, castingHand) {
+class CassetteCastEnv(caster: ServerPlayerEntity, castingHand: Hand, val key: String, val depth: Int = 0) : PlayerBasedCastEnv(caster, castingHand) {
 	init {
 		if (depth >= 9)
 			HexcassettesMain.QUINIO.trigger(caster)

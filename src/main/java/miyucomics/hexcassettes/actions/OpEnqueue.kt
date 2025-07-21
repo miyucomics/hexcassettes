@@ -1,4 +1,4 @@
-package miyucomics.hexcassettes.patterns
+package miyucomics.hexcassettes.actions
 
 import at.petrak.hexcasting.api.casting.castables.Action
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
-import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.EulerPathFinder
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
@@ -23,7 +22,8 @@ import miyucomics.hexcassettes.CassetteCastEnv
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.PlayerEntityMinterface
 import miyucomics.hexcassettes.data.QueuedHex
-import net.minecraft.server.network.ServerPlayerEntity
+import miyucomics.hexpose.iotas.TextIota
+import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
 import kotlin.math.roundToInt
 
@@ -36,10 +36,22 @@ class OpEnqueue : Action {
 		val cassetteState = (env.castingEntity as PlayerEntityMinterface).getCassetteState()
 
 		val stack = image.stack.toMutableList()
-		var key = if (env is CassetteCastEnv) env.pattern else EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)
+		var key = if (env is CassetteCastEnv)
+			env.key
+		else {
+			val pattern = EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)
+			val bob = StringBuilder()
+			bob.append(pattern.startDir)
+			val sig = pattern.anglesSignature()
+			if (!sig.isEmpty()) {
+				bob.append(" ")
+				bob.append(sig)
+			}
+			Text.Serializer.toJson(Text.literal("HexPattern($bob)"))
+		}
 		var labelled = 0
-		if (stack.last() is PatternIota) {
-			key = (stack.removeLast() as PatternIota).pattern
+		if (stack.last() is TextIota) {
+			key = Text.Serializer.toJson((stack.removeLast() as TextIota).text)
 			labelled++
 		}
 
@@ -60,7 +72,7 @@ class OpEnqueue : Action {
 		cassetteState.hexes[key] = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt(), depth)
 
 		if (labelled == 0)
-			stack.add(PatternIota(key))
+			stack.add(TextIota(Text.Serializer.fromJson(key)!!))
 		return OperationResult(image.copy(stack = stack), listOf(), continuation, HexEvalSounds.SPELL)
 	}
 }
