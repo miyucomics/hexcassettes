@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import miyucomics.hexcassettes.HexcassettesMain
-import miyucomics.hexcassettes.patterns.*
+import miyucomics.hexcassettes.actions.*
 import net.minecraft.registry.Registry
 
 object HexcassettesActions {

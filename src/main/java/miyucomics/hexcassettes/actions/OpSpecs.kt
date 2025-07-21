@@ -1,21 +1,18 @@
-package miyucomics.hexcassettes.patterns
+package miyucomics.hexcassettes.actions
 
 import at.petrak.hexcasting.api.casting.asActionResult
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv
-import at.petrak.hexcasting.api.casting.getPattern
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import miyucomics.hexcassettes.PlayerEntityMinterface
 
-class OpForetell : ConstMediaAction {
-	override val argc = 1
+class OpSpecs : ConstMediaAction {
+	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
 		if (env !is PlayerBasedCastEnv)
 			throw MishapBadCaster()
-		val queuedHexes = (env.castingEntity as PlayerEntityMinterface).getCassetteState().hexes
-		val pattern = args.getPattern(0, argc)
-		return queuedHexes[pattern]?.delay?.asActionResult ?: null.asActionResult
+		return (env.castingEntity as PlayerEntityMinterface).getCassetteState().owned.asActionResult
 	}
 }
