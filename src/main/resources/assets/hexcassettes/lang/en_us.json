@@ -35,7 +35,7 @@
 	"hexcassettes.page.inspect.summary": "Pushes whether a given player has a $(thing)Cassette$() with a certain label.",
 	"hexcasting.action.hexcassettes:foretell": "Oracle Purification",
 	"hexcassettes.page.foretell.summary": "Pushes the twentieths of a second until the $(thing)Cassette$() with the given label fires. Pushes $(l:casting/influences)$(thing)Null$() if there is no such $(thing)Cassette$().",
-    "hexcassettes.page.enqueue.summary.1": "A variant of $(l:async#hexcassettes:enqueue)$(action)Enqueue$() that takes an additional pattern. Queues the _Hex under the given label.",
+    "hexcassettes.page.enqueue.summary.1": "A variant of $(l:async#hexcassettes:enqueue)$(action)Enqueue$() that takes an additional $(l:patterns/text_iotas)$(thing)text iota$(). Queues the _Hex under the given label.",
 	"hexcassettes.page.async.4": "If there is already a $(thing)Cassette$() of the provided label, the provided _Hex replaces it and takes its slot.$(br2)Otherwise, it schedules the _Hex to an empty slot. If there are no available slots, it incurs the Parallel Processing mishap, terminating all of my $(thing)Cassettes$().",
 	"hexcasting.action.hexcassettes:self": "State Reflection",
 	"hexcassettes.page.self.summary": "Pushes the current label of the $(thing)Cassette$() this _Hex is running in or $(l:casting/influences)$(thing)Null$() if it is not running in a $(thing)Cassette$()."

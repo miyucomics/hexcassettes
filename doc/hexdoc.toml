@@ -8,6 +8,7 @@ resource_dirs = [
     "{_common.src}/main/resources",
     { path="{^_common.src}/generated/resources", required=false },
     { modid="hexcasting" },
+    { modid="hexpose" },
     { modid="minecraft" },
     { modid="hexdoc" },
 ]
