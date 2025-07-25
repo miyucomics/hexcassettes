@@ -27,8 +27,7 @@ public class PlayerEntityMixin implements PlayerEntityMinterface {
 
 	@Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
 	private void readCassetteState(NbtCompound compound, CallbackInfo ci) {
-		if (compound.contains("cassettes"))
-			cassetteState = CassetteState.deserialize(compound.getCompound("cassettes"));
+		cassetteState = CassetteState.deserialize(compound.getCompound("cassettes"));
 	}
 
 	@Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))

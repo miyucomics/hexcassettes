@@ -1,10 +1,10 @@
 package miyucomics.hexcassettes
 
 import at.petrak.hexcasting.api.HexAPI
-import at.petrak.hexcasting.api.casting.math.HexDir
-import at.petrak.hexcasting.api.casting.math.HexPattern
 import com.google.gson.JsonObject
-import miyucomics.hexcassettes.inits.*
+import miyucomics.hexcassettes.inits.HexcassettesActions
+import miyucomics.hexcassettes.inits.HexcassettesNetworking
+import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
@@ -22,6 +22,7 @@ import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.sound.SoundCategory
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
 import net.minecraft.world.World
@@ -51,11 +52,8 @@ class HexcassettesMain : ModInitializer {
 		lateinit var TAPE_WORM: TapeWormCriterion
 		lateinit var FULL_ARSENAL: FullArsenalCriterion
 
-		fun serializeKey(pattern: HexPattern) = pattern.startDir.toString() + ":" + pattern.anglesSignature()
-		fun deserializeKey(string: String): HexPattern {
-			val fragments = string.split(":")
-			return HexPattern.fromAngles(fragments[1], HexDir.fromString(fragments[0]))
-		}
+		fun serializeKey(key: Text): String = Text.Serializer.toJson(key)
+		fun deserializeKey(data: String) = Text.Serializer.fromJson(data)!!
 	}
 }
 

@@ -1,8 +1,8 @@
 package miyucomics.hexcassettes.client
 
-import at.petrak.hexcasting.api.casting.math.HexPattern
+import net.minecraft.text.Text
 
 object ClientStorage {
 	var ownedCassettes: Int = 0
-	val activeCassettes: MutableList<HexPattern> = mutableListOf()
+	var activeCassettes: MutableList<Text> = mutableListOf()
 }
