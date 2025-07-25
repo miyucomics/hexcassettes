@@ -1,16 +1,15 @@
 package miyucomics.hexcassettes.data
 
-import at.petrak.hexcasting.api.casting.math.HexPattern
-import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.network.ServerPlayerEntity
+import java.util.concurrent.ConcurrentHashMap
 
 class CassetteState {
 	var owned = 0
-	val hexes: MutableMap<HexPattern, QueuedHex> = mutableMapOf()
+	val hexes: MutableMap<String, QueuedHex> = ConcurrentHashMap()
 	private var previouslyActiveSlots: Set<String> = emptySet()
 
 	fun sync(player: ServerPlayerEntity) {
@@ -18,7 +17,7 @@ class CassetteState {
 		buf.writeInt(owned)
 		val keys = hexes.keys
 		buf.writeInt(keys.size)
-		keys.forEach { buf.writeString(HexcassettesMain.serializeKey(it)) }
+		keys.forEach { buf.writeString(it) }
 		ServerPlayNetworking.send(player, HexcassettesNetworking.SYNC_CASSETTES, buf)
 	}
 
@@ -34,7 +33,7 @@ class CassetteState {
 			}
 		}
 
-		val activeIndices = hexes.keys.map { HexcassettesMain.serializeKey(it) }.toSet()
+		val activeIndices = hexes.keys.map { it }.toSet()
 		if (previouslyActiveSlots != activeIndices)
 			sync(player)
 		previouslyActiveSlots = activeIndices
@@ -44,23 +43,17 @@ class CassetteState {
 		val compound = NbtCompound()
 		compound.putInt("owned", owned)
 		val serialized = NbtCompound()
-		hexes.forEach { (pattern, hex) -> serialized.put(HexcassettesMain.serializeKey(pattern), hex.serialize()) }
+		hexes.forEach { (pattern, hex) -> serialized.put(pattern, hex.serialize()) }
 		compound.put("hexes", serialized)
 		return compound
 	}
 
 	companion object {
 		@JvmStatic
-		fun deserialize(compound: NbtCompound): CassetteState {
-			val state = CassetteState()
-
-			state.owned = compound.getInt("owned")
+		fun deserialize(compound: NbtCompound) = CassetteState().also {
+			it.owned = compound.getInt("owned")
 			val hexes = compound.getCompound("hexes")
-			hexes.keys.forEach {
-				state.hexes[HexcassettesMain.deserializeKey(it)] = QueuedHex.deserialize(hexes.getCompound(it))
-			}
-
-			return state
+			hexes.keys.forEach { key -> it.hexes[key] = QueuedHex.deserialize(hexes.getCompound(key)) }
 		}
 	}
 }

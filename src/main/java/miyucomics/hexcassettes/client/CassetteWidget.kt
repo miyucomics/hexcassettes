@@ -1,38 +1,28 @@
 package miyucomics.hexcassettes.client
 
-import at.petrak.hexcasting.client.render.PatternColors
-import at.petrak.hexcasting.client.render.PatternRenderer
-import at.petrak.hexcasting.client.render.WorldlyPatternRenderHelpers
-import com.mojang.blaze3d.systems.RenderSystem
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.widget.ButtonWidget
-import net.minecraft.client.render.GameRenderer
 import net.minecraft.client.sound.PositionedSoundInstance
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-class CassetteWidget(val index: Int, x: Int, y: Int) : ButtonWidget(x, y, 11, 20, Text.empty(), { }, { supplier -> supplier.get() }) {
+class CassetteWidget(val index: Int, x: Int, y: Int) : ButtonWidget(x, y, 16, 20, Text.empty(), { }, { supplier -> supplier.get() }) {
 	override fun renderButton(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-		RenderSystem.setShader { GameRenderer.getPositionTexProgram() }
-		RenderSystem.setShaderTexture(0, texture)
-		RenderSystem.enableDepthTest()
 		if (isActive()) {
-			context.drawTexture(texture, this.x, this.y, 0f, 20f, this.width, this.height, 11, 40)
-
-			val matrices = context.matrices
-			matrices.push()
-			matrices.translate(this.x.toDouble() - 16, this.y.toDouble(), 0.0)
-			matrices.scale(20f, 20f, 20f)
-			PatternRenderer.renderPattern(ClientStorage.activeCassettes[index], context.matrices, null, WorldlyPatternRenderHelpers.WORLDLY_SETTINGS_WOBBLY, PatternColors.SLATE_WOBBLY_PURPLE_COLOR, 0.0, 10)
-			matrices.pop()
+			context.drawTexture(texture, this.x, this.y, 0f, 20f, this.width, this.height, 16, 48)
+			val renderer = MinecraftClient.getInstance().textRenderer
+			val text = ClientStorage.activeCassettes[index]
+			renderer.getWidth(text)
+			context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, ClientStorage.activeCassettes[index], this.x - renderer.getWidth(text), this.y + renderer.fontHeight / 2, 0xff_ffffff.toInt())
 		} else {
-			context.drawTexture(texture, this.x, this.y, 0f, 0f, this.width, this.height, 11, 40)
+			context.drawTexture(texture, this.x, this.y, 0f, 0f, this.width, this.height, 16, 48)
 		}
 	}
 
