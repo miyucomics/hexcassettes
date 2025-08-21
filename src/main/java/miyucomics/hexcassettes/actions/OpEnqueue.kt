@@ -10,6 +10,7 @@ import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
+import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.api.casting.math.EulerPathFinder
 import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
@@ -36,19 +37,10 @@ class OpEnqueue : Action {
 		val cassetteState = (env.castingEntity as PlayerEntityMinterface).getCassetteState()
 
 		val stack = image.stack.toMutableList()
-		var key = if (env is CassetteCastEnv)
+		var key = if (env is CassetteCastEnv && !cassetteState.hexes.containsKey(env.key))
 			env.key
-		else {
-			val pattern = EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)
-			val bob = StringBuilder()
-			bob.append(pattern.startDir)
-			val sig = pattern.anglesSignature()
-			if (!sig.isEmpty()) {
-				bob.append(" ")
-				bob.append(sig)
-			}
-			Text.Serializer.toJson(Text.literal("HexPattern($bob)"))
-		}
+		else
+			Text.Serializer.toJson(PatternIota.display(EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)))
 		var labelled = 0
 		if (stack.last() is TextIota) {
 			key = Text.Serializer.toJson((stack.removeLast() as TextIota).text)
@@ -67,7 +59,7 @@ class OpEnqueue : Action {
 			throw NoFreeCassettes()
 
 		var depth = 0
-		if (env is CassetteCastEnv)
+		if (env is CassetteCastEnv && env.depth < 10)
 			depth = env.depth + 1
 		cassetteState.hexes[key] = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt(), depth)
 
