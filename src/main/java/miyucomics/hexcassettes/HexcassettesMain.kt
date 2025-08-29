@@ -7,6 +7,9 @@ import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
+import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.advancement.criterion.AbstractCriterion
 import net.minecraft.advancement.criterion.AbstractCriterionConditions
@@ -25,14 +28,24 @@ import net.minecraft.sound.SoundCategory
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
+import net.minecraft.world.GameRules
 import net.minecraft.world.World
 
 class HexcassettesMain : ModInitializer {
 	override fun onInitialize() {
-		val cassette = CassetteItem()
-		Registry.register(Registries.ITEM, id("cassette"), cassette)
-		ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.key, HexAPI.modLoc("hexcasting"))).register { group -> group.add(cassette) }
+		GameRuleRegistry.register("maxCassettes", GameRules.Category.PLAYER,
+			GameRuleFactory.createIntRule(6, 0, 100) { _, rule ->
+				HexcassettesConfiguration.instance.copy(maxCassettes = rule.get()).also {
+					HexcassettesConfiguration.save(it)
+				}
+			}
+		)
+
 		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, _ -> (newPlayer as PlayerEntityMinterface).getCassetteState().owned = (oldPlayer as PlayerEntityMinterface).getCassetteState().owned }
+		CassetteItem().also {
+			Registry.register(Registries.ITEM, id("cassette"), it)
+			ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.key, HexAPI.modLoc("hexcasting"))).register { group -> group.add(it) }
+		}
 
 		QUINIO = Criteria.register(QuineCriterion())
 		TAPE_WORM = Criteria.register(TapeWormCriterion())
@@ -45,7 +58,6 @@ class HexcassettesMain : ModInitializer {
 
 	companion object {
 		const val MOD_ID: String = "hexcassettes"
-		const val MAX_CASSETTES: Int = 6
 		fun id(string: String) = Identifier(MOD_ID, string)
 
 		lateinit var QUINIO: QuineCriterion
@@ -72,11 +84,12 @@ class CassetteItem : Item(Settings().maxCount(1).rarity(Rarity.UNCOMMON).food(Fo
 		if (user !is ServerPlayerEntity)
 			return super.finishUsing(stack, world, user)
 
+		val maxCassettes = HexcassettesConfiguration.instance.maxCassettes
 		val cassetteData = (user as PlayerEntityMinterface).getCassetteState()
-		if (cassetteData.owned < HexcassettesMain.MAX_CASSETTES) {
+		if (cassetteData.owned < maxCassettes) {
 			HexcassettesMain.TAPE_WORM.trigger(user)
 			cassetteData.owned += 1
-			if (cassetteData.owned == HexcassettesMain.MAX_CASSETTES)
+			if (cassetteData.owned == maxCassettes)
 				HexcassettesMain.FULL_ARSENAL.trigger(user)
 			cassetteData.sync(user)
 		}
