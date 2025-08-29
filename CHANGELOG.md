@@ -5,7 +5,7 @@
   - allows for mishapping cassettes to still be cancelled even when your staff is wrenched from your hand
 - added reflection for whether something is running in a cassette and its label
 - added variant of Enqueue that requires no label
-- changed cassette labels to always be a pattern
+- changed cassette labels to always be a text iota
 - changed to storing cassette data in player rather than persistent state
 - changed Program Purification to Program Distillation: checks whether a player has a given cassette
 - changed QUINIO advancement to require ten recursive iterations
