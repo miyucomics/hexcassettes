@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/90112c5f02f1c115238ace5dda1b317f6b762a7e"
+      href="https://github.com/miyucomics/hexcassettes/tree/7b65f65846d3ae313ec00876c59ce8b13ab4d490"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,7 +149,7 @@
           <li><a href="#async" class="toc-elem "><img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/90112c5f02f1c115238ace5dda1b317f6b762a7e/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/7b65f65846d3ae313ec00876c59ce8b13ab4d490/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     > Asynchronous Hexes</a></li>
@@ -180,7 +180,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/90112c5f02f1c115238ace5dda1b317f6b762a7e/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/7b65f65846d3ae313ec00876c59ce8b13ab4d490/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >Asynchronous Hexes<a
@@ -260,7 +260,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/90112c5f02f1c115238ace5dda1b317f6b762a7e/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/7b65f65846d3ae313ec00876c59ce8b13ab4d490/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -325,6 +325,64 @@
   </details>
       <p>Queues a <span style="color: #b38ef3">Hex</span> to cast after that many twentieths of a second. Inherits the label of the current <span style="color: #8d6acc">Cassette</span> if possible or a randomized pattern. Label is returned.</p>
   </div>
+<br />
+  <div id="async@hexcassettes:enqueue" class="">
+<h4 class="pattern-title">Enqueue (list, number, text →)<a
+    href="#async@hexcassettes:enqueue"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
+  </details>
+      <p>A variant that takes an additional <a href="https://miyucomics.github.io/hexpose/v/1.0.0/1.0.0/en_us#patterns/text_iotas"><span style="color: #8d6acc">text iota</span></a>. Queues the <span style="color: #b38ef3">Hex</span> under the given label.</p>
+  </div>
+<br />
+    <p>If there is already a <span style="color: #8d6acc">Cassette</span> of the provided label, the provided <span style="color: #b38ef3">Hex</span> replaces it and takes its slot.</p><p>Otherwise, it schedules the <span style="color: #b38ef3">Hex</span> to an empty slot. If there are no available slots, it incurs the Parallel Processing mishap, terminating all of my <span style="color: #8d6acc">Cassettes</span>.</p>
 <br />
     <p>If <a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">Enqueue</span></a> can not find a free <span style="color: #8d6acc">Cassette</span>, it incurs the Parallel Processing mishap, terminating all of my <span style="color: #8d6acc">Cassettes</span>.</p><p>The minimal time I can delay a <span style="color: #b38ef3">Hex</span> seems to hint that the world I live in has a disturbingly low <i>temporal resolution</i>.. best not to dwell on that.</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
 <br />
@@ -667,64 +725,6 @@
   </details>
       <p>Pushes the twentieths of a second until the <span style="color: #8d6acc">Cassette</span> with the given label fires. Pushes <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if there is no such <span style="color: #8d6acc">Cassette</span>.</p>
   </div>
-<br />
-  <div id="async@hexcassettes:enqueue" class="">
-<h4 class="pattern-title">Enqueue (list, number, text →)<a
-    href="#async@hexcassettes:enqueue"
-    class="permalink small"
-    title="Permalink"
-  ><i class="bi bi-link-45deg"></i></a></h4>
-  <details class="details-collapsible">
-    <summary class="collapse-details collapse-spell"></summary>
-    <div class="dropdown spell-settings-dropdown">
-      <span
-        href=""
-        class="dropdown-toggle spell-settings-toggle"
-        data-toggle="dropdown"
-        role="button"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        <i class="bi bi-gear-fill"></i>
-      </span>
-      <ul class="dropdown-menu">
-        <li class="dropdown-submenu">
-          <a
-            href=""
-            class="dropdown-toggle"
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >Renders</a>
-          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
-        </li>
-        <li class="dropdown-submenu">
-          <a
-            href=""
-            class="dropdown-toggle"
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >Palettes</a>
-          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
-        </li>
-      </ul>
-    </div>
-      <canvas
-        class="spell-viz"
-        width="216"
-        height="216"
-        data-string="qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww"
-        data-start="east"
-        data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww</canvas>
-  </details>
-      <p>A variant of <a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">Enqueue</span></a> that takes an additional <a href="https://miyucomics.github.io/hexpose/v/1.0.0/1.0.0/en_us#patterns/text_iotas"><span style="color: #8d6acc">text iota</span></a>. Queues the <span style="color: #b38ef3">Hex</span> under the given label.</p>
-  </div>
-<br />
-    <p>If there is already a <span style="color: #8d6acc">Cassette</span> of the provided label, the provided <span style="color: #b38ef3">Hex</span> replaces it and takes its slot.</p><p>Otherwise, it schedules the <span style="color: #b38ef3">Hex</span> to an empty slot. If there are no available slots, it incurs the Parallel Processing mishap, terminating all of my <span style="color: #8d6acc">Cassettes</span>.</p>
 <br />
   <div id="async@hexcassettes:self" class="">
 <h4 class="pattern-title">State Reflection (→ null/text)<a
