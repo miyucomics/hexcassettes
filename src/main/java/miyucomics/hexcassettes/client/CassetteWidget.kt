@@ -11,19 +11,15 @@ import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.sound.PositionedSoundInstance
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.text.Text
+import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
 
-class CassetteWidget(val index: Int, x: Int, y: Int) : ButtonWidget(x, y, 16, 20, Text.empty(), { }, { supplier -> supplier.get() }) {
+class CassetteWidget(val index: Int, x: Int, y: Int) : ButtonWidget(x, y, 32, 16, Text.empty(), { }, { supplier -> supplier.get() }) {
 	override fun renderButton(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-		if (isActive()) {
-			context.drawTexture(texture, this.x, this.y, 0f, 20f, this.width, this.height, 16, 48)
-			val renderer = MinecraftClient.getInstance().textRenderer
-			val text = ClientStorage.activeCassettes[index]
-			renderer.getWidth(text)
-			context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, ClientStorage.activeCassettes[index], this.x - renderer.getWidth(text), this.y + renderer.fontHeight / 2, 0xff_ffffff.toInt())
-		} else {
-			context.drawTexture(texture, this.x, this.y, 0f, 0f, this.width, this.height, 16, 48)
-		}
+		context.drawTexture(texture, this.x, this.y, 0f, 0f, this.width, this.height, this.width, this.height)
+		val textToDraw = if (isActive()) ClientStorage.activeCassettes[index] else freeText
+		val renderer = MinecraftClient.getInstance().textRenderer
+		context.drawTextWithShadow(renderer, textToDraw, this.x + this.width, this.y + renderer.fontHeight / 2, -1)
 	}
 
 	override fun playDownSound(soundManager: SoundManager) {
@@ -44,5 +40,6 @@ class CassetteWidget(val index: Int, x: Int, y: Int) : ButtonWidget(x, y, 16, 20
 
 	companion object {
 		val texture: Identifier = HexcassettesMain.id("textures/cassette.png")
+		val freeText: Text = Text.translatable("hexcassettes.free").formatted(Formatting.DARK_GRAY).formatted(Formatting.ITALIC)
 	}
 }

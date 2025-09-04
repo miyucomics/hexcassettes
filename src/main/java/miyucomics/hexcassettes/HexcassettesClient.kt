@@ -14,7 +14,7 @@ class HexcassettesClient : ClientModInitializer {
 		HexcassettesNetworking.clientInit()
 
 		ClientTickEvents.END_CLIENT_TICK.register { client ->
-			if (CASSETTE_KEYBIND.isPressed && client.currentScreen == null)
+			if (CASSETTE_KEYBIND.wasPressed() && client.currentScreen == null)
 				client.setScreen(CassetteScreen())
 		}
 	}
