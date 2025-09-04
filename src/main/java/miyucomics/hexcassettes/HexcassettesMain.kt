@@ -7,7 +7,6 @@ import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import miyucomics.hexcassettes.inits.HexcassettesSounds
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
-import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
@@ -33,14 +32,6 @@ import net.minecraft.world.World
 
 class HexcassettesMain : ModInitializer {
 	override fun onInitialize() {
-		GameRuleRegistry.register("maxCassettes", GameRules.Category.PLAYER,
-			GameRuleFactory.createIntRule(6, 0, 100) { _, rule ->
-				HexcassettesConfiguration.instance.copy(maxCassettes = rule.get()).also {
-					HexcassettesConfiguration.save(it)
-				}
-			}
-		)
-
 		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, _ -> (newPlayer as PlayerEntityMinterface).getCassetteState().owned = (oldPlayer as PlayerEntityMinterface).getCassetteState().owned }
 		CassetteItem().also {
 			Registry.register(Registries.ITEM, id("cassette"), it)
