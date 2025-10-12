@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/miyucomics/hexcassettes/tree/fcc91b3f1f63e2d93594807212f15c85aba0df7e"
+      href="https://github.com/miyucomics/hexcassettes/tree/4d9c40c77670183926ddae834de1f6990287d550"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -149,10 +149,17 @@
           <li><a href="#async" class="toc-elem "><img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/fcc91b3f1f63e2d93594807212f15c85aba0df7e/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/4d9c40c77670183926ddae834de1f6990287d550/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    > Asynchronous Hexes</a></li>
+    > Delaying Hexes</a></li>
+          <li><a href="#daemons" class="toc-elem "><img
+      title="Clock"
+      alt="Clock"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/items/clock_00.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Reflections on Daemons</a></li>
       </ul>
     </details>
 </nav>
@@ -180,10 +187,10 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/fcc91b3f1f63e2d93594807212f15c85aba0df7e/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/4d9c40c77670183926ddae834de1f6990287d550/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
-    >Asynchronous Hexes<a
+    >Delaying Hexes<a
     href="#table-of-contents"
     class="permalink small"
     title="Jump to top"
@@ -206,7 +213,7 @@
         <img
       title="Crafting Table"
       alt="Crafting Table"
-      src="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/d543be08695dd239eb2aaff1bdc2378462f61e79/src/hexdoc/_export/resources/assets/minecraft/textures/gui/hexdoc/crafting_table.png"
+      src="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/7bf3080f190fb00c14a7220d6f7e0337389b41db/src/hexdoc/_export/resources/assets/minecraft/textures/gui/hexdoc/crafting_table.png"
       class="texture pixelated"
     >
   <div class="crafting-table-grid">
@@ -260,7 +267,7 @@
     <img
       title="Cassette"
       alt="Cassette"
-      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/fcc91b3f1f63e2d93594807212f15c85aba0df7e/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
+      src="https://raw.githubusercontent.com/miyucomics/hexcassettes/4d9c40c77670183926ddae834de1f6990287d550/src/main/resources/assets/hexcassettes/textures/item/cassette.png"
       loading="lazy"
       class="item-texture  texture pixelated"
     >
@@ -387,8 +394,6 @@
     <p>If <a href="#async@hexcassettes:enqueue"><span style="color: #fc77be">Enqueue</span></a> can not find a free <span style="color: #8d6acc">Cassette</span>, it incurs the Parallel Processing mishap, terminating all of my <span style="color: #8d6acc">Cassettes</span>.</p><p>The minimal time I can delay a <span style="color: #b38ef3">Hex</span> seems to hint that the world I live in has a disturbingly low <i>temporal resolution</i>.. best not to dwell on that.</p><p><i>Ibra oniki ra. QUINIO QUINIO QUINIO QUINIO alef a ra.</i></p>
 <br />
     <p>The label of a <span style="color: #8d6acc">Cassette</span> is a <a href="https://miyucomics.github.io/hexpose/v/1.0.0/1.0.0/en_us#patterns/text_iotas"><span style="color: #8d6acc">text iota</span></a> that distinguishes it from other <span style="color: #8d6acc">Cassettes</span>. I will need this label if I want to cancel or query information about it.</p><p>I can view all my <span style="color: #8d6acc">Cassettes</span> by pressing <span style="color: #8d6acc">Ponder Cassettes</span>.</p><p>Dying also forcibly ends all of my <span style="color: #8d6acc">Cassettes</span>.</p>
-<br />
-    <p>If a <span style="color: #8d6acc">Cassette</span> queues a copy of itself capable of further enqueueing, a phenomenon emerges that ancient <span style="color: #b38ef3">Hexcasters</span> call a daemon: passive, constant <span style="color: #b38ef3">Hexcasting</span>.</p><p>Study into this branch of <span style="color: #b38ef3">Hexcasting</span> seems limited due to the great danger of manipulating time: <span style="color: #b38ef3">Hexes</span> cast by <span style="color: #8d6acc">Cassette</span> use exclusively <span style="color: #74b3f2">media</span> from my inventory. If left unchecked, it can easily drain my <span style="color: #74b3f2">media</span> and then my life.</p>
 <br />
   <div id="async@hexcassettes:dequeue" class="">
 <h4 class="pattern-title">Dequeue (pattern →)<a
@@ -781,6 +786,28 @@
   </details>
       <p>Pushes the current label of the <span style="color: #8d6acc">Cassette</span> this <span style="color: #b38ef3">Hex</span> is running in or <a href="https://hexcasting.hexxy.media/v/0.11.2/1.0/en_us#casting/influences"><span style="color: #8d6acc">Null</span></a> if it is not running in a <span style="color: #8d6acc">Cassette</span>.</p>
   </div>
+<br />
+</div>
+<div id="daemons" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Clock"
+      alt="Clock"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/items/clock_00.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Reflections on Daemons<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#daemons"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>Consider a list of patterns, a <span style="color: #b38ef3">Hex</span>. One may place a duplicate of that <span style="color: #b38ef3">Hex</span> within itself, providing it with a blueprint of its own composition. Setting aside the <span style="color: #b38ef3">Hex</span>&#39;s evaluation for later, it harbors within itself all requisite information to reenact the process. Inducting ad infinitum, an infinite idle casting phenomenon emerges—referred to by those learned in <span style="color: #b38ef3">Hexcasting</span> as a &#34;daemon.&#34;</p>
+<br />
+    <p>Should my inclinations reach higher subtley, I might alter the <span style="color: #b38ef3">Hex</span> prior to its enqueuing, thereby encoding within its structure a &#34;state,&#34; which may be carried forth through successive iterations to persist information.</p>
 <br />
 </div>
 </section>
