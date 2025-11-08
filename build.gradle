@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id "fabric-loom" version "1.6-SNAPSHOT"
+	id "fabric-loom" version "1.7-SNAPSHOT"
 	id "maven-publish"
 	id "org.jetbrains.kotlin.jvm" version "1.8.0"
 }
@@ -34,8 +34,10 @@ dependencies {
 		exclude module: "lithium"
 		exclude module: "emi"
 	}
+	modImplementation(include("gay.object.hexdebug:hexdebug-core-fabric:$hexdebug_version+$minecraft_version"))
 
 	modLocalRuntime "dev.onyxstudios.cardinal-components-api:cardinal-components-api:$cardinal_components_version"
+	modLocalRuntime "gay.object.hexdebug:hexdebug-fabric:$hexdebug_version+$minecraft_version"
 	modLocalRuntime "com.samsthenerd.inline:inline-fabric:$minecraft_version-$inline_version"
 	modLocalRuntime "vazkii.patchouli:Patchouli:$minecraft_version-$patchouli_version-FABRIC"
 	modLocalRuntime "at.petra-k.paucal:paucal-fabric-$minecraft_version:$paucal_version"
