@@ -15,10 +15,13 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import gay.`object`.hexdebug.core.api.HexDebugCoreAPI
+import gay.`object`.hexdebug.core.api.exceptions.DebugException
 import miyucomics.hexcassettes.CassetteCastEnv
 import miyucomics.hexcassettes.HexcassettesMain
 import miyucomics.hexcassettes.PlayerEntityMinterface
 import miyucomics.hexcassettes.data.QueuedHex
+import miyucomics.hexcassettes.interop.hexdebug.CassetteDebugEnv
 import miyucomics.hexpose.iotas.TextIota
 import net.minecraft.text.Text
 import net.minecraft.util.DyeColor
@@ -33,14 +36,31 @@ class OpEnqueue : Action {
 		val cassetteState = (env.castingEntity as PlayerEntityMinterface).getCassetteState()
 
 		val stack = image.stack.toMutableList()
-		var key = if (env is CassetteCastEnv && !cassetteState.hexes.containsKey(env.key))
-			env.key
-		else
-			Text.Serializer.toJson(PatternIota.display(EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time)))
-		var labelled = 0
-		if (stack.last() is TextIota) {
-			key = Text.Serializer.toJson((stack.removeLast() as TextIota).text)
-			labelled++
+
+		val key: String
+		val keyText: Text
+		val labelled: Int
+		when {
+			// get key from stack
+			stack.last() is TextIota -> {
+				keyText = (stack.removeLast() as TextIota).text
+				key = Text.Serializer.toJson(keyText)
+				labelled = 1
+			}
+
+			// get key from current cassette
+			env is CassetteCastEnv && !cassetteState.hexes.containsKey(env.key) -> {
+				key = env.key
+				keyText = Text.Serializer.fromJson(key)!!
+				labelled = 0
+			}
+
+			// generate random key
+			else -> {
+				keyText = PatternIota.display(EulerPathFinder.findAltDrawing(HexPattern.fromAngles("qeqwqwqwqwqeqaweqqqqqwweeweweewqdwwewewwewweweww", HexDir.EAST), env.world.time))
+				key = Text.Serializer.toJson(keyText)
+				labelled = 0
+			}
 		}
 
 		val potentialDelay = stack.removeLast()
@@ -57,10 +77,22 @@ class OpEnqueue : Action {
 		var depth = 0
 		if (env is CassetteCastEnv && env.depth < 10)
 			depth = env.depth + 1
-		cassetteState.hexes[key] = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt(), depth)
+
+		val queuedHex = QueuedHex(IotaType.serialize(potentialHex), potentialDelay.double.toInt(), depth)
+
+		// if the current cast is being debugged, try to create the cassette in debug mode too
+		if (HexDebugCoreAPI.INSTANCE.getDebugEnv(env) != null) {
+			val debugEnv = CassetteDebugEnv(env.caster!!, key, keyText, queuedHex)
+			try {
+				HexDebugCoreAPI.INSTANCE.createDebugThread(debugEnv, null)
+				queuedHex.debugSessionId = debugEnv.sessionId
+			} catch (_: DebugException) {}
+		}
+
+		cassetteState.hexes[key] = queuedHex
 
 		if (labelled == 0)
-			stack.add(TextIota(Text.Serializer.fromJson(key)!!))
+			stack.add(TextIota(keyText))
 		return OperationResult(image.copy(stack = stack), listOf(), continuation, HexEvalSounds.SPELL)
 	}
 }

@@ -1,5 +1,6 @@
 package miyucomics.hexcassettes.data
 
+import gay.`object`.hexdebug.core.api.HexDebugCoreAPI
 import miyucomics.hexcassettes.inits.HexcassettesNetworking
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
@@ -30,6 +31,8 @@ class CassetteState {
 			if (hex.delay <= 0) {
 				iterator.remove()
 				hex.cast(player, pattern)
+			} else if (!hex.stillValid(player)) {
+				iterator.remove()
 			}
 		}
 
