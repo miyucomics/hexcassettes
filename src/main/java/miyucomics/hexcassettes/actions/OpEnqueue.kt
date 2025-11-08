@@ -26,11 +26,12 @@ import kotlin.math.roundToInt
 
 class OpEnqueue : Action {
 	override fun operate(env: CastingEnvironment, image: CastingImage, continuation: SpellContinuation): OperationResult {
-		if (env !is PlayerBasedCastEnv)
+		val caster = env.castingEntity
+		if (caster !is PlayerEntityMinterface)
 			throw MishapBadCaster()
 		if (image.stack.size < 2)
 			throw MishapNotEnoughArgs(2, image.stack.size)
-		val cassetteState = (env.castingEntity as PlayerEntityMinterface).getCassetteState()
+		val cassetteState = caster.getCassetteState()
 
 		val stack = image.stack.toMutableList()
 		var key = if (env is CassetteCastEnv && !cassetteState.hexes.containsKey(env.key))

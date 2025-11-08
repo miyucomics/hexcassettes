@@ -11,8 +11,9 @@ import miyucomics.hexcassettes.PlayerEntityMinterface
 class OpSpecs : ConstMediaAction {
 	override val argc = 0
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
-		if (env !is PlayerBasedCastEnv)
+		val caster = env.castingEntity
+		if (caster !is PlayerEntityMinterface)
 			throw MishapBadCaster()
-		return (env.castingEntity as PlayerEntityMinterface).getCassetteState().owned.asActionResult
+		return caster.getCassetteState().owned.asActionResult
 	}
 }

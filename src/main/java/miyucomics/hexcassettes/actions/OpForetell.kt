@@ -13,9 +13,10 @@ import net.minecraft.text.Text
 class OpForetell : ConstMediaAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
-		if (env !is PlayerBasedCastEnv)
+		val caster = env.castingEntity
+		if (caster !is PlayerEntityMinterface)
 			throw MishapBadCaster()
-		val queuedHexes = (env.castingEntity as PlayerEntityMinterface).getCassetteState().hexes
+		val queuedHexes = caster.getCassetteState().hexes
 		val pattern = Text.Serializer.toJson(args.getText(0, argc))
 		return queuedHexes[pattern]?.delay?.asActionResult ?: null.asActionResult
 	}

@@ -13,7 +13,7 @@ import net.minecraft.text.Text
 class OpDequeue : SpellAction {
 	override val argc = 1
 	override fun execute(args: List<Iota>, env: CastingEnvironment): SpellAction.Result {
-		if (env !is PlayerBasedCastEnv)
+		if (env.castingEntity !is PlayerEntityMinterface)
 			throw MishapBadCaster()
 		return SpellAction.Result(Spell(args.getText(0, argc)), 0, listOf())
 	}
