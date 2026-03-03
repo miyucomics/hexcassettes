@@ -32,7 +32,16 @@ import net.minecraft.world.World
 
 class HexcassettesMain : ModInitializer {
 	override fun onInitialize() {
-		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, _ -> (newPlayer as PlayerEntityMinterface).getCassetteState().owned = (oldPlayer as PlayerEntityMinterface).getCassetteState().owned }
+		ServerPlayerEvents.AFTER_RESPAWN.register { oldPlayer, newPlayer, isAlive ->
+                (newPlayer as PlayerEntityMinterface).getCassetteState().owned = (oldPlayer as PlayerEntityMinterface).getCassetteState().owned
+
+            if (isAlive) {
+                // end exit portal taken, keep existing hexes running
+                (newPlayer as PlayerEntityMinterface).getCassetteState().hexes.putAll((oldPlayer as PlayerEntityMinterface).getCassetteState().hexes)
+            }
+
+            (newPlayer as PlayerEntityMinterface).getCassetteState().sync(newPlayer)
+        }
 		CassetteItem().also {
 			Registry.register(Registries.ITEM, id("cassette"), it)
 			ItemGroupEvents.modifyEntriesEvent(RegistryKey.of(Registries.ITEM_GROUP.key, HexAPI.modLoc("hexcasting"))).register { group -> group.add(it) }
